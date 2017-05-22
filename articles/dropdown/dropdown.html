@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0ac2d2;
+        }
+
+        .l-list {
+            position: absolute;
+            top: 100%;
+            z-index: -1;
+            width: 100%;
+            padding: 4px 0;
+            background-color: #fff;
+            border: 1px solid #cecece;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .l-list-item {
+            list-style: none;
+            padding: 4px 8px;
+        }
+
+        .l-list-item a {
+            display: block;
+            padding: 4px 0;
+            font-size: 16px;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s linear;
+        }
+
+        .l-list-item a:hover {
+            color: #fff;
+            background-color: #cecece;
+        }
+
+        .l-drop-menu {
+            position: relative;
+            width: 142px;
+            height: auto;
+            margin: 50px auto;
+        }
+
+        .l-drop-menu > span {
+            position: relative;
+            display: block;
+            padding: 8px 20px;
+            text-align: center;
+            color: #58a;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .l-drop-menu > span::after {
+            position: absolute;
+            top: 8px;
+            right: 16px;
+            content: '';
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            border-width: 8px;
+            border-style: dashed dashed solid;
+            border-color: transparent transparent #c2c2c2;
+            transition: all 0.3s linear;
+        }
+
+        .l-drop-menu > span:hover {
+            color: #fff;
+            background-color: #cecece;
+        }
+
+        .l-drop-menu > span:hover::after {
+            top: 16px;
+            border-style: solid dashed dashed;
+            border-color: #ffffff transparent transparent;
+        }
+
+        .l-menu-1 .l-list {
+            transform: translate3d(0, 10px, 0);
+            backface-visibility: hidden;
+            transition: all 0.3s linear;
+        }
+        .l-menu-1:hover .l-list {
+            z-index: 2;
+            overflow: auto;
+            opacity: 1;
+            visibility: visible;
+            transform: translate3d(0, 0, 0);
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="l-drop-menu l-menu-1">
+    <span>下拉菜单</span>
+    <ul class="l-list">
+        <li class="l-list-item"><a href="https://docs.angularjs.org/guide">AngularJS</a></li>
+        <li class="l-list-item"><a href="https://vuefe.cn/v2/guide/">Vue</a></li>
+        <li class="l-list-item"><a href="http://reactjs.cn/react/docs/getting-started.html/">React</a></li>
+    </ul>
+</div>
+
+</body>
+</html>
