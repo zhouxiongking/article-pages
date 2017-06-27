@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas匀速直线运动</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<canvas id="canvas">你的浏览器不支持canvas，请跟换其他浏览器试一试</canvas>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        // 画布宽高
+        canvas.height = 728;
+        canvas.width = 1024;
+        var context = canvas.getContext('2d');
+        // 小球颜色
+        context.fillStyle = 'red';
+        context.beginPath();
+        // 画一个小球
+        context.arc(800, 300, 30, 0, 2 * Math.PI, true);
+        context.closePath();
+        context.fill();
+        // 设置定时器
+        setInterval(function () {
+            run(context);
+        }, 50);
+    };
+
+    // 每次移动位置
+    var speed = 0;
+    // 初始位置
+    var startPoint = 800;
+
+    /**
+     * 每次更新小球位置
+     * @param cxt
+     */
+    function run(cxt) {
+        speed = -7;
+        cxt.clearRect(0, 0, 1024, 728);
+        startPoint += speed;
+        cxt.beginPath();
+        cxt.arc(startPoint, 300, 30, 0, 2 * Math.PI, true);
+        cxt.closePath();
+        cxt.fill();
+
+        // 小球消失后,从起点开始
+        if (startPoint < 0) {
+            startPoint = 800;
+        }
+    }
+</script>
+
+</body>
+</html>
