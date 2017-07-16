@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+        ul {
+            background: gray;
+            padding: 20px;
+            perspective: 200px;
+            -webkit-perspective: 200px;
+        }
+
+        li {
+            list-style: none;
+            height: 50px;
+            width: 100px;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .anim {
+            animation: anim 1s infinite;
+            width: 100px;
+            margin-left: -100px;
+            background: white
+        }
+
+        @keyframes anim {
+            to {
+                transform: rotateY(-360deg);
+            }
+        }
+
+        .anim2 {
+            animation: anim2 1s infinite;
+            width: 100px;
+            margin-left: -100px;
+            background: white
+        }
+
+        @keyframes anim2 {
+            25% {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>
+    <li class="anim">
+    <li class="anim2">
+</ul>
+
+</body>
+</html>
