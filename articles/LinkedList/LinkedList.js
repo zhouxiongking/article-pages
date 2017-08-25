@@ -38,7 +38,8 @@ class LinkedList {
             let current = this.head;
             let previous = null;
             let index = 0;
-            if (position === 0) {
+            if (position === 0) {  // 在位置0处插入元素存在bug，可是试试insert(0, x)验证，我认为应该加下面这行语句
+                node.next = this.head  // 新插入元素的next指向原头节点
                 this.head = node;
             } else {
                 while (index++ < position) {
