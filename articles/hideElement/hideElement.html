@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS隐藏元素的几个方法</title>
+    <style>
+        div {
+            width: 300px;
+            height: 100px;
+        }
+        .visibility-hidden {
+            background-color: #eee;
+            transition: all .5s ease-in;
+        }
+
+        .visibility-hidden:hover {
+            background-color: #0ac2d2;
+            visibility: hidden;
+        }
+
+        .opacity-0 {
+            background-color: #eee;
+            transition: all .5s ease-in;
+        }
+
+        .opacity-0:hover {
+            background-color: #658db5;
+            opacity: 0;
+        }
+        
+    </style>
+</head>
+<body style="margin: 0 auto; padding: 20px; width: 80%;">
+
+<h3>CSS隐藏元素的几个方法对事件的影响</h3>
+
+<div id="div1" class="visibility-hidden" onclick="click1()">我是visibility:hidden元素,点击我</div>
+
+<br>
+
+<div id="div2" class="opacity-0" onclick="click2()">我是opacity:0元素,点击我</div>
+
+<script>
+
+    function click1() {
+        console.log('我是visibility:hidden元素,点击我可以看到此条信息!');
+    }
+
+    function click2() {
+        console.log('我是opacity:0元素,点击我可以看到此条信息!');
+    }
+</script>
+
+</body>
+</html>
