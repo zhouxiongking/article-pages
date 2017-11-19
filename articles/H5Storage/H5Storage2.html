@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面A</title>
+</head>
+<body>
+
+<script>
+
+    if(window.localStorage) {
+        var localStorage = window.localStorage;
+        localStorage.setItem('name', 'kingx');
+    }
+
+    window.addEventListener("storage", function (e) {
+        console.log('修改后的值为:' + e.newValue);
+    });
+
+</script>
+</body>
+</html>
