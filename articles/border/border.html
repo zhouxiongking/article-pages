@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .main {
+            width: 200px;
+            height: 200px;
+            border-bottom-width: 20px;
+            border-bottom-color: #1b6d85;
+            border-bottom-style: solid;
+
+            border-left-width: 20px;
+            border-left-color: #006bb5;
+            border-left-style: solid;
+
+            border-top-width: 20px;
+            border-top-color: #000000;
+            border-top-style: solid;
+
+            border-right-width: 20px;
+            border-right-color: #761c19;
+            border-right-style: solid;
+        }
+
+        .trapezoid {
+            width: 100px;
+            height: 0;
+            border-bottom: 100px solid #761c19;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+
+        .triangle-up {
+            height: 0;
+            width: 0;
+            border-bottom: 100px solid #1b6d85;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+
+        .triangle-down {
+            height: 0;
+            width: 0;
+            border-top: 100px solid #006bb5;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+
+        .triangle-left {
+            height: 0;
+            width: 0;
+            border-right: 100px solid #761c19;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+        }
+
+        .triangle-right {
+            height: 0;
+            width: 0;
+            border-left: 100px solid #2b542c;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+        }
+
+        .triangle-l-u {
+            height: 0;
+            width: 0;
+            border-top: 100px solid #006bb5;
+            border-left: 100px solid #006bb5;
+            border-bottom: 100px solid transparent;
+            border-right: 100px solid transparent;
+        }
+
+        .triangle-r-u {
+            height: 0;
+            width: 0;
+            border-top: 100px solid #006bb5;
+            border-left: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-right: 100px solid #006bb5;
+        }
+
+        .triangle-l-d {
+            height: 0;
+            width: 0;
+            border-top: 100px solid transparent;
+            border-left: 100px solid #006bb5;
+            border-bottom: 100px solid #006bb5;
+            border-right: 100px solid transparent;
+        }
+
+        .triangle-r-d {
+            height: 0;
+            width: 0;
+            border-top: 100px solid transparent;
+            border-left: 100px solid transparent;
+            border-bottom: 100px solid #006bb5;
+            border-right: 100px solid #006bb5;
+        }
+
+        .triangle-u-d {
+            height: 0;
+            width: 0;
+            position: relative;
+            border-bottom: 100px solid #1b6d85;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+
+        .triangle-u-d:after {
+            content: '';
+            height: 0;
+            width: 0;
+            position: absolute;
+            right: -50px;
+            top: 32px;
+            border-top: 100px solid #1b6d85;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background-color: #1b6d85;
+        }
+
+        .concentric-circle {
+            width: 100px;
+            height: 100px;
+            border: 20px solid #2b542c;
+            border-radius: 100px;
+        }
+
+        .circle-up {
+            height: 0;
+            width: 100px;
+            border-top: 100px solid #1b6d85;
+            border-right: 100px solid #1b6d85;
+            border-radius: 100px 100px 0 0;
+        }
+
+        .circle-dowm {
+            width: 100px;
+            height: 0;
+            border-bottom: 100px solid #006bb5;
+            border-right: 100px solid #006bb5;
+            border-radius: 0 0 100px 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main"></div>
+
+<div class="trapezoid"></div>
+
+<div class="container">
+    <div class="triangle-up"></div>
+    <div class="triangle-down"></div>
+    <div class="triangle-left"></div>
+    <div class="triangle-right"></div>
+
+    <div class="triangle-l-u"></div>
+    <div class="triangle-r-u"></div>
+    <div class="triangle-l-d"></div>
+    <div class="triangle-r-d"></div>
+
+    <div class="triangle-u-d"></div>
+</div>
+
+<div class="container">
+    <div class="circle"></div>
+    <div class="concentric-circle"></div>
+    <div class="circle-up"></div>
+    <div class="circle-dowm"></div>
+</div>
+
+
+
+</body>
+</html>
