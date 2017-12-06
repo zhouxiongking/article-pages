@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        body {
+            padding: 20px;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        .no-border {
+            width: 400px;
+            height: 130px;
+            background-color: #0ac2d2;
+            border-radius: 20px;
+        }
+
+        .no-border::after {
+            content: '';
+            height: 0;
+            width: 0;
+            position: relative;
+            left: 40px;
+            top: 150px;
+            border-top: 20px solid #0ac2d2;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+
+        .border {
+            width: 400px;
+            height: 130px;
+            background-color: #0ac2d2;
+            border: 10px solid #ffd500;
+            border-radius: 20px;
+        }
+
+        .border::before {
+            content: '';
+            height: 0;
+            width: 0;
+            position: relative;
+            left: 40px;
+            top: 160px;
+            border-top: 20px solid #0ac2d2;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+
+        .border::after {
+            content: '';
+            height: 0;
+            width: 0;
+            position: relative;
+            left: 40px;
+            top: 160px;
+            border-top: 20px solid #ffd500;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="no-border"></div>
+
+    <br><br><br>
+
+    <div class="border"></div>
+
+    <br><br><br>
+
+
+
+</body>
+</html>

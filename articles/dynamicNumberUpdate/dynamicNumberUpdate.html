@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        body,html{
+            margin: 0;
+            padding: 0;
+            font-size: 16px
+        }
+        .number li {
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .number li span {
+            display: block;
+            transform: translateY(0%);
+        }
+
+        .number li.active span {
+            animation: move 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes move {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+<ul id="main" class="number"></ul>
+<script type="text/javascript">
+    function makeThreeNum(num){
+        var num = (num || "").toString();
+        return num.match(/\d{1,3}/g).join(',');
+    }
+    function getRand(min, max){
+        return parseInt(Math.random()*(max-min)+min);
+    }
+    function addStep(base){
+        return (parseInt(getRand(1, 10)) + parseInt(base));
+    }
+    var w_old = 123456789;
+    function update(oldNum, newNum){
+        w_old = newNum;
+        var oldNum = makeThreeNum(oldNum),
+                newNum = makeThreeNum(newNum),
+                numberHTML = '';
+        for (var i = 0; i < oldNum.length; i++) {
+            if(oldNum[i] !== newNum[i]){
+                numberHTML += "<li class=\"group active\">" +
+                        "<span class=\"old\">" + oldNum[i] + "</span>" +
+                        "<span class=\"new\">" + newNum[i] + "</span></li>";
+            }else{
+                numberHTML += "<li class=\"group\">" +
+                        "<span class=\"old\">" + oldNum[i] + "</span>" +
+                        "<span class=\"new\">" + newNum[i] + "</span></li>";
+            }
+        }
+        document.getElementById('main').innerHTML = numberHTML;
+
+    }
+    window.setInterval(function(){
+        update(w_old, addStep(w_old));
+    }, 1000);
+</script>
+</body>
+</html>
