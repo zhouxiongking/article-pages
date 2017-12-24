@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS实现复杂图案</title>
+
+    <style>
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 50px;
+        }
+
+        div {
+            margin: 30px;
+        }
+
+        .camera {
+            position: relative;
+            display: inline-block;
+            border-style: solid;
+            border-width: 65px 90px;
+            border-radius: 10px;
+        }
+
+        .camera:before {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 10px solid #FFF;
+            box-shadow: 0 0 0 8px, 0 0 0 16px #fff;
+            content: '';
+        }
+
+        .camera:after {
+            position: absolute;
+            top: -50px;
+            left: 50px;
+            width: 20px;
+            border-top: 12.5px solid #FFF;
+            content: '';
+        }
+
+        .moon {
+            height: 150px;
+            width: 150px;
+            box-shadow: inset -40px 0 0;
+            border-radius: 100px;
+            transform: rotate(20deg);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="camera"></div>
+
+<div class="moon"></div>
+
+</body>
+</html>
