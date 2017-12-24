@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS实现复杂图形</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 50px;
+        }
+
+        div {
+            margin: 30px;
+        }
+
+        .cup {
+            position: relative;
+            width: 90px;
+            height: 40px;
+            border: 25px solid;
+            border-bottom: 110px solid;
+            border-radius: 0 0 25px 25px;
+        }
+
+        .cup:before {
+            position: absolute;
+            right: -60px;
+            top: 0;
+            width: 30px;
+            height: 80px;
+            border: 25px solid;
+            border-left: none;
+            border-radius: 0 25px 25px 0;
+            content: '';
+        }
+
+        .heart{
+            position: relative;
+            margin-top: 200px;
+            width: 0;
+        }
+
+        .heart:before,.heart:after {
+            position: absolute;
+            content: '';
+            width: 100px;
+            height: 160px;
+            background: #000000;
+            border-radius: 50% 50% 0 0;
+            bottom: 0;
+        }
+
+        .heart:before {
+            -webkit-transform: rotate(48deg);
+            -webkit-transform-origin: 100% 100%;
+            right: 0;
+        }
+
+        .heart:after {
+            -webkit-transform: rotate(-48deg);
+            -webkit-transform-origin: 0 100%;
+            left: 0;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="cup"></div>
+
+    <div class="heart"></div>
+
+
+
+</body>
+</html>
