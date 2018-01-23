@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS选择器</title>
+
+    <style>
+        .container {
+            margin: 0 auto;
+            width: 80%;
+            padding: 20px;
+        }
+
+        .all-child p {
+            color: red;
+        }
+
+        .direct-child > p {
+            color: red;
+        }
+
+        .siblings + p {
+            color: red;
+        }
+
+        .same-level-next ~ p {
+            color: red;
+        }
+
+        .classA.classB p{
+            color: red;
+        }
+
+        .classA .classB p {
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>父元素所有子元素,包括子孙节点</h3>
+
+    <p>示例: div下所有的p元素</p>
+    <span>代码: </span><code>div p</code>
+
+    <div class="all-child">
+        <p>这是第一个子元素</p>
+        <p>这是第二个子元素</p>
+        <p>这是第三个子元素</p>
+        <div>
+            <p>这是第一个孙子元素</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3>父元素的直接子元素,不包括子孙节点</h3>
+
+    <p>示例: div所有的直接p元素</p>
+
+    <span>代码: </span><code>div > p</code>
+
+    <div class="direct-child">
+        <p>这是第一个子元素</p>
+        <p>这是第二个子元素</p>
+        <p>这是第三个子元素</p>
+        <div>
+            <p>这是第一个孙子元素</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3>相邻兄弟元素</h3>
+    <p>示例: div后兄弟p元素</p>
+    <span>代码: </span><code>div + p</code>
+
+    <div class="siblings">
+        <p>这是第一个子元素</p>
+        <div>
+            <p>这是第一个孙子元素</p>
+        </div>
+    </div>
+    <p>这是第一个同级元素</p>
+    <p>这是第二个同级元素</p>
+    <div>
+        <p>这是一个相邻div内的p元素</p>
+    </div>
+
+    <hr>
+
+    <h3>匹配同级所有元素</h3>
+    <p>示例: div后所有同级p元素</p>
+    <span>代码: </span><code>div ~ p</code>
+    <div class="same-level-next">
+        <p>这是第一个子元素</p>
+        <div>
+            <p>这是第一个孙子元素</p>
+        </div>
+    </div>
+    <p>这是第一个同级元素</p>
+    <p>这是第二个同级元素</p>
+    <div>
+        <p>这是一个相邻div内的p元素</p>
+    </div>
+
+    <hr>
+
+    <h3>.classA .classB与.classA.classB</h3>
+
+    <div class="classA classB">
+        <p>这是.classA.classB内部的文字</p>
+    </div>
+
+    <div class="classA">
+        <div class="classB">
+            <p>这是.classA .classB内部的文字</p>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
