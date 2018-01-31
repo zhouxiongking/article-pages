@@ -37,13 +37,13 @@ setTimeout(() => {
 /**
  * 题目3
  */
-const promise = new Promise((resolve, reject) => {
+const promise3 = new Promise((resolve, reject) => {
     resolve('success1');
     reject('error');
     resolve('success2');
 });
 
-promise
+promise3
     .then((res) => {
         console.log('then: ', res);
     })
@@ -69,7 +69,7 @@ Promise.resolve(1)
 /**
  * 题目5
  */
-const promise = new Promise((resolve, reject) => {
+const promise5 = new Promise((resolve, reject) => {
     setTimeout(() => {
         console.log('once');
         resolve('success');
@@ -77,10 +77,10 @@ const promise = new Promise((resolve, reject) => {
 });
 
 const start = Date.now();
-promise.then((res) => {
+promise5.then((res) => {
     console.log(res, Date.now() - start);
 });
 
-promise.then((res) => {
+promise5.then((res) => {
     console.log(res, Date.now() - start);
 });
