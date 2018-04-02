@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        #list {
+            border: 2px solid gold;
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #list li {
+            font-size: 50px;
+        }
+
+        #list li {
+            font-family: "microsoft yahei";
+            font-size: 50px;
+            background: #e3e3e3;
+            color: #fff;
+            margin: 2px;
+            flex-grow: 1;
+            flex-basis: 0; /*0%时,会严格按照flex-row属性去计算*/
+        }
+
+        #list li:nth-child(2) {
+            flex-grow: 2;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="list">
+    <li>test1</li>
+    <li>test2</li>
+    <li>test3</li>
+</ul>
+
+</body>
+</html>

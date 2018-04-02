@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #demo1 {
+            width: 100px;
+            height: 100px;
+            background-color: #9C27B0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo1"></div>
+
+<script src="./datePicker.js"></script>
+<script>
+    var calendar = new datePicker();
+    calendar.init({
+        'trigger': '#demo1', /*选择器，触发弹出插件*/
+        'type': 'datetime',/*date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择*/
+        'minDate':'1900-1-1',/*最小日期*/
+        'maxDate':new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),/*最大日期*/
+        'onSubmit':function(){/*确认时触发事件*/
+            var theSelectData=calendar.value;
+        },
+        'onClose':function(){/*取消时触发事件*/
+        }
+    });
+</script>
+</body>
+</html>

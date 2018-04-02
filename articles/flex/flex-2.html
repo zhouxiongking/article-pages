@@ -1,0 +1,58 @@
+​<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        .flex {
+            /* 基本样式 */
+            width: 450px;
+            height: 250px;
+            border: 1px solid #555;
+            font: 14px Arial;
+
+            /*  建立弹性框 */
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex > div {
+            -webkit-flex: 1 1 auto;
+            flex: 1 1 auto;
+            width: 30px;
+            -webkit-transition: width 0.7s ease-out;
+            transition: width 0.7s ease-out;
+        }
+
+        /* colors */
+        .flex > div:nth-child(1) {
+            background: #009246;
+        }
+
+        .flex > div:nth-child(2) {
+            background: #F1F2F1;
+        }
+
+        .flex > div:nth-child(3) {
+            background: #CE2B37;
+        }
+
+        .flex > div:hover {
+            width: 200px;
+        }
+
+    </style>
+
+</head>
+<body>
+<p>Flexbox nuovo</p>
+<div class="flex">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+</div>
+</body>
+</html>

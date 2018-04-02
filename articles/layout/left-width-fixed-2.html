@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左侧定宽,右侧自适应布局</title>
+    <style>
+        div {
+            height: 1000px;
+        }
+
+        .left {
+            width: 200px;
+            float: left;
+            background-color: #0ac2d2;
+        }
+        /*方法1*/
+        .right {
+            margin-left: 200px;
+            background-color: #1b6d85;
+        }
+        /*方法2*/
+        .right {
+            width: calc(100% - 200px);
+            float: left;
+            background-color: #1b6d85;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+
+</body>
+</html>

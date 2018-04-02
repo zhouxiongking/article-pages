@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左右两侧定宽,中间自适应布局</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 800px;
+            display: flex;
+        }
+
+        .container div {
+            height: 100%;
+        }
+
+        .left {
+            width: 200px;
+            background-color: #0ac2d2;
+        }
+
+        .right {
+            width: 120px;
+            background-color: #9C27B0;
+        }
+
+        .middle {
+            background-color: #2b542c;
+            flex: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left"></div>
+    <div class="middle"></div>
+    <div class="right"></div>
+</div>
+
+</body>
+</html>
