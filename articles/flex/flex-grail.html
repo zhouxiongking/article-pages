@@ -10,17 +10,17 @@
             background: #999999;
         }
 
-        #main {
+        .main {
             min-height: 480px;
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             display: -webkit-flex;
             display: flex;
             -webkit-flex-flow: row;
             flex-flow: row;
         }
 
-        #main > article {
+        .main > article {
             margin: 4px;
             padding: 5px;
             border: 1px solid #cccc33;
@@ -28,11 +28,19 @@
             background: #dddd88;
             -webkit-flex: 3 1 60%;
             flex: 3 1 60%;
-            -webkit-order: 2;
-            order: 2;
         }
 
-        #main > nav {
+        .main > nav {
+             margin: 4px;
+             padding: 5px;
+             border: 1px solid #8888bb;
+             border-radius: 7pt;
+             background: #ccccff;
+             -webkit-flex: 1 6 20%;
+             flex: 1 6 20%;
+         }
+
+        .main > aside {
             margin: 4px;
             padding: 5px;
             border: 1px solid #8888bb;
@@ -40,20 +48,6 @@
             background: #ccccff;
             -webkit-flex: 1 6 20%;
             flex: 1 6 20%;
-            -webkit-order: 1;
-            order: 1;
-        }
-
-        #main > aside {
-            margin: 4px;
-            padding: 5px;
-            border: 1px solid #8888bb;
-            border-radius: 7pt;
-            background: #ccccff;
-            -webkit-flex: 1 6 20%;
-            flex: 1 6 20%;
-            -webkit-order: 3;
-            order: 3;
         }
 
         header, footer {
@@ -69,20 +63,13 @@
         /* 窄到已不足以支持三栏 */
         @media all and (max-width: 640px) {
 
-            #main {
+            .main {
                 -webkit-flex-flow: column;
                 flex-direction: column;
             }
 
-            #main > article, #main > nav, #main > aside {
-                /* 恢复到文档内的自然顺序 */
-                -webkit-order: 0;
-                order: 0;
-            }
-
-            #main > nav, #main > aside, header, footer {
-                min-height: 50px;
-                max-height: 50px;
+            .main > nav, .main > aside, header, footer {
+                height: 50px;
             }
         }
 
@@ -90,7 +77,7 @@
 </head>
 <body>
 <header>header</header>
-<div id='main'>
+<div class='main'>
     <nav>nav</nav>
     <article>article</article>
     <aside>aside</aside>
