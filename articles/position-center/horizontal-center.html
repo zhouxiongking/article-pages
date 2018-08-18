@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水平居中+垂直居中</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .h-50 {
+            height: 50px;
+        }
+
+        .bg-color {
+            background-color: #e3e3e3;
+        }
+
+        .inline-parent {
+            text-align: center;
+        }
+
+        .block-child {
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        .float-parent {
+            width: fit-content;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            margin: 0 auto;
+            display: block;
+        }
+        .float-child {
+            float: left;
+        }
+
+        .flex-parent {
+            display: flex;
+            justify-content: center;
+        }
+
+        .transform-child {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .m-l-child {
+            position: absolute;
+            width: 300px;
+            left: 50%;
+            margin-left: -150px;
+        }
+
+        .m-l-r-child {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .text-parent {
+            height: 100px;
+        }
+        .text-child {
+            line-height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>1.水平居中</h2>
+    <h3>1.1 行内元素</h3>
+    <div class="inline-parent bg-color">
+        <span>这是一个span的行内元素</span>
+    </div>
+    <h3>1.2 块级元素</h3>
+    <div class="bg-color">
+        <p class="block-child">这是一个p块级元素</p>
+    </div>
+
+    <h3>1.3 子元素float浮动</h3>
+    <div class="float-parent h-50 bg-color">
+        <div class="float-child">这是一个浮动的子元素</div>
+    </div>
+
+    <h3>1.4 flex水平居中</h3>
+    <div class="flex-parent bg-color">
+        <div class="flex-child">这是一个flex布局居中的元素</div>
+    </div>
+
+    <h3>1.5 transform</h3>
+    <div class="transform-parent bg-color h-50">
+        <div class="transform-child">这是一个用transform居中的元素</div>
+    </div>
+
+    <h3>1.6 绝对定位和负值margin-left</h3>
+    <div class="m-l-parent bg-color h-50">
+        <div class="m-l-child">这是一个绝对定位和负值margin-left居中的元素</div>
+    </div>
+
+    <h3>1.7 绝对定位,margin,left,right配合</h3>
+    <div class="m-l-r-parent bg-color h-50">
+        <div class="m-l-r-child">这是使用绝对定位,margin,left,right配合居中的元素</div>
+    </div>
+
+    <h2>2.垂直居中</h2>
+    <h3>2.1 单行文本</h3>
+    <div class="text-parent bg-color">
+        <span class="text-child">这是一个垂直居中的单行文本</span>
+    </div>
+</div>
+
+
+</body>
+</html>

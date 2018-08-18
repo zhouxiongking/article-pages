@@ -5,8 +5,8 @@
     <title>左右两侧定宽,中间自适应布局</title>
     <style>
         .container {
-            width: 100%;
             height: 800px;
+            color: #fff;
         }
 
         .container div {
@@ -20,23 +20,25 @@
         }
 
         .right {
-            width: 120px;
+            width: 200px;
             float: right;
             background-color: #9C27B0;
         }
 
         .middle {
-            margin: 0 120px 0 200px;
+            margin: 0 200px 0 200px;
             background-color: #2b542c;
         }
     </style>
 </head>
 <body>
 
+<h2>方法1: 左右float,中间margin</h2>
+
 <div class="container">
-    <div class="left"></div>
-    <div class="right"></div>
-    <div class="middle"></div>
+    <div class="left">左侧宽度固定区域</div>
+    <div class="right">右侧宽度固定区域</div>
+    <div class="middle">中间自适应宽度区域</div>
 </div>
 
 </body>

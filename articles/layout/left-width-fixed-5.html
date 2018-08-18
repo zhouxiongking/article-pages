@@ -6,23 +6,26 @@
     <style>
         div {
             height: 1000px;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
         }
 
         .left {
-            width: 200px;
-            float: left;
+            flex: 0 0 200px;
             background-color: #0ac2d2;
         }
         .right {
-            width: calc(100% - 200px);
-            float: left;
+            flex: 1;
             background-color: #1b6d85;
         }
     </style>
 </head>
 <body>
 
-<h2>方法2:双浮动实现两栏布局</h2>
+<h2>方法5:flex</h2>
 
 <div class="container">
     <div class="left">左侧定宽区域</div>

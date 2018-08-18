@@ -6,23 +6,30 @@
     <style>
         div {
             height: 1000px;
+            color: #fff;
+        }
+
+        .container {
+            font-size: 0;
         }
 
         .left {
+            display: inline-block;
             width: 200px;
-            float: left;
+            font-size: 16px;
             background-color: #0ac2d2;
         }
         .right {
+            display: inline-block;
+            font-size: 16px;
             width: calc(100% - 200px);
-            float: left;
             background-color: #1b6d85;
         }
     </style>
 </head>
 <body>
 
-<h2>方法2:双浮动实现两栏布局</h2>
+<h2>方法4:inline-block+calc()</h2>
 
 <div class="container">
     <div class="left">左侧定宽区域</div>
