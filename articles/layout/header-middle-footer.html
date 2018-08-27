@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上下定高,中间自适应</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 60px;
+            background-color: #0ac2d2;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 60px;
+            background-color: #ffd500;
+        }
+
+        .middle {
+            position: absolute;
+            top: 60px;
+            bottom: 60px;
+            background-color: #e3e3e3;
+            overflow: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>header</header>
+<div class="middle">middle</div>
+<footer>footer</footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Chomo"/>
+    <link rel="start" href="http://www.14px.com" title="Home"/>
+    <title>利用box-sizing实现div仿框架</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        html, body {
+            height: 100%;
+            text-align: center;
+        }
+
+        header {
+             position: relative;
+             top: -60px;
+             height: 60px;
+             background-color: #0ac2d2;
+        }
+
+        .middle {
+            position: relative;
+            top: -60px;
+            height: 100%;
+            background-color: #e3e3e3;
+            overflow: auto;
+            margin-right: 0 !important;
+        }
+
+        footer {
+            position: relative;
+            top: -60px;
+            height: 60px;
+            background-color: #ffd500;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<header>header</header>
+<div class="middle">middle</div>
+<footer>footer</footer>
+</body>
+</html>
