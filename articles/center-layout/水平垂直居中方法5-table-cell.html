@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水平垂直居中</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 500px;
+            height: 400px;
+            display: table;
+            background-color: #f00;
+        }
+
+        .parent {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            background-color: #0ac2d2;
+        }
+
+        .child {
+            width: 200px;
+            height: 100px;
+            background-color: #761c19;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</div>
+
+
+</body>
+</html>
