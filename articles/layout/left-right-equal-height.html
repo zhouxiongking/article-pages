@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>并排等高布局</title>
+    <style>
+
+        .wrap {
+            display: table;
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .left,
+        .right {
+            width: 50%;
+            padding: 10px;
+            display: table-cell;
+        }
+
+        .left {
+            background-color: #83e8f1;
+        }
+
+        .right {
+            background-color: #fbf64b;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="left">
+        left div
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/>
+        左侧div的内容很多
+    </div>
+    <div class="right">right div</div>
+</div>
+</body>
+</html>

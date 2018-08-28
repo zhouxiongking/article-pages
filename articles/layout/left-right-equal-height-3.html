@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>div+css实现的左右两个等高div</title>
+    <style>
+        * {
+            margin: 0;
+            paddig: 0;
+        }
+
+        .wrap {
+            width: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .left,
+        .right {
+            margin-bottom: -100000px; /*数值随便设置,越大越好,也就是(-padding-bottom值)*/
+            padding-bottom: 100000px; /*数值随便设置,越大越好*/
+        }
+
+        .left {
+            width: 50%;
+            float: left;
+            background-color: #83e8f1;
+        }
+
+        .right {
+            width: 50%;
+            float: right;
+            background-color: #fbf64b;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="left">
+        left div
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/>
+        左侧div的内容很多
+    </div>
+    <div class="right">right div</div>
+</div>
+</div>
+
+</body>
+</html>
