@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery序列化提交form表单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<form name="userForm" id="userForm" class="container">
+    <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" class="form-control" name="username" id="username">
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" name="password" id="password">
+    </div>
+    <div class="form-group">
+        <label for="telphone">电话</label>
+        <input type="text" class="form-control" name="telphone" id="telphone">
+    </div>
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="text" class="form-control" name="email" id="email">
+    </div>
+    <div class="text-center">
+        <input type="button" class="btn btn-default btn-primary" value="提交" id="submit">
+        <input type="button" class="btn btn-default" value="取消" id="cancel">
+    </div>
+</form>
+
+<div class="container">
+    <p>输入的内容为:</p>
+    <p id="result"></p>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        var submitBtn = $('#submit');
+        submitBtn.click(function () {
+            ajaxSubmitForm();
+        });
+
+        function ajaxSubmitForm() {
+            console.log($('#userForm').serializeArray());
+            $.ajax({
+                // 请求类型
+                type: 'POST',
+                // 请求URL
+                url: '/saveUser',
+                // 响应数据类型设置
+                dataType: 'json',
+                // 传递的参数
+                data: $('#userForm').serialize(),
+                // 执行成功的回调函数
+                success: function (response) {
+                    console.log('方法执行成功');
+                },
+                // 执行完成的回调函数
+                complete: function (response) {
+                    console.log('方法执行完成');
+                },
+                // 执行失败的回调函数
+                error: function () {
+                    console.log('方法执行失败');
+                }
+            });
+        }
+    });
+
+</script>
+
+</body>
+</html>

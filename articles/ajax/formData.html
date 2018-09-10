@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>formData提交form表单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<form name="userForm" id="userForm" class="container">
+    <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" class="form-control" name="username" id="username">
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" name="password" id="password">
+    </div>
+    <div class="form-group">
+        <label for="telphone">电话</label>
+        <input type="text" class="form-control" name="telphone" id="telphone">
+    </div>
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="text" class="form-control" name="email" id="email">
+    </div>
+    <div class="form-group">
+        <label for="email">简历</label>
+        <input type="file" name="resume" id="resume">
+    </div>
+    <div class="text-center">
+        <input type="button" class="btn btn-default btn-primary" value="提交" id="submit">
+        <input type="button" class="btn btn-default" value="取消" id="cancel">
+    </div>
+</form>
+
+<div class="container">
+    <p>输入的内容为:</p>
+    <p id="result"></p>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var submitBtn = document.getElementById('submit');
+    submitBtn.addEventListener('click', function () {
+        ajaxSubmitForm();
+    });
+
+    function ajaxSubmitForm() {
+        function createXMLHttp() {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            // code for IE6, IE5
+            if (window.ActiveXObject) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e) {
+                    try {
+                        xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+                    }
+                    catch (ex) { }
+                }
+            }
+            return xmlhttp;
+        }
+
+        var xhr = createXMLHttp();
+        xhr.open('post', '/saveUser', 'true');
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var telphone = document.getElementById('telphone').value;
+        var email = document.getElementById('email').value;
+        var resume = document.getElementById('resume');
+
+        var formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('telphone', telphone);
+        formData.append('email', email);
+        formData.append('resume', resume.files[0]);
+        formData.append('username', '1233323');
+
+        xhr.send(formData);
+
+        xhr.onreadystatechange = function () {
+            // 当readyStatew为4，且状态码为200时代表请求成功
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 处理响应值
+                console.log(xhr.responseText);
+            }
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

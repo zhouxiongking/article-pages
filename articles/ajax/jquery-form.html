@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax提交form表单</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        form {
+            width: 40%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<form name="userForm">
+    <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" id="password">
+    </div>
+    <div class="form-group">
+        <label for="telphone">电话</label>
+        <input type="text" class="form-control" id="telphone">
+    </div>
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="text" class="form-control" id="email">
+    </div>
+    <div class="text-center">
+        <input type="button" class="btn btn-default btn-primary" value="提交" id="submit">
+        <input type="button" class="btn btn-default" value="取消" id="cancel">
+    </div>
+</form>
+
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        var submitBtn = $('#submit');
+        submitBtn.click(function () {
+            ajaxSubmitForm();
+        });
+
+        function ajaxSubmitForm() {
+            var content = {
+                username: $('#username').val(),
+                password: $('#password').val(),
+                telphone: $('#telphone').val(),
+                email: $('#email').val()
+            };
+            $.ajax({
+                // 请求类型
+                type: 'POST',
+                // 请求URL
+                url: '/saveUser',
+                // 请求数据类型设置
+                contentType: 'application/json;charset=UTF-8',
+                // 响应数据类型设置
+                dataType: 'json',
+                // 传递的参数
+                data: JSON.stringify(content),
+                // 执行成功的回调函数
+                success: function (response) {
+                    console.log('方法执行成功');
+                },
+                // 执行完成的回调函数
+                complete: function (response) {
+                    console.log('方法执行完成');
+                },
+                // 执行失败的回调函数
+                error: function () {
+                    console.log('方法执行失败');
+                }
+            });
+        }
+    });
+
+</script>
+
+</body>
+</html>
