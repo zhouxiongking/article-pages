@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax进度事件</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        form {
+            width: 40%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<form name="userForm">
+    <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" id="password">
+    </div>
+    <div class="form-group">
+        <label for="telphone">电话</label>
+        <input type="text" class="form-control" id="telphone">
+    </div>
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="text" class="form-control" id="email">
+    </div>
+    <div class="text-center">
+        <input type="button" class="btn btn-default btn-primary" value="提交" id="submit">
+        <input type="button" class="btn btn-default" value="取消" id="cancel">
+    </div>
+</form>
+
+<script>
+    var submitBtn = document.getElementById('submit');
+    submitBtn.addEventListener('click', function () {
+        ajaxSubmitForm();
+    });
+
+    function ajaxSubmitForm() {
+        function createXMLHttp() {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            // code for IE6, IE5
+            if (window.ActiveXObject) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e) {
+                    try {
+                        xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+                    }
+                    catch (ex) {
+                    }
+                }
+            }
+            return xmlhttp;
+        }
+
+        var xhr = createXMLHttp();
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var telphone = document.getElementById('telphone').value;
+        var email = document.getElementById('email').value;
+
+        var content = {
+            username,
+            password,
+            telphone,
+            email
+        };
+        content = JSON.stringify(content);
+
+        xhr.onreadystatechange = function () {
+            // 当readyStatew为4，且状态码为200时代表请求成功
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 处理响应值
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.onloadstart = function () {
+            console.log('开始接收数据');
+        };
+
+        xhr.onprogress = function (event) {
+            console.log('持续接收数据');
+            event = event || event;
+            if (event.lengthComputable) {
+                console.log(event.position / event.totalSize);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.log('请求异常');
+        };
+
+        xhr.onload = function () {
+            console.log('数据接收完成');
+            console.log(xhr.status);
+        };
+
+        xhr.onloadend = function () {
+            console.log('通信完成');
+        };
+
+        xhr.open('post', '/saveUser', 'true');
+        xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+        xhr.send(content);
+    }
+
+</script>
+
+</body>
+</html>
