@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="myDiv">myDiv</div>
+
+<script>
+    var EventUtil = {
+        addEventHandler: function (element, type, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(type, handler);
+            } else if (element.attachEvent) {
+                element.attachEvent("on" + type, handler);
+            } else {
+                element["on" + type] = handler;
+            }
+        },
+        removeEventHandler: function (element, type, handler) {
+            if (element.addEventListener) {
+                element.removeEventListener(type, handler);
+            } else if (element.detachEvent) {
+                element.detachEvent("on" + type, handler);
+            } else {
+                element["on" + type] = null;
+            }
+        }
+    };
+
+    var div = document.getElementById("myDiv");
+
+    EventUtil.addEventHandler(div, "myEvent", function () {
+        alert("div myEvent!");
+    });
+
+    EventUtil.addEventHandler(document, "myEvent", function () {
+        alert("document myEvent!");
+    });
+
+
+
+    EventUtil.addEventHandler(div, 'click', function () {
+        if (document.implementation.hasFeature("CustomEvents", "3.0")) {
+            var e = document.createEvent("CustomEvent");
+            e.initCustomEvent("myEvent", true, false, "hello world!");
+            div.dispatchEvent(e);
+        }
+    });
+
+    <!-- 在id为wrap元素上点击会先后alert出123和456 -->
+    var wrap = document.getElementById('wrap');
+
+    wrap.addEventListener('click', function () {
+        alert('123');
+    }, false);
+
+    wrap.addEventListener('click', function () {
+        alert('456');
+    }, false);
+
+    //第二种方式采取的是匿名函数的形式，则不会取消其绑定的click事件，点击div仍然会输出
+    wrap.addEventListener('click', function () {
+        console.log('123');
+    }, false);
+
+    wrap.removeEventListener('click', function () {
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM修改</title>
+</head>
+<body>
+
+<div id="main">
+    <!-- 测试修改元素节点 -->
+    <div id="div1">替换之前的元素</div>
+    <!-- 测试修改属性节点 -->
+    <div id="div2" class="classA" style="color: green;">这是修改属性的节点</div>
+    <!-- 测试修改文本节点 -->
+    <div id="last">这是最后一个节点内容</div>
+</div>
+
+<script>
+    // 1.获取父元素与待替换的元素
+    var main = document.querySelector('#main');
+    var div1 = document.querySelector('#div1');
+    // 2.创建新元素
+    var newDiv = document.createElement('div');
+    var newText = document.createTextNode('这是新创建的文本');
+    newDiv.appendChild(newText);
+    // 3.使用新元素替换旧的元素
+    main.replaceChild(newDiv, div1);
+
+    var div2 = document.querySelector('#div2');
+    // 方法1: 通过setAttribute方法设置
+    div2.setAttribute('class', 'classB');
+    // 方法2: 直接修改属性名
+    div2.className = 'classC';
+
+    // 方法1: 通过setAttribute方法设置
+    div2.setAttribute('style', 'color: red;');
+    // 方法2: 直接修改属性名
+    div2.style.color = 'blue';
+    div2.classList.add('classD');
+    console.log(div2.classList);
+    console.log(div2.classList.value);
+
+    var last = document.querySelector('#last');
+    // 直接修改innerHTML属性
+    last.innerHTML = '这是修改后的文本内容';
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传统的原生DOM选择器</title>
+    <style>
+        ul li {
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li id="one">节点1.1</li>
+        <li name="node">节点1.4</li>
+        <li name="node">节点1.5</li>
+    </ul>
+    <ul>
+        <li name="node">节点2.1</li>
+        <li>节点2.2</li>
+    </ul>
+
+    <script>
+
+        window.onload = function () {
+            console.log(document.getElementById('one').innerText);
+
+            console.log(document.getElementsByClassName('one'));
+
+            console.log(document.getElementsByTagName('ul'));
+
+            let nodes = document.getElementsByName('node');
+            console.log(nodes);
+            nodes.forEach(function (item) {
+                console.log(item.innerText);
+            });
+
+        };
+
+    </script>
+
+</body>
+</html>

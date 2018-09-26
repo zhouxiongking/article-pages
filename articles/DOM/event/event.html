@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件流</title>
+</head>
+<body>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>这是td的元素</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var table = document.querySelector('table');
+        var tbody = document.querySelector('tbody');
+        var tr = document.querySelector('tr');
+        var td = document.querySelector('td');
+
+        // 事件冒泡
+        table.addEventListener('click', function () {
+            console.log('table触发');
+        }, false);
+
+        // 事件捕获
+        tbody.addEventListener('click', function () {
+            console.log('tbody触发');
+        }, true);
+
+        // 事件捕获
+        tr.addEventListener('click', function () {
+            console.log('tr触发');
+        }, true);
+
+        // 事件冒泡
+        td.addEventListener('click', function () {
+            console.log('td触发');
+        }, false);
+
+    </script>
+
+</body>
+</html>

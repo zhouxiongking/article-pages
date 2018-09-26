@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>文档标题</title>
+</head>
+<body>
+
+<ul id="container">
+    <li class="first">文本1</li>
+    <li class="second">文本2</li>
+    <li>文本3</li>
+    <li id="target">文本4</li>
+    <li>文本5</li>
+    <li>文本6</li>
+</ul>
+
+<script>
+    // 获取指定元素
+    var container = document.querySelector('#container');
+    var target = document.querySelector('#target');
+
+    // 新创建第一个元素节点
+    var newLiOne = document.createElement('li');
+    // 新创建属性节点
+//    var newLiAttr = document.createAttribute('class');
+//    newLiAttr.value = 'last';
+//    // 属性节点绑定至元素节点上
+//    newLiOne.setAttributeNode(newLiAttr);
+    newLiOne.setAttribute('class', 'last');
+    // 新创建文本节点
+    var newTextOne = document.createTextNode('新增文本1');
+    // 文本节点作为元素节点的子元素
+    newLiOne.appendChild(newTextOne);
+    // 添加至ul的末尾
+    container.appendChild(newLiOne);
+
+    // 新创建第二个元素
+    var newLiTwo = document.createElement('li');
+    var newTextTwo = document.createTextNode('新增文本2');
+    newLiTwo.appendChild(newTextTwo);
+    container.insertBefore(newLiTwo, newLiOne);
+
+</script>
+
+</body>
+</html>

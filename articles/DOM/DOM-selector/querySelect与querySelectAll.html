@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>querySelect与querySelectAll</title>
+</head>
+<body>
+
+<div>
+    <h5>Original content</h5>
+    <span>outside span</span>
+    <p class="content">
+        inside paragraph
+        <span>inside span</span>
+        inside paragraph
+    </p>
+</div>
+
+<script>
+
+    window.onload = function () {
+        console.log(document.querySelector('p span'));
+        var span = document.querySelector('p span').innerText;
+        console.log(span);
+
+        console.log(document.querySelector('.content span').innerText);
+
+        var baseElement = document.querySelector("p");
+        console.log(baseElement.querySelector("div span").innerText);
+
+        console.log(document.querySelector('h5, span').innerText);
+        console.log(document.querySelector('span, h5'));
+
+
+        console.log(document.querySelectorAll('span'));
+    };
+
+</script>
+
+<ul id="main">
+    <li>文本1</li>
+    <li>文本2</li>
+    <li>文本3</li>
+    <li>文本4</li>
+    <li>文本5</li>
+</ul>
+
+<script>
+    // 获取ul
+    var main = document.getElementById('main');
+    // 获取li集合
+    var lis = document.querySelectorAll('ul li');
+    // 第一次输出li集合长度,值为5
+    console.log(lis.length);
+    // 新增li元素
+    var newLi = document.createElement('li');
+    var text = document.createTextNode('文本8');
+    newLi.appendChild(text);
+    main.appendChild(newLi);
+    // 再次输出li集合长度,值为5
+    console.log(lis.length);
+
+    // 重新获取li的集合并输出长度,值为6
+    console.log(document.querySelectorAll('ul li').length);
+
+</script>
+
+<div>
+    <p id="first">文本1</p>
+    <p id="first">文本2</p>
+    <p id="first">文本3</p>
+    <p id="first">文本4</p>
+</div>
+
+<script>
+    console.log(document.querySelectorAll('#first').length);
+    console.log(document.querySelectorAll('#first')[3].innerText);
+</script>
+
+</body>
+</html>

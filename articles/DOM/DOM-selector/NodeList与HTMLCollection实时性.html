@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NodeList与HTMLCollection实时性</title>
+</head>
+<body>
+
+<form id="main">
+    <input type="text" id="username">
+    <input type="text" name="password">
+</form>
+
+<script>
+    // 获取HTMLCollection
+    var mainChildren = document.getElementById('main').children;
+    var mainChildren = document.getElementById('main').childNodes;
+    console.log(mainChildren instanceof NodeList);
+    console.log(mainChildren.length);  // 2
+
+    // 新增一个input元素
+    var newInput = document.createElement('input');
+    main.appendChild(newInput);
+    console.log(mainChildren.length);  // 3
+
+    // 通过call方法处理成数组结构
+    mainChildren = Array.prototype.slice.call(mainChildren, 0);
+    mainChildren.splice(1, 1);
+    console.log(mainChildren.length);  // 2
+
+    // 再新增一个input元素
+    var newInput2 = document.createElement('input');
+    main.appendChild(newInput2);
+    console.log(mainChildren.length);  // 2
+
+</script>
+
+<div id="my-id">
+    <img id="inside">
+    <div class="lonely"></div>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</div>
+
+<script>
+    var firstArr = document.querySelectorAll("#my-id div div");
+    var secondArr = document.querySelector("#my-id").querySelectorAll("div div");
+    console.log('firstArr', firstArr.length);
+    console.log('secondArr', secondArr.length);
+</script>
+
+<div id="parent">
+    <div class="brother1">
+        <div class="son1"></div>
+    </div>
+    <div class="brother1"></div>
+    <div class="brother1"></div>
+    <div class="brother1"></div>
+    <div class="brother1"></div>
+</div>
+
+<script>
+    var parent = document.querySelector('#parent');
+    console.log(document.querySelectorAll('#parent > div'));
+</script>
+
+</body>
+</html>

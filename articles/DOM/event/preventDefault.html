@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认行为</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<input type="text" id="text">
+<div id="tip"></div>
+
+<script>
+    var text = document.querySelector('#text');
+    var tip = document.querySelector('#tip');
+    text.addEventListener('keypress', function (event) {
+        return false;
+        var charCode = event.charCode;
+        // 满足输入数字
+        var numberFlag = charCode <= 57 && charCode >= 48;
+        // 满足输入大写字母
+        var lowerFlag = charCode <= 90 && charCode >= 65;
+        // 满足输入小写字母
+        var supperFlag = charCode <= 122 && charCode >= 97;
+
+        if (!numberFlag && !lowerFlag && !supperFlag) {
+            // 阻止默认行为，不允许输入
+//            event.preventDefault();
+            tip.innerText = '只允许输入数字和大小写字母';
+            return false;
+        }
+        // 设置定时器,情况提示语
+        setTimeout(function () {
+            tip.innerText = '';
+        }, 2000);
+    });
+
+    document.addEventListener('keypress', function () {
+        console.log('document的keypress事件触发');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除节点</title>
+</head>
+<body>
+
+<ul id="main">
+    <li>文本1</li>
+    <li>文本2</li>
+    <li>文本3</li>
+</ul>
+
+<a id="link" href="http://www.mianshiting.com">面试厅</a>
+
+<script>
+
+    var main = document.querySelector('#main');
+    console.log(main.children);
+    console.log(main.firstChild);
+    console.log(main.firstElementChild);
+    var firstChild = main.firstElementChild;
+    main.removeChild(firstChild);
+
+    var link = document.querySelector('#link');
+    link.removeAttribute('href');
+
+    var lastChild = main.lastElementChild;
+//    var textNode = lastChild.childNodes[0];
+//    lastChild.removeChild(textNode);
+
+    lastChild.innerHTML = '';
+    console.log(lastChild.childNodes);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event事件对象</title>
+</head>
+
+<body
+        onkeydown="getEvtType(event)"
+        onkeyup="getEvtType(event)"
+        onkeypress="getEvtType(event)"
+        onmousedown="getEvtType(event)"
+        onmouseup="getEvtType(event)">
+
+<div id="Etype"></div>
+
+<script>
+    <!-- 会随着按键和鼠标按下显示出对应的事件类型名称 -->
+    function getEvtType(evt) {
+        currEvent = evt.type;
+        var text = document.getElementById("Etype").innerText;
+        document.getElementById("Etype").innerHTML = text + currEvent + ' | ';
+    }
+</script>
+
+</body>
+</html>

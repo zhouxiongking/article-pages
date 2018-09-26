@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="watchDiv">监听自定义事件的div元素</div>
+
+<button id="btn">点击触发自定义事件</button>
+
+<script>
+    var customEvent;
+    // 创建自定义事件
+    (function () {
+        if (document.implementation.hasFeature('CustomEvents', '3.0')) {
+            var detailData = {name: 'kingx'};
+            customEvent = document.createEvent('CustomEvent');
+            customEvent.initCustomEvent('myEvent', false, false, detailData);
+        }
+    })();
+
+    var btn = document.querySelector('#btn');
+    btn.addEventListener('click', function () {
+        div.dispatchEvent(customEvent);
+    });
+
+    // 获取元素
+    var div = document.querySelector('#watchDiv');
+    // 监听myEvent事件
+    div.addEventListener('myEvent', function (e) {
+        console.log('div监听到自定义事件的执行, 携带的参数为: ', e.detail);
+    });
+
+    document.addEventListener('myEvent', function () {
+        console.log('document监听到自定义事件的执行');
+    });
+
+
+
+</script>
+
+</body>
+</html>

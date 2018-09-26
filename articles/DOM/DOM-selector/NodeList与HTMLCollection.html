@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NodeList与HTMLCollection</title>
+</head>
+<body>
+
+<form id="main">
+    <input type="text" id="username">
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <br>
+</form>
+
+<script>
+    var main = document.getElementById("main");
+    var mainChildren = main.children;
+//    console.log(mainChildren.namedItem('username'));
+//
+//    console.log(mainChildren);
+//    console.log(mainChildren.length);
+
+    var mainChildNodes = main.childNodes;
+//    console.log(mainChildNodes);
+//    console.log(mainChildNodes.item(0));
+//    console.log(mainChildNodes.item(1));
+
+    console.log(mainChildNodes.length);
+    console.log(mainChildren.length);
+    console.log('--------');
+    var newInput = document.createElement('input');
+    main.appendChild(newInput);
+    console.log(mainChildNodes.length);
+    console.log(mainChildren.length);
+    console.log('----------');
+    var statistic = Array.prototype.slice.call(mainChildNodes, 0);
+    statistic.splice(1, 1);
+    console.log(statistic);
+    console.log(mainChildNodes.length);
+
+
+
+</script>
+
+</body>
+</html>

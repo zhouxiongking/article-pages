@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>target和currentTarget</title>
+</head>
+<body>
+
+<table border="1">
+    <tbody>
+    <tr>
+        <td>这是td的元素</td>
+    </tr>
+    <tr>
+        <td>这是td的元素</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="EventUtil.js"></script>
+<script>
+    var table = document.querySelector('table');
+    var tbody = document.querySelector('tbody');
+    var tr = document.querySelector('tr');
+    var td = document.querySelector('td');
+
+    // 获取target和currentTarget的元素标签名
+    function getTargetAndCurrentTarget(event, stage) {
+        var event = EventUtil.getEvent(event);
+        var stageStr;
+        if (stage === 'bubble') {
+            stageStr = '事件冒泡阶段';
+        } else if(stage === 'capture'){
+            stageStr = '事件捕获阶段';
+        } else {
+            stageStr = '事件目标阶段';
+        }
+        console.log(stageStr,
+                'target:' + event.target.tagName.toLowerCase(),
+                'currentTarget: ' + event.currentTarget.tagName.toLowerCase());
+    }
+
+    // 事件捕获
+    table.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'capture');
+    }, true);
+
+    // 事件捕获
+    tbody.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'capture');
+    }, true);
+
+    // 事件捕获
+    tr.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'capture');
+    }, true);
+
+    // 事件捕获
+    td.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'target');
+    }, true);
+
+    // 事件冒泡
+    table.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'bubble');
+    }, false);
+
+    // 事件冒泡
+    tbody.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'bubble');
+    }, false);
+
+    // 事件冒泡
+    tr.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'bubble');
+    }, false);
+
+    // 事件冒泡
+    td.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'target');
+    }, false);
+
+</script>
+
+<ul>
+    <li id="li">第一个元素</li>
+    <li>第二个元素</li>
+</ul>
+
+<script>
+    var ul = document.querySelector('ul');
+    var li = document.querySelector('#li');
+
+    ul.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'bubble');
+    });
+
+    li.addEventListener('click', function (event) {
+        getTargetAndCurrentTarget(event, 'bubble');
+    });
+
+</script>
+
+
+</body>
+</html>

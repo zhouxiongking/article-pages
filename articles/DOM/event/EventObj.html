@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event对象</title>
+</head>
+<body>
+
+<button id="btn">button按钮</button>
+
+<script src="./EventUtil.js"></script>
+<script>
+    var btn = document.querySelector('#btn');
+
+//    btn.addEventListener('click', function (event) {
+//        // 方式1:event作为参数传入
+//        console.log(event);
+//        // 方式2:通过window.event获取
+//        var winEvent = window.event;
+//        console.log(winEvent);
+//        // 判断两种方式获取的event是否相同
+//        console.log(event == winEvent);
+//
+//        console.log(EventUtil.getEvent());
+//
+//    });
+
+    btn.addEventListener('click', function (event) {
+        // 获取event对象
+        var event = EventUtil.getEvent(event);
+        // 使用两种属性获取事件目标元素
+        var NoIETarget = event.target;
+        var IETarget = event.srcElement;
+        console.log(NoIETarget);
+        console.log(IETarget);
+    });
+
+
+//    btn.onclick = function (event) {
+//        console.log(event);
+//        var winEvent = window.event;
+//        console.log(winEvent);
+//
+//        console.log(event == winEvent);
+//    };
+
+</script>
+
+</body>
+</html>

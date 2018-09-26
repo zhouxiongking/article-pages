@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止事件冒泡</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .link {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>
+        <p>姓名:小明</p>
+        <p>学号:20180101</p>
+        <button class="btn btn-default" id="btn">删除</button>
+
+        <span><a href="#">链接</a></span>
+        <span><a href="#" class="link">链接</a></span>
+    </li>
+</ul>
+
+<script src="EventUtil.js"></script>
+<script>
+
+    var li = document.querySelector('li');
+    var btn = document.querySelector('#btn');
+
+    li.addEventListener('click', function (event) {
+        // ...真实操作,使用console来代替
+        console.log('点击了li,做对应的处理');
+    });
+
+    // 第一个事件处理程序
+    btn.addEventListener('click', function (event) {
+        // ...真实操作,使用console来代替
+        console.log('btn的第一个事件处理程序,做对应的处理');
+    });
+
+    // 第二个事件处理程序
+    btn.addEventListener('click', function (event) {
+        var event = EventUtil.getEvent(event);
+        // 阻止事件冒泡
+        event.stopImmediatePropagation();
+        // ...真实操作,使用console来代替
+        console.log('btn的第二个事件处理程序,做对应的处理');
+    });
+
+    // 第三个事件处理程序
+    btn.addEventListener('click', function (event) {
+        // ...真实操作,使用console来代替
+        console.log('btn的第三个事件处理程序,做对应的处理');
+    });
+
+</script>
+
+
+</body>
+</html>
