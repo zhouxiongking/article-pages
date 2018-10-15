@@ -18,16 +18,106 @@
     <li>文本9</li>
 </ul>
 
+<button id="add">新增</button>
+
 <script>
-    // 1.获取所有的li标签
-    var children = document.querySelectorAll('li');
-    // 2.遍历添加click事件处理程序
-    for (var i = 0; i < children.length; i++) {
-        children[i].addEventListener('click', function () {
-            console.log(this.innerText);
-        });
-    }
+//    /*---------------传统方法-----------------*/
+//    // 1.获取所有的li标签
+//    var children = document.querySelectorAll('li');
+//
+//    var children = document.querySelector('ul').children;
+//    // 2.遍历添加click事件处理程序
+//    function bindEvent() {
+//        for (var i = 0; i < children.length; i++) {
+//            children[i].addEventListener('click', function () {
+//                console.log(this.innerText);
+//            });
+//        }
+//    }
+
+    var ul = document.querySelector('ul');
+    var add = document.querySelector('#add');
+    add.addEventListener('click', function () {
+        var newLi = document.createElement('li');
+        var newText = document.createTextNode('文本10');
+        newLi.appendChild(newText);
+        ul.appendChild(newLi);
+        // 重新添加事件处理程序
+//        bindEvent();
+    });
+
 </script>
+
+<script src="EventUtil.js"></script>
+<script>
+    // 1.获取父元素
+    var parent = document.querySelector('ul');
+    // 2.父元素绑定事件
+    parent.addEventListener('click', function (event) {
+        // 3.获取事件对象
+        var event = EventUtil.getEvent(event);
+        // 4.获取目标元素
+        var target = EventUtil.getTarget(event);
+        // 5.判断当前事件流所处的元素
+        if (target.nodeName.toLowerCase() === 'li') {
+            // 6.与目标元素相同,做对应的处理
+            console.log(target.innerText);
+        }
+    });
+
+</script>
+
+<!--<div id="parent">-->
+    <!--<input type="button" id="add" value="新增"/>-->
+    <!--<input type="button" id="remove" value="删除"/>-->
+    <!--<input type="button" id="update" value="修改"/>-->
+    <!--<input type="button" id="search" value="查询"/>-->
+<!--</div>-->
+
+<!--<script>-->
+    <!--var add = document.querySelector('#add');-->
+    <!--var remove = document.querySelector('#remove');-->
+    <!--var update = document.querySelector('#update');-->
+    <!--var search = document.querySelector('#search');-->
+    <!--// 新增按钮绑定事件-->
+    <!--add.addEventListener('click', function () {-->
+        <!--console.log('新增');-->
+    <!--});-->
+    <!--// 删除按钮绑定事件-->
+    <!--remove.addEventListener('click', function () {-->
+        <!--console.log('删除');-->
+    <!--});-->
+    <!--// 修改按钮绑定事件-->
+    <!--update.addEventListener('click', function () {-->
+        <!--console.log('修改');-->
+    <!--});-->
+    <!--// 查询按钮绑定事件-->
+    <!--search.addEventListener('click', function () {-->
+        <!--console.log('查询');-->
+    <!--});-->
+
+    <!--var parent = document.querySelector('#parent');-->
+    <!--parent.addEventListener('click', function (event) {-->
+        <!--var event = EventUtil.getEvent(event);-->
+        <!--var target = EventUtil.getTarget(event);-->
+        <!--switch (target.id) {-->
+            <!--case 'add':-->
+                <!--console.log('新增');-->
+                <!--break;-->
+            <!--case 'remove':-->
+                <!--console.log('删除');-->
+                <!--break;-->
+            <!--case 'update':-->
+                <!--console.log('修改');-->
+                <!--break;-->
+            <!--case 'search':-->
+                <!--console.log('查询');-->
+                <!--break;-->
+        <!--}-->
+
+    <!--});-->
+
+<!--</script>-->
 
 </body>
 </html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My second jQuery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        //下面是load的函数含有jquery注册函数$
+        function load(){
+            $("p").append("<b>Hello</b>");
+        }
+        //下面是jQuery的代码
+        $(document).ready(function () {
+            $("p").append("我的第一个jQuery代码!");
+            $("p").append("<b>Hello</b>");
+        });
+    </script>
+    <style>
+        div.changeDiv {
+            background: #eee;
+            color: #093;
+            height: 200px;
+        }
+    </style>
+</head>
+<body onload="load()">
+<h2>jQuery 简单例子2</h2>
+<p>I would like to say: </p>
+
+<script>
+    var changeDiv = document.querySelector('#changeDiv');
+    changeDiv.style.color = '#093';
+    changeDiv.style.background = '#e3e3e3';
+    changeDiv.style.height = '100px';
+</script>
+</body>
+</html>

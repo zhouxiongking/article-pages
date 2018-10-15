@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重构与重绘</title>
+</head>
+<body>
+
+<table id="table"></table>
+
+<div id="ele" style="width: 100px; height: 100px; background-color: #3f4f5b;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+
+    $(function () {
+        var list = [{
+            name: 'zhangsan',
+            address: '111',
+            email: '3232'
+        }, {
+            name: 'zhangsan',
+            address: '111',
+            email: '3232'
+        }];
+
+        renderTable(list);
+
+    });
+
+    // 将数据渲染至table
+    function renderTable(list) {
+        // 目标table元素
+        var table = $('#table');
+        var rowHTML = '';
+        // 遍历数据集
+        list.forEach(function(item) {
+            rowHTML += '<tr>';
+            rowHTML += '<td>' + item.name + '</td>';
+            rowHTML += '<td>' + item.address + '</td>';
+            rowHTML += '<td>' + item.email + '</td>';
+            rowHTML += '</tr>';
+            // 每次添加一行数据
+            table.append($(rowHTML));
+            // 添加完后清空
+            rowHTML = '';
+        });
+    }
+
+    // 将数据渲染至table
+    function renderTable(list) {
+        // 目标table元素
+        var table = $('#table');
+        var allHTML = '';
+        // 遍历数据集
+        list.forEach(function(item) {
+            allHTML += '<tr>';
+            allHTML += '<td>' + item.name + '</td>';
+            allHTML += '<td>' + item.address + '</td>';
+            allHTML += '<td>' + item.email + '</td>';
+            allHTML += '</tr>';
+        });
+        // 获取完整片段后,一次性渲染
+        table.append($(allHTML));
+    }
+
+    var ele = document.querySelector('#ele');
+    // 判断条件1
+    if(true) {
+        ele.style.width = '200px';
+    }
+
+    // 判断条件2
+    if(true) {
+        ele.style.width = '300px';
+    }
+
+    // 判断条件3
+    if(true) {
+        ele.style.width = '400px';
+    }
+
+    var ele = document.querySelector('#ele');
+    // 先获取width属性
+    var width = ele.style.width;
+    // 判断条件1
+    if(true) {
+        width = '200px';
+    }
+
+    // 判断条件2
+    if(true) {
+        width = '300px';
+    }
+
+    // 判断条件3
+    if(true) {
+        width = '400px';
+    }
+
+    // 最后执行一次width属性赋值
+    ele.style.width = width;
+
+
+
+
+</script>
+
+</body>
+</html>

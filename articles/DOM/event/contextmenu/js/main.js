@@ -4,14 +4,20 @@
 
 (function () {
 
+    // 自定义菜单元素
     var menu = document.querySelector('#context-menu');
+    // 自定义菜单状态
     var menuState = 0;
+    // 自定义菜单显示样式
     var active = 'context-menu--active';
+    // 自定义菜单位置对象
     var menuPosition;
+    // 自定义菜单水平位置
     var menuPositionX;
+    // 自定义菜单纵向位置
     var menuPositionY;
+    // 点击的li元素
     var targetLi;
-    var menuNav = document.querySelector('#context-menu');
 
     function init() {
         //给li添加右键事件
@@ -32,10 +38,13 @@
             if (clickInContextLister(e)) {
                 e.preventDefault();
                 targetLi = e.target;
+                // 显示自定义菜单
                 toggleMenuOn();
+                // 定位自定义菜单的位置
                 positionMenu(e);
             } else {
                 targetLi = null;
+                // 隐藏自定义菜单
                 toggleMenuOff();
             }
         });
@@ -62,6 +71,7 @@
      */
     function clickListener() {
         document.addEventListener('click', function (e) {
+            // 监听鼠标按键,左键1,滚轮是2,右键为3
             var code = e.which || e.button;
             if (code === 1) {
                 toggleMenuOff();
@@ -81,10 +91,10 @@
     }
 
     /**
-     * 单击右键出现菜单后,点击菜单出现的事件
+     * 右键出现菜单后,点击菜单选项事件
      */
     function menuListener() {
-        menuNav.addEventListener('click', function (e) {
+        menu.addEventListener('click', function (e) {
             if (e.target.nodeName.toUpperCase() === 'A') {
                 var result = 'the operation is:' + e.target.dataset.action + '\n' +
                     'the id is:' + targetLi.dataset.id;

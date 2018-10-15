@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocumentFragment</title>
+</head>
+<body>
+
+<ul id="list"></ul>
+<ul id="list2"></ul>
+<script>
+    var list = document.querySelector('#list');
+    for (var i = 0; i < 100; i++) {
+        var li = document.createElement('li');
+        var text = document.createTextNode('节点' + i);
+        li.append(text);
+        list.append(li);
+    }
+</script>
+
+<script>
+    var list = document.querySelector('#list2');
+    // 1.创建新的DocumentFragment对象
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < 100; i++) {
+        var li = document.createElement('li');
+        var text = document.createTextNode('节点' + i);
+        li.append(text);
+        // 2.将新增的元素添加至DocumentFragment对象中
+        fragment.append(li);
+    }
+    // 3.处理DocumentFragment对象
+    list.append(fragment);
+
+</script>
+
+
+
+</body>
+</html>

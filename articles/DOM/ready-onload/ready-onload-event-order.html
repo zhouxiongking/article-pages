@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ready与load事件执行顺序</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+        // 方式1: $(document).ready()
+        $(document).ready(function () {
+            console.log('执行方式1: $(document).ready()');
+        });
+
+        // 方式2: $(function(){})
+        $(function () {
+            console.log('执行方式2: $(function(){})');
+        });
+
+        // 方式3: $(window).load()
+        $(window).load(function () {
+            console.log('执行方式3: $(window).load()');
+        });
+
+        // 方式4: window.onload
+        window.onload = function () {
+            console.log('执行方式4: window.onload');
+        };
+
+        // 方式5: body标签的onload属性
+        function bodyOnLoad() {
+            console.log('执行方式5: body标签的onload属性');
+        }
+    </script>
+</head>
+<body onload="bodyOnLoad()">
+
+</body>
+</html>

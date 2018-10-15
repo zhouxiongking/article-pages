@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navigator对象</title>
+</head>
+<body>
+
+<script>
+    // 获取浏览器类型
+    function getBrowserType() {
+        // 取得浏览器的userAgent字符串
+        var userAgent = navigator.userAgent;
+        var isOpera = userAgent.indexOf('Opera') > -1;
+        // 判断是否Opera浏览器
+        if (isOpera) {
+            return 'Opera';
+        }
+        // 判断是否Firefox浏览器
+        if (userAgent.indexOf('Firefox') > -1) {
+            return 'FF';
+        }
+        // 判断是否chorme浏览器
+        if (userAgent.indexOf('Chrome') > -1) {
+            return 'Chrome';
+        }
+        // 判断是否Safari浏览器
+        if (userAgent.indexOf('Safari') > -1) {
+            return 'Safari';
+        }
+        // 判断是否IE浏览器
+        if (userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1 && !isOpera) {
+            return 'IE';
+        }
+        // 判断是否Edge浏览器
+        if (userAgent.indexOf('Trident') > -1) {
+            return 'Edge';
+        }
+    }
+
+function isMobile() {
+    var mobileArry = ['pad', 'pod', 'iPhone', 'iPod', 'ios', 'iPad', 'Android', 'Mobile', 'BlackBerry', 'IEMobile', 'MQQBrowser', 'JUC' ,'Fennec',' wOSBrowser', 'BrowserNG', 'WebOS', 'Symbian', 'Windows Phone'];
+    var ua = navigator.userAgent;
+    var res=mobileArry.filter(function(arr) {
+        return ua.indexOf(arr) > 0;
+    });
+    return res.length > 0;
+}
+
+    console.log(isMobile());
+
+</script>
+
+
+</body>
+</html>

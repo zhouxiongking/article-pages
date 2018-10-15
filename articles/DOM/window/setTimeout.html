@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout定时器</title>
+</head>
+<body>
+
+<button type="button" id="btn">发送验证码</button>
+<script>
+    window.onload = function () {
+        var timeout;
+        var count = 60;
+        var btn = document.querySelector('#btn');
+
+        btn.addEventListener('click', function () {
+            // 发送请求,获取验证码(省略掉)
+            // 按钮禁用掉
+            btn.disabled = true;
+            btn.innerText = '重新发送(' + count + 's)';
+            timeout = setTimeout(decreaseCount, 1000);
+        });
+
+        // 定时器事件
+        function decreaseCount() {
+            count--;
+            if (count > 0) {
+                btn.innerText = '重新发送(' + count + 's)';
+                // 在定时器中,再生成一个做相同处理的定时器
+                timeout = setTimeout(decreaseCount, 1000);
+            } else {
+                clearTimeout(timeout);
+                btn.disabled = false;
+                btn.innerText = '发送验证码';
+                count = 60;
+            }
+        }
+    };
+</script>
+
+</body>
+</html>
