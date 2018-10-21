@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form表单的get与post差异</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+<form name="userForm" method="post" action="/saveUser?param1=面试厅" class="container">
+    <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn btn-default btn-primary" value="提交" id="submit">
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 534px;
+            height: 300px;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        #box ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #box ul li {
+            float: left;
+            width: 534px;
+            height: 300px;
+        }
+
+        #box ul li img {
+            height: 300px;
+        }
+
+        #box a {
+            transition: .2s all ease;
+        }
+
+        #box .prev, #box .next {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            height: 80px;
+            line-height: 80px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            width: 80px;
+            text-align: center;
+            margin-top: -40px;
+            display: -none;
+        }
+
+        #box .prev {
+            left: 0;
+        }
+
+        #box .next {
+            right: 0;
+        }
+
+        #box a:hover {
+            background: rgba(255, 0, 0, 0.4);
+        }
+
+        #box ol {
+            position: absolute;
+            width: 120px;
+            left: 50%;
+            margin-left: -60px;
+            bottom: 10px;
+        }
+
+        #box ol li {
+            width: 20px;
+            height: 20px;
+            background: #f60;
+            float: left;
+            margin: 2px;
+            text-align: center;
+            text-indent: -9999px;
+            border-radius: 50%;
+        }
+
+        #box ol li.active {
+            background: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var oPrev = document.getElementById('prev');
+            var oNext = document.getElementById('next');
+            var oUl = oBox.getElementsByTagName('ul')[0];
+            var aLi = oUl.children;
+            var oOl = oBox.getElementsByTagName('ol')[0];
+            var aBtn = oOl.children;
+            var timer = null;
+            var iNow = 0;
+            var left = 0;
+
+            //复制一份内容
+            oUl.innerHTML += oUl.innerHTML;
+            oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px';
+
+            var W = oUl.offsetWidth / 2;
+
+            //选项卡
+            for (var i = 0; i < aBtn.length; i++) {
+                (function (index) {
+                    aBtn[i].onclick = function () {
+                        if (iNow % aBtn.length == aBtn.length - 1 && index == 0) {
+                            iNow++;
+
+                        }
+                        if (iNow % aBtn.length == 0 && index == aBtn.length - 1) {
+                            iNow--;
+
+                        }
+                        iNow = Math.floor(iNow / aBtn.length) * aBtn.length + index;
+                        tab();
+                    }
+                })(i);
+            }
+
+            function tab() {
+                for (var i = 0; i < aBtn.length; i++) {
+                    aBtn[i].className = '';
+                }
+                if (iNow < 0) {
+                    aBtn[(iNow % aBtn.length + aBtn.length) % aBtn.length].className = 'active';
+                } else {
+                    aBtn[iNow % aBtn.length].className = 'active';
+
+                }
+                //oUl.style.left=-iNow*aLi[i].offsetWidth+'px';
+                move(oUl, -iNow * aLi[i].offsetWidth);
+
+            }
+
+            //next
+            oNext.onclick = function () {
+                iNow++;
+                tab();
+                //document.title=iNow;
+            };
+            oPrev.onclick = function () {
+                iNow--;
+                tab();
+
+                //document.title=iNow;
+            };
+
+            oNext.onmouseleave = oPrev.onmouseleave = function () {
+                timer = setInterval(function () {
+                    tab();
+                    iNow++;
+                }, 2000);
+            };
+            oNext.onmouseenter = oPrev.onmouseenter = function () {
+                clearInterval(timer);
+            };
+
+            oNext.onclick();
+            clearInterval(timer);
+            timer = setInterval(oNext.onclick, 2000);
+
+            function move(obj, iTarget) {
+                var count = Math.round(500 / 30);
+                var start = left;
+                var dis = iTarget - start;
+                var n = 0;
+                clearInterval(obj.timer);
+
+                obj.timer = setInterval(function () {
+                    n++;
+
+                    var a = 1 - n / count;
+                    left = start + dis * (1 - Math.pow(a, 3));
+
+                    if (left < 0) {
+                        obj.style.left = left % W + 'px';
+
+                    } else {
+                        obj.style.left = (left % W - W) % W + 'px';
+
+                    }
+
+                    if (n == count) {
+                        clearInterval(obj.timer);
+
+                    }
+                }, 30);
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="box">
+    <a href="javascript:;" class="prev" id="prev">prev</a>
+    <a href="javascript:;" class="next" id="next">next</a>
+    <ul>
+        <li><img src="img/0.jpg"></li>
+        <li><img src="img/1.jpg"></li>
+        <li><img src="img/2.jpg"></li>
+        <li><img src="img/3.jpg"></li>
+        <li><img src="img/4.jpg"></li>
+    </ul>
+    <ol>
+        <li class="active">0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+</div>
+</body>

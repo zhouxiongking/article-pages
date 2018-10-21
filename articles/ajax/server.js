@@ -1,19 +1,28 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var multipart = require('connect-multiparty');
+// var multipart = require('connect-multiparty');
 // var formidable = require('formidable');
 
 var app = express();
-var multipleMiddleware = multipart();
+// var multipleMiddleware = multipart();
 
 app.use(bodyParser());
 
 app.get('/index.html', function (req, res) {
-    res.sendFile(__dirname + '/progress-event.html');
+    res.sendFile(__dirname + '/form-get-post.html');
 });
 
-app.post('/saveUser', multipleMiddleware, function (req, res) {
+app.get('/getUser', function (req, res) {
+     console.log(req.query);
+});
+
+
+
+app.post('/saveUser', function (req, res) {
+    // 请求体中的参数
     console.log(req.body);
+    // 请求url中的参数
+    console.log(req.query);
 
     res.writeHead(200, {'Content-type' : 'application/json'});
 

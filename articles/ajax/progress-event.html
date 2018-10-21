@@ -79,43 +79,47 @@
         };
         content = JSON.stringify(content);
 
-        xhr.onreadystatechange = function () {
-            // 当readyStatew为4，且状态码为200时代表请求成功
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // 处理响应值
-                console.log(xhr.responseText);
-            }
-        };
+        xhr.open('get', 'yanyuan.mp3', 'true');
 
-        xhr.onloadstart = function () {
-            console.log('开始接收数据');
+        xhr.onloadstart = function (event) {
+            console.log('loadstart事件-开始接收数据');
         };
 
         xhr.onprogress = function (event) {
-            console.log('持续接收数据');
             event = event || event;
             if (event.lengthComputable) {
-                console.log(event.position / event.totalSize);
+                console.log('持续接收数据:' + (event.loaded / event.total).toFixed(2) * 100 + '%');
             }
         };
 
-        xhr.onerror = function () {
-            console.log('请求异常');
+        xhr.onerror = function (event) {
+            console.log('error事件-请求异常');
         };
 
-        xhr.onload = function () {
-            console.log('数据接收完成');
-            console.log(xhr.status);
+        xhr.onload = function (event) {
+            // 方式1获取status
+            var status = xhr.status;
+            // 方式2获取status
+            var status = event.target.status;
+            console.log('load事件状态码:' + status);
+            if (status >= 200 && status < 300 || status === 304) {
+                console.log('load事件-数据接收完成');
+            }
         };
 
         xhr.onloadend = function () {
-            console.log('通信完成');
+            console.log('loadend事件-通信完成');
         };
 
-        xhr.open('post', '/saveUser', 'true');
-        xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+        xhr.ontimeout = function () {
+            console.log('timeout事件-请求超时');
+        };
+
+        xhr.open('get', 'ROOT.jar', 'true');
         xhr.send(content);
     }
+
+
 
 </script>
 

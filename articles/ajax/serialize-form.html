@@ -51,7 +51,7 @@
         });
 
         function ajaxSubmitForm() {
-            console.log($('#userForm').serializeArray());
+            console.log($('#userForm').serialize());
             $.ajax({
                 // 请求类型
                 type: 'POST',
