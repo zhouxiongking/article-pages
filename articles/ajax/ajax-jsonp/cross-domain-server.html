@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>server端处理跨域请求</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<form name="userForm" class="container">
+    <div class="form-group">
+        <label for="studentNo">学号</label>
+        <input type="text" class="form-control" id="studentNo" name="studentNo">
+    </div>
+    <div class="text-center">
+        <input type="button" class="btn btn-default btn-primary" value="搜索" id="btn">
+    </div>
+</form>
+
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    $(function () {
+        
+        var btn = document.querySelector('#btn');
+        btn.addEventListener('click', function () {
+            sendRequest();
+        });
+        
+        function sendRequest() {
+            // 输入参数-学号
+            var studentNo = document.querySelector('#studentNo').value;
+
+            function createXMLHttp() {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                }
+                // code for IE6, IE5
+                if (window.ActiveXObject) {
+                    try {
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        try {
+                            xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+                        }
+                        catch (ex) {
+                        }
+                    }
+                }
+                return xmlhttp;
+            }
+
+            var xhr = createXMLHttp();
+
+            let url = 'http://localhost:3000/getUserByStudentNo?studentNo=' + studentNo;
+            xhr.open('get', url, true);
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                // 当readyStatew为4，且状态码为200时代表请求成功
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // 处理响应值
+                    console.log(xhr.responseText);
+                }
+            };
+
+//            $.ajax({
+//                type: 'get',
+//                url: 'http://localhost:3000/getUserByStudentNo?studentNo=' + studentNo,
+//                dataType: 'json',
+//                success: function (result) {
+//                    console.log(result);
+//                }
+//            });
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

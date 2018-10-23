@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-jsonp处理跨域请求</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>URL</th>
+            <th>结果</th>
+            <th>原因</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>http://www.mianshiting.com/index.html</td>
+            <td>成功</td>
+            <td>协议,域名,端口号相同</td>
+        </tr>
+        <tr>
+            <td>https://www.mianshiting.com/index.html</td>
+            <td>失败</td>
+            <td>协议不同</td>
+        </tr>
+        <tr>
+            <td>http://www.mianshiting.cn/index.html</td>
+            <td>失败</td>
+            <td>域名不同</td>
+        </tr>
+        <tr>
+            <td>http://www.mianshiting.com:8080/index.html</td>
+            <td>失败</td>
+            <td>端口号不同</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<form name="userForm" class="container">
+    <div class="form-group">
+        <label for="studentNo">学号</label>
+        <input type="text" class="form-control" id="studentNo" name="studentNo">
+    </div>
+    <div class="text-center">
+        <input type="button" class="btn btn-default btn-primary" value="搜索" id="btn">
+    </div>
+</form>
+
+<script>
+    window.onload = function () {
+
+        var btn = document.querySelector('#btn');
+        btn.addEventListener('click', function () {
+            buildJSONP();
+        });
+
+        var buildJSONP = function () {
+            // 输入参数-学号
+            var studentNo = document.querySelector('#studentNo').value;
+            // 请求参数
+            var param = 'studentNo=' + studentNo + '&callback=successFn';
+            // 请求的url
+            var url = 'http://localhost:3000/getUserByStudentNo?' + param;
+
+            var script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
+        };
+    };
+
+    var successFn = function (result) {
+        console.log(result);
+    };
+
+</script>
+
+</body>
+</html>
