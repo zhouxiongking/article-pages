@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS调用方法</title>
+    <style type="text/css">
+        .white {
+            color: #fff;
+        }
+
+        #btn {
+            background-color: #5bc0de;
+        }
+
+        ul li {
+            list-style: none;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style type="text/css">
+        @import url(main.css);
+    </style>
+
+</head>
+<body>
+    <h2>方式1:行内样式</h2>
+    <div style="color: #fff;"></div>
+    <button style="background-color: #5bc0de;">确定</button>
+    <ul style="list-style: none;">
+        <li>列表项1</li>
+        <li>列表项2</li>
+    </ul>
+
+    <h2>方式2:内部样式</h2>
+    <div class="white"></div>
+    <button id="btn">确定</button>
+    <ul>
+        <li>列表项1</li>
+        <li>列表项2</li>
+    </ul>
+
+
+</body>
+</html>

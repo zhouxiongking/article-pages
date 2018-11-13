@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rem与em的区别</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 20px;
+        }
+        body {
+            font-size: 24px;
+            padding: 2em;
+        }
+    </style>
+    <style>
+        .parent {
+            font-size: 20px;
+        }
+        .child {
+            padding: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>

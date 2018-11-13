@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS清除浮动方案</title>
+    <style>
+        body {
+            width: 80%;
+            margin: auto;
+            padding-top: 50px;
+        }
+        .parent {
+            width: 400px;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+        .parent div {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+        .child1 {
+            background: #e3e3e3;
+        }
+        .child2 {
+            background: #00ffff;
+        }
+        .child3 {
+            background: #00c18c;
+        }
+        .next {
+            width: 150px;
+            height: 150px;
+            background: #000000;
+        }
+
+        .parent .clear {
+            clear: both;
+            float: none;
+            height: 0;
+            line-height: 0;
+            font-size: 0;
+        }
+
+        .parent::after {
+            clear: both;
+            content: '.';
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="parent">
+    <div class="child1"></div>
+    <div class="child2"></div>
+    <div class="child3"></div>
+</div>
+<div class="next"></div>
+
+<hr>
+
+<div class="parent">
+    <div class="child1"></div>
+    <div class="child2"></div>
+    <div class="child3"></div>
+    <div class="clear"></div>
+</div>
+<div class="next"></div>
+
+<hr>
+
+<div class="parent">
+    <div class="child1"></div>
+    <div class="child2"></div>
+    <div class="child3"></div>
+</div>
+<div class="next"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position:fixed元素水平居中</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 2000px;
+        }
+
+        .menu {
+            /*position: fixed;*/
+            top: 0;
+            width: 500px;
+            height: 100px;
+            background: #e3e3e3;
+        }
+
+        .center-1 {
+            left: 50%;
+            margin-left: -250px;
+        }
+
+        .center-2 {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .center-3 {
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu center-3">
+
+</div>
+
+</body>
+</html>

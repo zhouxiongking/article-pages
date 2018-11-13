@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类列表</title>
+    <style>
+        * {
+            font-family:'Microsoft YaHei';
+        }
+
+        table {
+            border-collapse: collapse;
+            display: table;
+            text-align: left;
+            margin-bottom: 24px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table tr {
+            border: 0;
+            border-top: 1px solid #DDD;
+            background-color: #fff;
+        }
+
+        table tr td, table tr th {
+            border: 1px solid #DDD;
+            font-size: 14px;
+            color: #4f4f4f;
+            line-height: 22px;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<table border="1" width="600" cellspacing="1" cellpadding="1">
+    <tbody>
+    <tr>
+        <td>伪类</td>
+        <td>作用</td>
+    </tr>
+    <tr>
+        <td>:hover</td>
+        <td>将样式添加到鼠标悬浮的元素</td>
+    </tr>
+    <tr>
+        <td>:active</td>
+        <td>将样式添加到被激活的元素</td>
+    </tr>
+    <tr>
+        <td>:focus</td>
+        <td>将样式添加到获得焦点的元素</td>
+    </tr>
+    <tr>
+        <td>:link</td>
+        <td>将样式添加到未被访问过的链接</td>
+    </tr>
+    <tr>
+        <td>:visited</td>
+        <td>将样式添加到被访问过的链接</td>
+    </tr>
+    <tr>
+        <td>:first-child</td>
+        <td>将样式添加到元素的第一个子元素</td>
+    </tr>
+    <tr>
+        <td>:lang</td>
+        <td>定义指定的元素中使用的语言</td>
+    </tr>
+    <tr>
+        <td>p:first-of-type</td>
+        <td>选择属于其父元素的首个p元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:last-of-type</td>
+        <td>选择属于其父元素的最后p元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:only-of-type</td>
+        <td>选择属于其父元素唯一的p元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:only-child</td>
+        <td>选择属于其父元素唯一的子元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:nth-child(n)</td>
+        <td>选择属于其父元素的第n个子元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:nth-last-child(n)</td>
+        <td>选择属于其父元素的倒数第n个子元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:nth-of-type(n)</td>
+        <td>选择属于其父元素第n个p元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:nth-last-of-type(n)</td>
+        <td>选择属于其父元素倒数第n个p元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:last-child</td>
+        <td>选择属于其父元素最后一个子元素的每个p元素</td>
+    </tr>
+    <tr>
+        <td>p:empty</td>
+        <td>选择没有子元素的每个p元素（包括文本节点）</td>
+    </tr>
+    <tr>
+        <td>p:target </td>
+        <td>选择当前活动的p元素</td>
+    </tr>
+    <tr>
+        <td>:not(p)</td>
+        <td>选择非p元素的每个元素</td>
+    </tr>
+    <tr>
+        <td>:enabled</td>
+        <td>控制表单控件的可用状态</td>
+    </tr>
+    <tr>
+        <td>:disabled</td>
+        <td>控制表单控件的禁用状态</td>
+    </tr>
+    <tr>
+        <td>:checked</td>
+        <td>单选框或复选框被选中</td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

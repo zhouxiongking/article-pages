@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css伪类-奇偶数样式不一样</title>
+    <style>
+        * {
+            font-family: 'Microsoft YaHei';
+        }
+
+        table {
+            border-collapse: collapse;
+            display: table;
+            text-align: left;
+            margin-bottom: 24px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table tr {
+            border: 0;
+            border-top: 1px solid #DDD;
+            background-color: #fff;
+        }
+
+        table tr td, table tr th {
+            border: 1px solid #DDD;
+            font-size: 14px;
+            color: #4f4f4f;
+            line-height: 22px;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(2n) {
+            background: #fff;
+        }
+
+        table tbody tr:nth-child(2n + 1) {
+            background-color: #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+
+<table border="1" width="600" cellspacing="1" cellpadding="1">
+    <thead>
+    <tr>
+        <th>行数</th>
+        <th>内容</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>第一行</td>
+        <td>第一行内容</td>
+    </tr>
+    <tr>
+        <td>第二行</td>
+        <td>第二行内容</td>
+    </tr>
+    <tr>
+        <td>第三行</td>
+        <td>第三行内容</td>
+    </tr>
+    <tr>
+        <td>第四行</td>
+        <td>第四行内容</td>
+    </tr>
+    <tr>
+        <td>第五行</td>
+        <td>第五行内容</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

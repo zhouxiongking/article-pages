@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fixed实现回到页面顶端的功能</title>
+    <style>
+        .main {
+            width: 1000px;
+            margin: 0 auto;
+            height: 1500px;
+            background: #e3e3e3;
+        }
+
+        .top {
+            text-align: center;
+            background-color: #5bc0de;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 400px;
+            padding: 12px 9px 8px 7px;
+            border: 0;
+            background-image: none;
+            height: 20px;
+            line-height: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-center {
+            text-align: center;
+            font-size: 0;
+        }
+
+        .search-btn {
+            width: 104px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0;
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            background: #5bc0de;
+        }
+
+        .fixed-div {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            margin-left: -260px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main">
+    <!-- 顶部logo -->
+    <div class="top">
+        <img src="img/baidu-logo.png"/>
+    </div>
+    <!-- 搜索区 -->
+    <div class="text-center" id="search-area">
+        <input type="text" class="search-input">
+        <button class="search-btn">百度一下</button>
+    </div>
+
+</div>
+
+<script>
+
+    window.onload = function () {
+        var searchArea = document.querySelector('#search-area');
+        window.addEventListener('scroll', function () {
+            var scrollTop = getScroll().top;
+            if (scrollTop > 330) {
+                searchArea.classList.add('fixed-div');
+            } else {
+                searchArea.classList.remove('fixed-div');
+            }
+        });
+    };
+
+    // 获取滚动偏移量
+    function getScroll() {
+        // IE9+和其他高级浏览器
+        if (window.pageXOffset) {
+            return {
+                left: window.pageXOffset,
+                top: window.pageYOffset
+            };
+        } else if (document.compatMode === 'CSS1Compat'){
+            return {
+                left: document.documentElement.scrollLeft,
+                top: document.documentElement.scrollTop
+            };
+        } else {
+            return {
+                left: document.body.scrollLeft,
+                top: document.body.scrollTop
+            };
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

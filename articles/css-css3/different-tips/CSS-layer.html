@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .imgbox {
+            width: 200px;
+            height: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .imgbox:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            content: attr(data-text);
+            transition: all 1s ease;
+            transform: translateY(-100%);
+            color: #FFF;
+        }
+
+        .imgbox:hover:after {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+<div class="imgbox" data-text="我是文字">
+    <img src="./img/2.jpg" alt="">
+</div>
+</body>
+</html>

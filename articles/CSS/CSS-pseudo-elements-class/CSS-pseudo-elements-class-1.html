@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类:target</title>
+
+    <style>
+        .tab-content {
+            height: 800px;
+            background: #5bc0de;
+            margin-bottom: 100px;
+        }
+
+        #tab1:target, #tab2:target, #tab3:target {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="tabs">
+    <li><a href="#tab1">标签一</a></li>
+    <li><a href="#tab2">标签二</a></li>
+    <li><a href="#tab3">标签三</a></li>
+</ul>
+<div id="tab1" class="tab-content"></div>
+<div id="tab2" class="tab-content"></div>
+<div id="tab3" class="tab-content"></div>
+
+
+</body>
+</html>

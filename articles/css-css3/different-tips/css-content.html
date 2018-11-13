@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3中的content属性</title>
+    <style>
+        body {
+            background: #f1f1f1;
+        }
+
+        .content1:after {
+            content: "让面试变得更加简单";
+        }
+
+        .content2 p:after {
+            content: url(img/3.png);
+        }
+
+        .content3 p:before {
+            content: attr(data-tip);
+        }
+
+        .content4 ol li {
+            list-style: none;
+        }
+
+        .content4 > ol > li {
+            counter-increment: first;
+        }
+
+        .content4 > ol > li:before {
+            content: counter(first, decimal)' ';
+        }
+
+        .content4 > ol > li > ol > li {
+            counter-increment: second;
+        }
+
+        .content4 > ol > li > ol > li:before {
+            content: counter(first, decimal) '.' counter(second, decimal)' ';
+        }
+
+        .content4 li li li {
+            counter-increment: third;
+        }
+
+        .content4 li li li:before {
+            content: counter(first, decimal) '.' counter(second, decimal) '.' counter(third, decimal)' ';
+        }
+
+        .content5 .float-right {
+            float: right;
+        }
+        
+        .content5 .float-right:after {
+            clear: both;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+
+<p class="content1">面试厅是口号是:</p>
+
+
+<div class="content2">
+    <p>这是第一段文本内容,这是第一段文本内容,这是第一段文本内容</p>
+    <p>这是第二段文本内容,这是第二段文本内容,这是第二段文本内容</p>
+</div>
+
+<div class="content3">
+    <p class="paragraph" data-tip="段落1:">段落1的内容</p>
+    <p class="paragraph" data-tip="段落2:">段落2的内容</p>
+</div>
+
+<div class="content4">
+    <ol>
+        <li>列表项
+            <ol>
+                <li>列表项
+                    <ol>
+                        <li>列表项</li>
+                        <li>列表项</li>
+                    </ol>
+                </li>
+                <li>列表项</li>
+            </ol>
+        </li>
+        <li>列表项
+            <ol>
+                <li>列表项</li>
+                <li>列表项</li>
+            </ol>
+        </li>
+        <li>列表项
+            <ol>
+                <li>列表项</li>
+                <li>列表项</li>
+            </ol>
+        </li>
+    </ol>
+</div>
+
+<div class="content5">
+
+    <div class="float-right">这是一段右浮动的内容</div>
+
+</div>
+
+
+</body>
+</html>

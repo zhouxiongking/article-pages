@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪类列表</title>
+    <style>
+        * {
+            font-family:'Microsoft YaHei';
+        }
+
+        table {
+            border-collapse: collapse;
+            display: table;
+            text-align: left;
+            margin-bottom: 24px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table tr {
+            border: 0;
+            border-top: 1px solid #DDD;
+            background-color: #fff;
+        }
+
+        table tr td, table tr th {
+            border: 1px solid #DDD;
+            font-size: 14px;
+            color: #4f4f4f;
+            line-height: 22px;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<table border="1" width="600" cellspacing="1" cellpadding="1">
+    <tbody>
+    <tr>
+        <td>伪元素</td>
+        <td>作用</td>
+    </tr>
+    <tr>
+        <td>::before</td>
+        <td>在匹配的元素前面插入内容</td>
+    </tr>
+    <tr>
+        <td>::after</td>
+        <td>在匹配的元素后面插入内容</td>
+    </tr>
+    <tr>
+        <td>::first-line</td>
+        <td>向匹配的元素的第一行文字添加样式</td>
+    </tr>
+    <tr>
+        <td>::first-letter</td>
+        <td>向匹配的元素的第一个字母添加样式</td>
+    </tr>
+
+
+
+    </tbody>
+</table>
+
+</body>
+</html>

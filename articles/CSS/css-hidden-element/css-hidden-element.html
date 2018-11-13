@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS隐藏元素的几个方法</title>
+    <style>
+        div {
+            width: 300px;
+            height: 100px;
+        }
+        .hide {
+            display: none;
+        }
+
+        .visibility-hidden-event {
+            visibility: hidden;
+        }
+        .opacity-0-event {
+            opacity: 0;
+        }
+        .visibility-hidden {
+            transition: all 1.5s ease-in;
+            background-color: #eee;
+        }
+        .visibility-hidden:hover {
+            background-color: #0ac2d2;
+            visibility: hidden;
+        }
+        .opacity-0 {
+            transition: all 1.5s ease-in;
+            background-color: #eee;
+        }
+        .opacity-0:hover {
+            background-color: #658db5;
+            opacity: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            display: table;
+            text-align: left;
+            margin: 20px auto 24px;
+        }
+
+        table tr {
+            border: 0;
+            border-top: 1px solid #DDD;
+            background-color: #fff;
+        }
+
+        table tr td, table tr th {
+            border: 1px solid #DDD;
+            font-size: 14px;
+            color: #4f4f4f;
+            line-height: 22px;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body style="margin: 0 auto; padding: 20px; width: 80%;">
+
+<h3>CSS隐藏元素的几个方法对事件的影响-测试事件</h3>
+
+<div class="visibility-hidden-event">
+    我是visibility:hidden元素,点击我
+</div>
+
+<br>
+
+<div class="opacity-0-event">
+    我是opacity:0元素,点击我
+</div>
+
+
+<h3>CSS隐藏元素的几个方法对事件的影响-测试动画</h3>
+
+<div class="visibility-hidden">
+    我是visibility:hidden元素,请将鼠标移到我上面来
+</div>
+
+<br>
+
+<div class="opacity-0">
+    我是opacity:0元素,请将鼠标移到我上面来
+</div>
+
+<script>
+    var visibleNone = document.querySelector('.visibility-hidden-event');
+    var opacityZero = document.querySelector('.opacity-0-event');
+
+    visibleNone.addEventListener('click', function () {
+        console.log('我是visibility:hidden元素,点击我可以看到此条信息!');
+    });
+
+    opacityZero.addEventListener('click', function () {
+        console.log('我是opacity:0元素,点击我可以看到此条信息!');
+    });
+
+
+</script>
+
+<table border="1" width="600" cellspacing="1" cellpadding="1">
+    <tbody>
+    <tr>
+        <td></td>
+        <td>重排</td>
+        <td>重绘</td>
+    </tr>
+    <tr>
+        <td>display: none;</td>
+        <td>是</td>
+        <td>是</td>
+    </tr>
+    <tr>
+        <td>visibility: hidden;</td>
+        <td>否</td>
+        <td>是</td>
+    </tr>
+    <tr>
+        <td>opacity:0;</td>
+        <td>否</td>
+        <td>是</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

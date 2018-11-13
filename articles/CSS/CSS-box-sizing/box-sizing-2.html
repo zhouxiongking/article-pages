@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            height: 100px;
+            background: #eee;
+        }
+
+        .parent {
+            height: 200px;
+            background: #88f;
+        }
+
+        .child {
+            height: 100px;
+            margin-top: 20px;
+            background: #0ff;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<section class="demo">
+    <h2>此部分是能更容易看出让下面的块的margin-top。</h2>
+</section>
+<section class="parent">
+    <article class="child">
+        <h2>子元素</h2>
+        margin-top:20px;
+    </article>
+    <h2>父元素</h2>
+    没有设置margin-top
+</section>
+</body>
+</html>

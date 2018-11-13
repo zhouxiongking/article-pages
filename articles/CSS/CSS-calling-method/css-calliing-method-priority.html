@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css引用方式优先级</title>
+
+    <style>
+        .main {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="styles/main-link.css">
+    <style type="text/css">
+        @import url(styles/main-import.css);
+    </style>
+
+</head>
+<body>
+    <div class="main"></div>
+</body>
+</html>

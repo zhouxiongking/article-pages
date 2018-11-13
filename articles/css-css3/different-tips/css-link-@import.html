@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link href="./css/grey.css" rel="stylesheet" title="grey">-->
+    <!--<link href="./css/orange.css" rel="stylesheet" title="orange">-->
+    <link href="./css/pink.css" rel="stylesheet" title="pink">
+
+</head>
+<head>
+    <style>
+        /*@import url(./css/grey.css);*/
+        /*@import url(./css/orange.css);*/
+        /*@import url(./css/pink.css);*/
+        /*@import url(https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.css);*/
+    </style>
+</head>
+<body>
+    <button class="btn btn-default" id="changeBG">add</button>
+    <button class="btn" id="remove">remove</button>
+
+    <div class="bg-light" id="content">haha</div>
+
+    <script>
+        window.onload = function () {
+            var add = document.querySelector('#add');
+            var remove = document.querySelector('#remove');
+
+            var grey = document.styleSheets[0];
+            var orange = document.styleSheets[1];
+            var pink = document.styleSheets[2];
+
+
+
+//            var rules = grey.cssRules;
+//            console.log(rules[0]);
+//            rules[0].style.background = 'black';
+            var changeBG = document.querySelector('#changeBG');
+            changeBG.addEventListener('click', function () {
+                var sheet = document.styleSheets[0];
+                var rules = sheet.cssRules;
+                rules[0].style.background = 'grey';
+            });
+            add.onclick = function () {
+                grey.disabled = true;
+                orange.disabled = true;
+                pink.disabled = false;
+            };
+
+            remove.onclick = function () {
+                grey.disabled = true;
+                pink.disabled = true;
+                orange.disabled = false;
+            };
+
+
+        };
+    </script>
+
+</body>
+</html>
