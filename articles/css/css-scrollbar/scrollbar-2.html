@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scrollbar</title>
+</head>
+<style type="text/css">
+
+    .scrollbar1 {
+        margin: 20px auto;
+        width: 200px;
+        height: 100px;
+        overflow: auto;
+    }
+
+    .scrollbar2 {
+        margin: 20px auto;
+        width: 200px;
+        height: 100px;
+        overflow: auto;
+    }
+
+    /*定义滚动条宽高及背景,宽高分别对应横竖滚动条的尺寸*/
+    .scrollbar1::-webkit-scrollbar {
+        width: 16px;
+        height: 16px;
+        background-color: #f5f5f5;
+    }
+
+    /*定义滚动条的轨道,内阴影及圆角*/
+    .scrollbar1::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        border-radius: 10px;
+        background-color: #f5f5f5;
+    }
+
+    /*定义滑块,内阴影及圆角*/
+    .scrollbar1::-webkit-scrollbar-thumb {
+        height: 20px;
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #555;
+    }
+
+    .scrollbar2::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    .scrollbar2::-webkit-scrollbar-button {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+
+    .scrollbar2::-webkit-scrollbar-thumb {
+        width: 7px;
+        background-color: #b4babf;
+        border-radius: 7px;
+    }
+
+    .scrollbar2::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+
+    .scrollbar2::-webkit-scrollbar-track {
+        width: 15px;
+    }
+
+    .scrollbar2::-webkit-scrollbar:hover {
+        background-color: transparent;
+    }
+
+    .btns {
+        width: 400px;
+        height: 50px;
+        text-align: center;
+        margin: 100px auto 0 auto;
+    }
+
+    button {
+        text-decoration: none;
+        background: #47B2EA;
+        color: #f2f2f2;
+
+        padding: 10px 30px 10px 30px;
+        font-size: 16px;
+        font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
+        font-weight: bold;
+        border-radius: 3px;
+
+        -webkit-transition: all linear 0.30s;
+        -moz-transition: all linear 0.30s;
+        transition: all linear 0.30s;
+    }
+
+    button:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+</style>
+
+<body>
+<div class="btns">
+    <button class="one">样式1</button>
+    <button class="two">样式2</button>
+</div>
+<div id='show' class="scrollbar1">
+    番茄工作法是弗朗西斯科·西里洛于1992年创立的一种相对于GTD更微观的时间管理方法。使用番茄工作法，选择一个待完成的任务，将番茄时间设为25分钟，专注工作，中途不允许做任何与该任务无关的事，直到番茄时钟响起，然后在纸上画一个X短暂休息一下（5分钟就行），每4个番茄时段多休息一会儿。
+</div>
+<script>
+    var show = document.querySelector("#show")
+    var one = document.querySelector(".one")
+    var two = document.querySelector(".two")
+    one.onclick = function () {
+        show.className = "scrollbar1"
+    }
+    two.onclick = function () {
+        show.className = "scrollbar2"
+    }
+</script>
+</body>
+</html>

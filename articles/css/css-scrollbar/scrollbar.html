@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实现自定义滚动条</title>
+    <style>
+
+        body {
+            margin: 0 auto;
+            width: 80%;
+            padding: 20px;
+        }
+
+        .panel {
+            height: 300px;
+            border: 1px solid #e3e3e3;
+            overflow: auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-button {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 5px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-track-piece {
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #c3c3c3;
+            background-image: linear-gradient(to bottom,
+                rgba(0, 0, 0, .2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(0, 0, 0, .2) 50%,
+                rgba(0, 0, 0, .2) 75%,
+                transparent 75%,
+                transparent);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: red;
+        }
+
+        ::-webkit-resizer {
+            background: #5cb85c;
+        }
+
+        /*.unique-scrollbar::-webkit-scrollbar {*/
+            /*width: 20px;*/
+        /*}*/
+
+        /*.unique-scrollbar::-webkit-scrollbar-button {*/
+            /*background: #00c18c;*/
+        /*}*/
+
+        /*.unique-scrollbar::-webkit-scrollbar-track {*/
+            /*border-radius: 5px;*/
+            /*box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);*/
+        /*}*/
+
+        /*.unique-scrollbar::-webkit-scrollbar-track-piece {*/
+            /*border-radius: 5px;*/
+            /*background-color: #00c18c;*/
+        /*}*/
+
+        .unique-scrollbar::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background: linear-gradient(to bottom,
+                rgba(0, 0, 0, .2) 25%,
+                transparent 25%,
+                rgba(0, 0, 0, .4) 50%,
+                transparent 50%,
+                rgba(0, 0, 0, .6) 75%,
+                transparent 75%,
+                rgba(0, 0, 0, .8));
+            /*background-image: linear-gradient(*/
+            /*to right,*/
+            /*!*rgba(0, 0, 0, .2) 25%,*!*/
+            /*!*transparent 25%,*!*/
+            /*rgba(0, 0, 0, .2) 50%,*/
+            /*transparent 50%,*/
+            /*!*rgba(0, 0, 0, .2) 75%,*!*/
+            /*!*transparent 75%,*!*/
+            /*rgba(0, 0, 0, .2));*/
+            /*background-image: linear-gradient(to bottom,*/
+            /*#4d9c41 0%,*/
+            /*#54de5d 60%,*/
+            /*#19911d 100%*/
+            );
+        }
+
+        .unique-scrollbar::-webkit-scrollbar-corner {
+            background: red;
+        }
+
+        .unique-scrollbar::-webkit-resizer {
+            background: #5cb85c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <h3>标题1</h3>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+        <p>段落1</p>
+    </div>
+
+    <!--<div class="panel unique-scrollbar">-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+        <!--<p>段落1</p>-->
+    <!--</div>-->
+
+</body>
+</html>
