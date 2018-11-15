@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS选择器的权重</title>
+    <style>
+        /* 0001 */
+        a {
+            color: yellow;
+        }
+
+        /* 0002 */
+        div a {
+            color: green;
+        }
+
+        /* 0011 */
+        .demo a {
+            color: black;
+        }
+
+        /* 0021 */
+        .demo a[title] {
+            color: blue;
+        }
+
+        /* 0020 */
+        .demo *[title] {
+            color: grey;
+        }
+
+        /* 0101 */
+        #demo a {
+            color: orange;
+        }
+
+        /* 0102 */
+        div#demo a {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<a href="#">第一条应该是黄色</a> <!-- 适用第1条规则 -->
+
+<div><a href="#">第二条应该是绿色</a></div> <!-- 适用于第二条规则 -->
+
+<div class="demo">
+    <a href="#">第三条应该是黑色</a><br/> <!-- 适用第1、2、3条规则，第3条优先级高 -->
+    <a href="#" title="蓝色">第四条应该是蓝色</a><br/> <!-- 适用第2、4、5条规则，第4条优先级高 -->
+    <p title="灰色">第五条应该是灰色</p> <!-- 适用第5条规则 -->
+</div>
+
+<div id="demo">
+    <a href="#">第七条应该是红色</a><!-- 适用第6、7条规则，第7条优先级高 -->
+</div>
+
+</body>
+</html>
