@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">click</button>
+
+<script>
+    //创建一个包含clickHandler()方法的简单对象，当页面上的按钮被点击时可以使用
+    var user = {
+        data: [
+            {name: "kingx1", age: 11},
+            {name: "kingx2", age: 12}
+        ],
+        clickHandler: function (event) {
+            // 0到1之间的随机整数
+            var randomNum = ((Math.random() * 2 | 0) + 1) - 1;
+            // 从data数组里随机获取name和age属性,并输出
+            console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
+        }
+    };
+
+    var button = document.getElementById('btn');
+    button.onclick = user.clickHandler.bind(user);
+</script>
+
+
+
+
+</body>
+</html>

@@ -6,35 +6,72 @@
     <style>
         div {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 120px;
+            margin-left: 100px;
+            text-align: center;
         }
 
-        .main {
-            width: 200px;
-            height: 200px;
-            border-bottom-width: 20px;
-            border-bottom-color: #1b6d85;
-            border-bottom-style: solid;
-
-            border-left-width: 20px;
-            border-left-color: #006bb5;
-            border-left-style: solid;
-
+        .base {
+            /* 宽高属性 */
+            /*width: 200px;*/
+            /*height: 200px;*/
+            /* 上边框属性 */
             border-top-width: 20px;
             border-top-color: #000000;
             border-top-style: solid;
-
+            /* 右边框属性 */
             border-right-width: 20px;
             border-right-color: #761c19;
             border-right-style: solid;
+            /* 下边框属性 */
+            border-bottom-width: 20px;
+            border-bottom-color: #1b6d85;
+            border-bottom-style: solid;
+            /* 左边框属性 */
+            border-left-width: 20px;
+            border-left-color: #006bb5;
+            border-left-style: solid;
         }
 
-        .trapezoid {
+        .base {
+            width: 0;
+            height: 0;
+            border-top: 150px solid #000000;
+            border-right: 150px solid #761c19;
+            border-bottom: 150px solid #1b6d85;
+            border-left: 150px solid #006bb5;
+        }
+
+        .trapezoid-bottom {
             width: 100px;
             height: 0;
             border-bottom: 100px solid #761c19;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+        }
+
+        .trapezoid-left {
+            width: 0;
+            height: 80px;
+            border-left: 80px solid #761c19;
+            border-top: 40px solid transparent;
+            border-bottom: 40px solid transparent;
+        }
+
+        .trapezoid-top {
+            width: 100px;
+            height: 0;
+            border-top: 100px solid #761c19;
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
+        }
+
+        .trapezoid-right {
+            width: 0;
+            height: 80px;
+            border-right: 80px solid #761c19;
+            border-top: 40px solid transparent;
+            border-bottom: 40px solid transparent;
         }
 
         .triangle-up {
@@ -129,7 +166,7 @@
         .circle {
             width: 100px;
             height: 100px;
-            border-radius: 50px;
+            border-radius: 50%;
             background-color: #1b6d85;
         }
 
@@ -137,7 +174,7 @@
             width: 100px;
             height: 100px;
             border: 20px solid #2b542c;
-            border-radius: 100px;
+            border-radius: 50%;
         }
 
         .circle-up {
@@ -148,7 +185,7 @@
             border-radius: 100px 100px 0 0;
         }
 
-        .circle-dowm {
+        .circle-down {
             width: 100px;
             height: 0;
             border-bottom: 100px solid #006bb5;
@@ -160,16 +197,20 @@
 </head>
 <body>
 
-<div class="main"></div>
+<div class="base"></div>
 
-<div class="trapezoid"></div>
+<div class="trapezoid-bottom"></div>
+<div class="trapezoid-left"></div>
+<div class="trapezoid-top"></div>
+<div class="trapezoid-right"></div>
+
 
 <div class="container">
     <div class="triangle-up"></div>
+    <div class="triangle-right"></div>
     <div class="triangle-down"></div>
     <div class="triangle-left"></div>
-    <div class="triangle-right"></div>
-
+    <br>
     <div class="triangle-l-u"></div>
     <div class="triangle-r-u"></div>
     <div class="triangle-l-d"></div>
@@ -182,9 +223,39 @@
     <div class="circle"></div>
     <div class="concentric-circle"></div>
     <div class="circle-up"></div>
-    <div class="circle-dowm"></div>
+    <div class="circle-down"></div>
 </div>
 
+<style>
+    .circle-2 {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: #0ac2d2;
+    }
+
+    .circle-up-2 {
+        height: 0;
+        width: 100px;
+        border-top: 100px solid #0ac2d2;
+        border-right:  100px solid #000000;
+        border-radius: 100px 100px 0 0;
+    }
+
+    .circle-down-2 {
+        height: 0;
+        width: 100px;
+        border-bottom: 100px solid #0ac2d2;
+        border-left: 100px solid #000000;
+        border-radius: 0 0 100px 100px;
+    }
+</style>
+
+<div class="container">
+    <div class="circle-2"></div>
+    <div class="circle-up-2"></div>
+    <div class="circle-down-2"></div>
+</div>
 
 
 </body>

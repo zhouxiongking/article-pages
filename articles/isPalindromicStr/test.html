@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 判断回文字符串
+         */
+        function isPalindromicStr1(str) {
+            if (!str.length) {
+                return true;
+            }
+
+            str = str.toLowerCase().split('');
+            var start = 0, end = str.length - 1;
+
+            while(start < end) {
+                if(str[start] === str[end]) {
+                    start++;
+                    end--;
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        var str1 = 'abcdcba';
+        var str2 = 'abcedba';
+
+        isPalindromicStr1(str1);
+        isPalindromicStr1(str2);
+
+        // 算法2
+        function isPalindromicStr2(str) {
+            if(!str.length) {
+                return true;
+            }
+            let end = str.length - 1;
+            if(str[0] !== str[end]) {
+                return false;
+            }
+            return isPalindromicStr2(str.slice(1, end));
+        }
+
+        var str1 = 'abcdcba';
+        var str2 = 'abcedba';
+
+        isPalindromicStr2(str1);  // true
+        isPalindromicStr2(str2);  // false
+    </script>
+</head>
+<body>
+
+</body>
+</html>

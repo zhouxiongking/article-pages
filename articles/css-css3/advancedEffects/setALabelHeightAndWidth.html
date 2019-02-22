@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置a标签高度和宽度</title>
+    <style>
+        .container {
+            padding: 20px;
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        /*a {*/
+            /*margin-top: 100px;*/
+        /*}*/
+
+        a.a-1 {
+            width: 200px;
+            height: 40px;
+        }
+
+        a.a-2 {
+            display: block;
+            width: 200px;
+            height: 40px;
+        }
+        a.a-3 {
+            float: left;
+            width: 200px;
+            height: 40px;
+        }
+        a.a-4 {
+            padding: 20px 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!--<a class="a-1">-->
+        <!--这是一个a标签-->
+    <!--</a>-->
+    <!--<a class="a-2">-->
+        <!--这是改为块级元素的a标签-->
+    <!--</a>-->
+
+    <a class="a-3">
+        这是改为浮动元素的a标签
+    </a>
+
+    <a class="a-4">
+        这是设置padding属性的a标签
+    </a>
+    <span>这是与a同一行的内容</span>
+    <br>
+    <span>这是新一行的内容</span>
+
+
+</div>
+
+</body>
+</html>

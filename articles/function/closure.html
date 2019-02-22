@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包练习题</title>
+</head>
+<body>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<!--<script>-->
+<!--var lis = document.getElementsByTagName('ul')[0].children;-->
+<!--for (var i = 0; i < lis.length; i++) {-->
+<!--(function (index) {-->
+<!--lis[index].onclick = function () {-->
+<!--console.log(index);-->
+<!--};-->
+<!--})(i);-->
+<!--}-->
+<!--</script>-->
+
+<!--<script>-->
+<!--var arr = ['one', 'two', 'three'];-->
+<!--for (var i = 0; i < arr.length; i++) {-->
+<!--(function (time) {-->
+<!--setTimeout(function () {-->
+<!--console.log(arr[time]);-->
+<!--}, time * 1000);-->
+<!--})(i);-->
+<!--}-->
+<!--</script>-->
+
+<!--<script>-->
+<!--var name = 'outer';-->
+<!--var obj = {-->
+<!--name: 'inner',-->
+<!--method: function () {-->
+<!--return function () {-->
+<!--return this.name;-->
+<!--}-->
+<!--}-->
+<!--};-->
+<!--console.log(obj.method()());-->
+
+<!--var name = 'outer';-->
+<!--var obj = {-->
+<!--name: 'inner',-->
+<!--method: function () {-->
+<!--var _this = this;-->
+<!--return function () {-->
+<!--return _this.name;-->
+<!--}-->
+<!--}-->
+<!--};-->
+<!--console.log(obj.method()());-->
+
+<!--</script>-->
+
+<script>
+    function foo(a, b) {
+        console.log(b);
+        return {
+            foo: function (c) {
+                return foo(c, a);
+            }
+        }
+    }
+
+    var x = foo(0);
+    x.foo(1);
+    x.foo(2);
+    x.foo(3);
+    var y = foo(0).foo(1).foo(2).foo(3);
+    var z = foo(0).foo(1);
+    z.foo(2);
+    z.foo(3);
+
+</script>
+
+<script>
+    function closure() {
+        var element = document.getElementById("elementID");
+        element.onclick = function () {
+            console.log(element.id);
+        };
+    }
+
+    function closure() {
+        var element = document.getElementById("elementID");
+        var id = element.id;
+        element.onclick = function () {
+            console.log(id);
+        };
+        element = null;
+    }
+</script>
+
+<div style="white-space: pre-wrap">
+    这是一段文字
+    这是一段文字
+    这是一段文字
+</div>
+
+</body>
+</html>

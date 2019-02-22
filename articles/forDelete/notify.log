@@ -1,0 +1,23 @@
+存在同名controller/service/directive，请检查!
+
+freepack coverage 命令执行错误，请检查！
+/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/freepack/lib/validateOption.js:12
+        throw new Error('Invalid argument: `option.root` must be directory');
+        ^
+
+Error: Invalid argument: `option.root` must be directory
+    at module.exports.option (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/freepack/lib/validateOption.js:12:15)
+    at Function.getPacker [as packer] (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/freepack/lib/freepack.js:9:5)
+    at moduleCoverage (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/xg-command-freepack/lib/test.js:40:29)
+    at Function.module.exports [as test] (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/xg-command-freepack/lib/test.js:8:16)
+    at Object.exports.run (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/xg-command-freepack/index.js:42:21)
+    at Object.cli.run (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/fis3/lib/cli.js:259:11)
+    at Liftoff.<anonymous> (/Users/zhouxiong/Documents/wstorm-workspace/xg/bin/xg:31:13)
+    at Liftoff.execute (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/liftoff/index.js:203:12)
+    at module.exports (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/liftoff/node_modules/flagged-respawn/index.js:51:3)
+    at Liftoff.<anonymous> (/Users/zhouxiong/Documents/wstorm-workspace/xg/node_modules/liftoff/index.js:195:5)
+最近一次提交记录：
+commit f7d7fbec5a231fdaf4dd8df1860fd6b6cba903b9
+Author: kingx <zhouxiongking@163.com --local>
+
+    refactor[kl](tms) 修改css部分每日

@@ -29,10 +29,8 @@ console.log(reverseString3(strIn,pos,strOut));
 // 算法4
 function reverseString4(str) {
     var arr = Array.prototype.slice.call(str);
-
     return arr.reverse().join('');
 }
-
 console.log(reverseString4('abcdefg'));
 
 
