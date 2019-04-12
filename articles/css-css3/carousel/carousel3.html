@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS实现轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            overflow: hidden; /*隐藏溢出的图片*/
+        }
+
+        .pic {
+            width: 2000px; /*4张图的宽度*/
+            position: absolute; /*基于父容器进行定位*/
+            left: 0;
+            animation-name: focus;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes focus {
+            0%, 20% {
+                left: 0;
+            }
+            25%, 45% {
+                left: -400px;
+            }
+            50%, 70% {
+                left: -800px;
+            }
+            75%, 95% {
+                left: -1200px;
+            }
+            100% {
+                left: -1600px;
+            }
+        }
+
+        .pic li {
+            float: left;
+            background: #5dd94e;
+        }
+
+        .pic li img {
+            width: 400px;
+            height: 200px;
+        }
+
+        /*.container2 {*/
+            /*width: 750px;*/
+            /*height: 230px;*/
+            /*border: 1px solid #e3e3e3;*/
+            /*margin-top: 10px;*/
+            /*display: flex;*/
+            /*align-items: center;*/
+            /*position: relative;*/
+            /*padding: 5px;*/
+        /*}*/
+
+        /*.container2 ul {*/
+            /*border: 1px solid #e3e3e3;*/
+            /*padding: 20px;*/
+        /*}*/
+
+        /*.container2 ul li {*/
+            /*float: left;*/
+            /*width: 155px;*/
+            /*height: 100px;*/
+            /*border: 1px solid #e3e3e3;*/
+            /*padding: 10px;*/
+        /*}*/
+
+        /*.container2 .title {*/
+            /*position: absolute;*/
+            /*top: 0;*/
+        /*}*/
+        /*.container2 .ul-title {*/
+            /*position: absolute;*/
+            /*top: 40px;*/
+            /*left: 10px;*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <ul class="pic">
+        <li>
+            <a href="javascript:;">
+                <img src="http://eduppp.cn/images/0/1.jpg" alt="pic1">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="http://eduppp.cn/images/0/2.jpg" alt="pic2">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="http://eduppp.cn/images/0/4.jpg" alt="pic3">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="http://eduppp.cn/images/0/3.jpg" alt="pic4">
+            </a>
+        </li>
+        <!-- 克隆第一张 -->
+        <li>
+            <a href="javascript:;">
+                <img src="http://eduppp.cn/images/0/1.jpg" alt="pic1">
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--<div class="container2">-->
+    <!--<span class="title">container容器</span>-->
+    <!--<span class="ul-title">ul</span>-->
+    <!--<ul>-->
+        <!--<li>li</li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+
+
+</body>
+</html>

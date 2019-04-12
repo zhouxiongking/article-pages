@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容可编辑的HTML标签</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 20px;
+        }
+
+        .content {
+            width: 300px;
+            height: auto;
+            border: 1px solid #cfdadd;
+            border-radius: 2px;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .content:focus {
+            outline: 0;
+        }
+
+        .common {
+            width: 300px;
+            height: auto;
+            border: 1px solid #cfdadd;
+            border-radius: 2px;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .editable {
+            -webkit-user-modify: read-write-plaintext-only;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content" contenteditable="true"></div>
+
+
+<div class="content" contenteditable="plaintext-only"></div>
+
+<textarea class="content" style="resize: none; margin-top: 20px;"></textarea>
+
+<p class="common editable"></p>
+
+</body>
+</html>

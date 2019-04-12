@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>form表单约束性校验</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+<!--<form action="" method="get" id="forms">-->
+<!--<input type="text" id="username" placeholder="用户名" required/>-->
+<!--<input type="password" id="pws" placeholder="密码" required/>-->
+<!--<input type="email" id="email" placeholder="邮箱" required/>-->
+<!--<input type="submit" value="提交" id="submitBtn">-->
+<!--</form>-->
+<!--<script>-->
+<!--var form = document.getElementById("forms");-->
+<!--var submitBtn = document.getElementById("submitBtn");-->
+
+<!--submitBtn.addEventListener("click", function () {-->
+<!--var invalidFields = form.querySelectorAll(":invalid");-->
+<!--for (var i = 0, len = invalidFields.length; i < len; ++i) {-->
+<!--console.log('input#' + invalidFields[i].id + ':' + invalidFields[i].validationMessage);-->
+<!--}-->
+<!--});-->
+<!--</script>-->
+
+<form action="#" method="get">
+    <input type="text" name="username" id="username"
+           placeholder="请输入用户名" required pattern="^\d{4}$"/>
+    <input type="submit" onclick="validate()">
+</form>
+<script type="text/javascript">
+    function validate() {
+        var input_username = document.getElementById('username');
+        console.log(input_username.validity);
+        if (input_username.checkValidity()) {
+            console.log('校验通过');
+        } else {
+            console.log('校验失败');
+        }
+    }
+</script>
+
+
+<form action="" method="get">
+    <input type="url" id="urlInfo">
+    <input type="submit" onclick="validate()">
+</form>
+
+<script>
+    function validate() {
+        var urlInfo = document.getElementById('urlInfo');
+        if (urlInfo.validity.typeMismatch) {
+            urlInfo.setCustomValidity('请输入带有http://开头的url');
+        }
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video标签</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        video {
+            height: 300px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--<video src="test.mp4" height="300" width="400" controls-->
+<!--controlslist="nodownload nofullscreen"-->
+<!--poster="101.jpg"-->
+<!--muted></video>-->
+
+<!--<video src="test.mp4" height="300" width="400" controls loop></video>-->
+
+<!--<script>-->
+<!--var video = document.getElementById('video');-->
+<!--video.volume = 0; // 静音-->
+<!--video.volume = 0.5; // 一半声音大小-->
+<!--//    video.volume = 2; // 按照1处理-->
+<!--//    video.volume = -1; // 按照1处理-->
+
+<!--video.currentTime = 3;-->
+<!--video.playbackRate = -1;-->
+<!--</script>-->
+<!--<video id="video" src="git-1.mp4" height="300" width="400" controls autoplay></video>-->
+<video id="video" src="test.mp4" height="300" width="400" controls autoplay></video>
+<button id="play" onclick="play()">播放</button>
+<button id="pause" onclick="pause()">暂停</button>
+<button id="replay" onclick="replay()">重新播放</button>
+<button id="volume" onclick="volume()">改变音量</button>
+<button id="rate" onclick="rate()">改变播放速度</button>
+<script>
+    var video = document.getElementById('video');
+    // 播放
+    function play() {
+        video.play();
+    }
+    // 暂停
+    function pause() {
+        video.pause();
+    }
+    // 重新播放
+    function replay() {
+        video.load();
+        video.autoplay = 'autoplay';
+    }
+    // 改变音量
+    function volume() {
+        video.volume -= 0.1;
+    }
+    // 改变播放速度
+    function rate() {
+        video.playbackRate += 0.1;
+    }
+    // 监听play事件
+    video.addEventListener('play', function () {
+       // console.log('play事件触发');
+    });
+    // 监听pause事件
+    video.addEventListener('pause', function () {
+        console.log('pause事件触发');
+    });
+    // 监听progress事件
+    video.addEventListener('progress', function () {
+        console.log('progress事件触发');
+    });
+    // 监听error事件
+    video.addEventListener('error', function () {
+        console.log('error事件触发');
+    });
+    // 监听timeupdate事件
+    video.addEventListener('timeupdate', function () {
+        console.log('timeupdate事件触发');
+    });
+    // 监听ended事件
+    video.addEventListener('ended', function () {
+        console.log('ended事件触发');
+        video.load();
+        video.autoplay = 'autoplay';
+    });
+    // 监听ended事件
+    video.addEventListener('volumechange', function () {
+        console.log('volumechange事件触发');
+    });
+
+    // 监听ratechange事件
+    video.addEventListener('ratechange', function () {
+        console.log('ratechange事件触发');
+    });
+
+</script>
+
+</body>
+</html>

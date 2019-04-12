@@ -1,0 +1,165 @@
+/*top 烟花字体 */
+.w-top {
+    margin: 100px auto;
+    width: 500px;
+}
+
+.w-top img {
+    opacity: 0;
+    animation: bloom 2s ease 1.2s infinite;
+}
+
+.w-top img.boom2 {
+    float: right;
+    animation: bloom 2s ease 1.5s infinite;
+}
+
+.w-top img.boom3 {
+    position: absolute;
+    margin-top: 40px;
+    animation: bloom 2s ease 1.4s infinite;
+}
+
+@keyframes bloom {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.wedding-title {
+    position: absolute;
+    left: 50%;
+    z-index: 10;
+    line-height: 80px;
+    color: #ff720a;
+    letter-spacing: 5px;
+    opacity: 0;
+    animation: titleBloom 1s linear 1s both;
+    font-size: 26px;
+    margin-left: -125px;
+}
+
+@keyframes titleBloom {
+    0% {
+        transform: translate(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/*人物类 */
+.w-middle {
+    margin: -50px auto;
+    width: 1000px;
+    overflow: hidden;
+}
+
+.husband {
+     float: left;
+     width: 50%;
+ }
+
+.husband img {
+    margin-top: 60px;
+    animation: toWoman 0.5s ease .5s both;
+}
+
+@keyframes toWoman {
+    0% {
+        opacity: 0;
+        transform: translate(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.wife {
+    float: right;
+    width: 50%;
+}
+
+.wife img {
+    animation: showW 0.8s ease 0s both;
+}
+
+@keyframes showW {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hands-flower {
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    margin-left: -30px;
+    margin-top: 75px;
+}
+
+.hands-flower img {
+    width: 60px;
+    animation: show 0.4s ease 1s both;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: scale(0.1, 0.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+.w-p:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+/*flowers*/
+.wedding-flowers {
+    width: 820px;
+    margin: 0 auto;
+}
+
+.wedding-flowers img {
+    height: 120px;
+    z-index: 400;
+    animation: showFlowers 0.4s ease 2.3s both;
+}
+
+@keyframes showFlowers {
+    0% {
+        opacity: 0;
+        transform: translate(0, 200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.wedding-flowers2 {
+    margin-top: -130px;
+    padding-left: 100px;
+}
+
+.wedding-flowers2 img {
+    animation: showFlowers 0.4s ease 2.7s both;
+}

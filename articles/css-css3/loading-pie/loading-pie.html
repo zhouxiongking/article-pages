@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3饼状loading效果</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        /*外边框*/
+        .con-wrap {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+        /*外圈及其动画*/
+        .out-round {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 150px auto;
+            border: 3px solid #FF298C;
+            border-left: 3px solid transparent;
+            animation: outRound 1s linear infinite running;
+        }
+        @keyframes outRound {
+            0% {
+                transform: rotate(120deg)
+            }
+            100% {
+                transform: rotate(-240deg)
+            }
+        }
+        /*内圆*/
+        .in-round {
+            position: relative;
+            left: 50%;
+            top: -50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+        /*左边两个半圆*/
+        .lt-round, .lt-mask {
+            position: absolute;
+            width: 35px;
+            height: 70px;
+            border-radius: 35px 0 0 35px;
+            transform-origin: right center;
+        }
+        .lt-round {
+            z-index: 3;
+            background-color: #FF298C;
+            animation: ltRound 2s linear infinite running;
+        }
+        .lt-mask {
+            z-index: 2;
+            background-color: #FCA2CA;
+            animation: ltMask 2s linear infinite running;
+        }
+        /*右边两个半圆*/
+        .rt-round, .rt-mask {
+            position: absolute;
+            left: 50%;
+            width: 35px;
+            height: 70px;
+            border-radius: 0 35px 35px 0;
+            transform-origin: left center;
+        }
+        .rt-round {
+            z-index: 1;
+            background-color: #FF298C;
+            animation: rtRound 2s linear infinite running;
+        }
+        .rt-mask {
+            background-color: #FCA2CA;
+        }
+        @keyframes ltRound {
+            0% {
+                transform: rotate(360deg);
+            }
+            24.9% {
+                z-index: 3;
+            }
+            25% {
+                z-index: 1;
+                transform: rotate(180deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            74.9% {
+                z-index: 1;
+            }
+            75%, 100% {
+                z-index: 3;
+            }
+        }
+        @keyframes rtRound {
+            0%, 24.9% {
+                z-index: 1;
+            }
+            25% {
+                z-index: -3;
+            }
+            74.9% {
+                z-index: -3;
+            }
+            75%, 100% {
+                z-index: 1;
+            }
+        }
+        @keyframes ltMask {
+            0%, 25%, 50% {
+                transform: rotate(360deg);
+            }
+            75% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<h3>CSS3饼状loading效果</h3>
+<div class="con-wrap">
+
+    <!--外圈-->
+    <div class="out-round"></div>
+
+    <!--内圆，里面有半圆四个-->
+    <div class="in-round">
+        <div class="lt-round"></div>
+        <div class="lt-mask"></div>
+        <div class="rt-round"></div>
+        <div class="rt-mask"></div>
+    </div>
+</div>
+</body>
+</html>

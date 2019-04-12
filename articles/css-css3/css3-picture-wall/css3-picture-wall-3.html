@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实现照片墙</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url('./images/bg.jpeg');
+        }
+
+        .container {
+            width: 960px;
+            height: 450px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        /*给一个鼠标事件*/
+        .container img:hover {
+            box-shadow: 15px 15px 20px rgba(50, 50, 50, 0.4);
+            /*z-index 属性设置元素的堆叠顺序。
+            拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面*/
+            z-index: 2;
+            /*scale实现缩放效果*/
+            transform: rotate(0deg) scale(1.20);
+        }
+
+        .container img {
+            padding: 10px 10px 15px;
+            color: white;
+            border: 1px solid #dddddd;
+            box-shadow: 2px 2px 3px rgba(50, 50, 50, 0.4);
+            transition: all 0.5s ease-in;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .pic {
+            width: 160px;
+        }
+
+        .pic1 {
+            left: 500px;
+            top: 0;
+            transform: rotate(-10deg);
+        }
+
+        .pic2 {
+            left: 200px;
+            top: 0;
+            transform: rotate(-20deg);
+        }
+
+        .pic3 {
+            bottom: 100px;
+            right: 100px;
+            transform: rotate(-5deg);
+        }
+
+        .pic4 {
+            bottom: 0;
+            left: 300px;
+            transform: rotate(-10deg);
+        }
+
+        .pic5 {
+            top: 150px;
+            left: 50px;
+            transform: rotate(20deg);
+        }
+
+        .pic6 {
+            left: 0;
+            top: 0;
+            transform: rotate(10deg);
+        }
+
+        .pic7 {
+            left: 850px;
+            top: 0;
+            transform: rotate(20deg);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--定义两个class以便于对图片的统一处理-->
+    <img class="pic pic1" src="./images/1.jpg">
+    <img class="pic pic2" src="./images/2.jpg">
+    <img class="pic pic3" src="./images/3.jpg">
+    <img class="pic pic4" src="./images/4.jpg">
+    <img class="pic pic5" src="./images/5.jpg">
+    <img class="pic pic6" src="./images/6.jpg">
+    <img class="pic pic7" src="./images/7.jpg">
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS打印样式</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #a3a3a3;
+        }
+        .nav {
+            float: left;
+            width: 200px;
+            border-right: 1px solid #a3a3a3;
+            position: fixed;
+            top: 55px;
+            bottom: 0;
+        }
+
+        ul li {
+            list-style: none;
+            line-height: 30px;
+        }
+
+        .content {
+            position: relative;
+            margin-left: 200px;
+        }
+
+        .page-break {
+            display: none;
+        }
+
+        @media print {
+            .header, .nav, .footer {
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+            }
+            .page-break {
+                display: block;
+                page-break-after: always;
+            }
+        }
+        .footer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-left: 200px;
+            line-height: 30px;
+            border-top: 1px solid #a3a3a3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <p>这是网站头部内容</p>
+</div>
+<div class="container">
+    <div class="nav">
+        <ul>
+            <li>菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="print-content">这是想要打印的内容区</div>
+        <div class="page-break"></div>
+        <div class="print-content">这是想要打印的内容区</div>
+        <div class="page-break"></div>
+    </div>
+</div>
+<div class="footer">这是网站信息简介区</div>
+</body>
+</html>

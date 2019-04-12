@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 本地存储</title>
+</head>
+<body>
+
+<button onclick="change()">change</button>
+
+<script>
+    // 获取localStorage原始的setItem方法
+    var originalSetItem = localStorage.setItem;
+    // 重新定义setItem方法
+    localStorage.setItem = function (key, newValue) {
+        // 自定义setItemEvent事件
+        var setItemEvent = new Event("setItemEvent");
+        setItemEvent.newValue = newValue;
+        // 通过window.dispatchEvent()触发自定义的setItemEvent事件
+        window.dispatchEvent(setItemEvent);
+        originalSetItem.apply(this, arguments);
+    };
+    // 监听自定义的setItemEvent事件
+    window.addEventListener("setItemEvent", function (e) {
+        console.log('修改后的值为:' + e.newValue);
+    });
+
+    function change() {
+        localStorage.setItem('name', 'kingx2');
+    }
+
+
+</script>
+
+</body>
+</html>

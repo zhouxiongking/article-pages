@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.core.js"></script>
+    <script>
+        function Animal(name) {
+            this.name = name;
+        }
+        var animal = new Animal('tom');
+
+        var origin = {
+            a: function () {
+                return 'a';
+            },
+            b: new RegExp('\d', 'g'),
+            c: animal
+        };
+//        console.log(_);
+//        origin.d = origin;
+//        var origin = {};
+//        origin.d = origin;
+        var result = $.extend(true, {}, origin);
+//        var result = _.clone(origin);
+        console.log(origin);
+        console.log(result);
+
+
+
+//        var a = {"name": "aaa"};
+//        var b = {"name": "bbb"};
+//        a.child = b;
+//        b.parent = a;
+//        $.extend(true, {}, a);//直接报了栈溢出。Uncaught RangeError: Maximum call stack size exceeded
+    </script>
+</head>
+<body>
+
+</body>
+</html>

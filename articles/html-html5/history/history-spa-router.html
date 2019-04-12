@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>history实现单页面应用路由</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            border-right: 1px solid #e3e3e3;
+            background: #1c2b36;
+        }
+
+        ul li {
+            list-style: none;
+            line-height: 50px;
+            text-align: center;
+            color: #7ca1bb;
+        }
+
+        ul li:hover {
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 200px;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="nav">
+    <ul id="nav">
+        <li data-url="/userManage">用户管理</li>
+        <li data-url="/authorityManage">权限管理</li>
+        <li data-url="/orgManage">组织管理</li>
+    </ul>
+</div>
+
+<div class="content" id="router-content">这是首页内容</div>
+
+<script>
+    var router = ['userManage', 'authorityManage', 'orgManage'];
+
+    var nav = document.getElementById('nav');
+    nav.addEventListener('click', function (evt) {
+        var target = evt.target;
+        if (target.nodeName.toLowerCase() === 'li') {
+            var url = target.dataset.url;
+            ajaxFn(url, true);
+        }
+    });
+
+    window.addEventListener('popstate', function (evt) {
+        if (evt.state.url) {
+            ajaxFn(evt.state.url, false);
+        }
+    });
+
+    /**
+     * ajax请求处理过程
+     * @param url 路由url,由此得到请求的文件
+     * @param type 区分前进/后退和正常点击的请求,前进/后退时是不处理history的
+     */
+    function ajaxFn(url, type) {
+        var xhr;
+        if (window.XMLHttpRequest) {
+            // 非IE
+            xhr = new XMLHttpRequest();
+        } else {
+            // IE
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        xhr.open('get', '.' + url + '.html', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    handleResult(xhr.responseText, url);
+                    type ? handleHistory(url) : '';
+                }
+            }
+        };
+    }
+
+    // 处理history
+    function handleHistory(url) {
+        history.pushState({url}, '', '.' + url);
+    }
+
+    // 处理响应,将加载的页面写到内容区
+    function handleResult(text) {
+        var content = document.getElementById('router-content');
+        content.innerHTML = text;
+    }
+
+
+</script>
+
+</body>
+</html>

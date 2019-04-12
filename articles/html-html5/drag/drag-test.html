@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 80%;
+            padding: 20px;
+        }
+
+        .drag-box {
+            float: left;
+            width: 200px;
+            height: 300px;
+            border: 2px solid #c3c3c3;
+            padding: 40px;
+        }
+
+        .drag-item {
+            height: 30px;
+            text-align: center;
+            border: 3px dashed #a3a3a3;
+            margin: 10px 0;
+        }
+
+        .dustbin {
+            float: left;
+            width: 200px;
+            height: 330px;
+            margin-left: 20px;
+            border: 2px solid #c3c3c3;
+            padding: 10px 40px 40px 40px;
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 10px;
+        }
+
+        #result p {
+            margin: 5px 0;
+        }
+
+        #dustbin-list {
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="drag-box">
+    <div class="drag-item" title="拖拽我" draggable="true">列表1</div>
+    <div class="drag-item" title="拖拽我" draggable="true">列表2</div>
+    <div class="drag-item" title="拖拽我" draggable="true">列表3</div>
+    <div class="drag-item" title="拖拽我" draggable="true">列表4</div>
+    <div class="drag-item" title="拖拽我" draggable="true">列表5</div>
+    <div class="drag-item" title="拖拽我" draggable="true">列表6</div>
+</div>
+
+<div class="dustbin" id="dustbin">
+    <div>垃圾箱</div>
+    <div id="dustbin-list"></div>
+</div>
+
+<div class="dustbin" id="recode">
+    <div class="title">操作记录</div>
+    <div id="result"></div>
+</div>
+
+<!--<div class="drag-box">-->
+    <!--<div class="drag-item" title="拖拽我" draggable="true" id="dragItem">我是一个可拖拽的div元素</div>-->
+<!--</div>-->
+
+<!--<script>-->
+    <!--var item = document.getElementById('dragItem');-->
+    <!--item.addEventListener('dragstart', function (evt) {-->
+        <!--var img = document.createElement('img');-->
+        <!--img.src = 'http://mstcdn.oss-cn-shenzhen.aliyuncs.com/images/articles/052951d0-bf72-489a-8adb-3b2aba295a43.png';-->
+        <!--evt.dataTransfer.setDragImage(img, 0, 0);-->
+    <!--});-->
+<!--</script>-->
+
+<script>
+    var dragBox = document.querySelector('.drag-box');
+    var count = 1;
+
+    dragBox.addEventListener('dragstart', function (evt) {
+        if (evt.target.classList[0] === 'drag-item') {
+            evt.dataTransfer.setData('text', evt.target.innerText);
+            evt.dataTransfer.setData('ele', evt.target);
+        }
+    });
+
+    dragBox.addEventListener('drag', function (evt) {
+        evt.preventDefault();
+    });
+
+    dragBox.addEventListener('dragend', function (evt) {
+        if (evt.target.classList[0] === 'drag-item') {
+            // 清除被拖拽的元素
+            dragBox.removeChild(evt.target);
+            // 增加新的元素
+            var newItem = document.createElement('div');
+            newItem.setAttribute('draggable', 'true');
+            newItem.classList = ['drag-item'];
+            newItem.innerText = '列表' + (6 + count++);
+            dragBox.appendChild(newItem);
+        }
+    });
+
+    var eleDustbin = document.getElementById('dustbin');
+
+    eleDustbin.addEventListener('dragenter', function () {
+        // 拖拽元素进入目标元素头上的时候
+        this.style.border = "2px dashed #a3a3a3";
+        return true;
+    });
+
+    eleDustbin.addEventListener('dragover', function (evt) {
+        // 拖拽元素在目标元素头上移动的时候
+        evt.preventDefault();
+    });
+
+    eleDustbin.addEventListener('dragleave', function () {
+        console.log('leave');
+    });
+
+    var result = document.getElementById('result');
+    var dustbinList = document.getElementById('dustbin-list');
+
+    eleDustbin.addEventListener('drop', function (evt) {
+        // 记录操作日志
+        var p = document.createElement('p');
+        var text = evt.dataTransfer.getData('text');
+        p.innerHTML = text + '被扔进了垃圾箱';
+        result.appendChild(p);
+        // 在垃圾箱中新增元素
+        var div = document.createElement('div');
+        div.classList = ['drag-item'];
+        div.innerText = text;
+        dustbinList.appendChild(div);
+        this.style.border = "2px solid #a3a3a3";
+    });
+
+</script>
+
+</body>
+</html>

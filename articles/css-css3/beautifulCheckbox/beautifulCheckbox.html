@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>beautifulSwitch</title>
+    <style>
+        .cb-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        #checkbox {
+            display: none;
+        }
+
+        .cb-label {
+            height: 80px;
+            width: 80px;
+            background: #f9f9f9;
+            border: 10px solid #cfcece;
+            position: relative;
+            display: inline-block;
+            transition: border-color ease 0.2s;
+            -moz-transition: border-color ease 0.2s;
+            -o-transition: border-color ease 0.2s;
+            -webkit-transition: border-color ease 0.2s;
+            cursor: pointer;
+        }
+
+        .cb-label::before, .cb-label::after {
+            position: absolute;
+            height: 0;
+            width: 20px;
+            background: #fff;
+            display: inline-block;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            -o-transform-origin: left top;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+            content: '';
+            -webkit-transition: opacity ease 0.5s;
+            -moz-transition: opacity ease 0.5s;
+            transition: opacity ease 0.5s;
+        }
+
+        .cb-label::before {
+            top: 76px;
+            left: 31px;
+            -moz-transform: rotate(-135deg);
+            -ms-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+
+        .cb-label::after {
+            top: 45px;
+            left: 0;
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        input[type=checkbox]:checked + .cb-label {
+            background: #658db5;
+            border-color: #658db5;
+        }
+
+        input[type=checkbox]:checked + .cb-label::after {
+            border-color: #fff;
+            -moz-animation: dobottomcheck 0.2s ease 0s forwards;
+            -o-animation: dobottomcheck 0.2s ease 0s forwards;
+            -webkit-animation: dobottomcheck 0.2s ease 0s forwards;
+            animation: dobottomcheck 0.2s ease 0s forwards;
+        }
+
+        input[type=checkbox]:checked + .cb-label::before {
+            border-color: #fff;
+            -moz-animation: dotopcheck 0.4s ease 0.2s forwards;
+            -o-animation: dotopcheck 0.4s ease 0.2s forwards;
+            -webkit-animation: dotopcheck 0.4s ease 0.2s forwards;
+            animation: dotopcheck 0.4s ease 0.2s forwards;
+        }
+
+        @-moz-keyframes dobottomcheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 35px;
+            }
+        }
+
+        @-webkit-keyframes dobottomcheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 35px;
+            }
+        }
+
+        @keyframes dobottomcheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 35px;
+            }
+        }
+
+        @keyframes dotopcheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 70px;
+            }
+        }
+
+        @-webkit-keyframes dotopcheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 70px;
+            }
+        }
+
+        @-moz-keyframes dotopcheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 70px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="cb-container">
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox" class="cb-label"></label>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterator讲解</title>
+</head>
+<body>
+
+<p>这是第一个段落</p>
+<p>这是第二个段落</p>
+<p>这是第三个段落</p>
+
+<script>
+    var pList = document.querySelectorAll('p');
+
+    for (var p of pList) {
+        console.log(p.innerText);
+    }
+</script>
+
+
+
+</body>
+</html>

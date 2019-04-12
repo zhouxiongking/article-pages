@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input和textarea的区别</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 50px;
+        }
+
+        input[type='text'] {
+            height: 100px;
+            width: 400px;
+        }
+        .input-area {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--<input type="text" size="10" maxlength="20"  value="这是一段非常长的文本内容,由于只能单行显示,导致有些内容被隐藏">-->
+
+<textarea rows="10" cols="20">我是通过cols和rows确定的大小，我的cols是20，rows是10</textarea>
+<textarea style="width: 200px; height: 100px">我是通过width和height确定的大小，我的width是200px，heigh是100px</textarea>
+
+</body>
+</html>

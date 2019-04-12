@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实现0.5px边框</title>
+
+    <style>
+        body {
+            margin: 0 auto;
+            width: 50%;
+            padding: 100px;
+        }
+
+        .custom-border {
+            width: 200px;
+            margin: 10px auto;
+            height: 100px;
+            border: 1px solid #333;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        .scale-border {
+            margin: 10px auto;
+            height: 100px;
+            position: relative;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .border {
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            position: absolute;
+            border: 1px solid #333;
+            top: -50%;
+            right: -50%;
+            bottom: -50%;
+            left: -50%;
+            /*width: 200%;*/
+            /*height: 200%;*/
+            border-radius: 10px;
+            background-color: #eee;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .border3 {
+            width: 200px;
+            margin: 10px auto;
+            height: 100px;
+            background-color: #eee;
+            padding: 10px;
+            position: relative;
+        }
+
+        .border3:after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            border: 1px solid #333;
+            transform: scale(0.5, 0.5);
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="custom-border">边框宽度1px</div>
+<div class="scale-border">
+    <div class="content">边框宽度0.5px</div>
+    <div class="border"></div>
+</div>
+
+<div class="custom-border">边框宽度1px</div>
+<div class="border3">
+    <div class="content">伪类设置的0.5px边框</div>
+</div>
+
+</body>
+</html>

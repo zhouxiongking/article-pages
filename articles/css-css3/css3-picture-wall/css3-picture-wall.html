@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <style type="text/css">
+        body {
+            background-color: #000000;
+        }
+
+        p ul li > img {
+            width: 300px;
+            height: 180px;
+            border: 8px solid #ffffff;
+        }
+
+        p ul li {
+            list-style-type: none;
+            float: left;
+        }
+
+        .main {
+            position: relative;
+            top: 100px;
+            left: 400px;
+            margin: 0 auto;
+        }
+
+        #im1 {
+            transform-origin: 50% 100%;
+            transform: rotate(-7deg);
+            position: absolute;
+            left: 10px;
+            transition: 0.7s;
+        }
+
+        #im2 {
+            position: absolute;
+            left: 30px;
+        }
+
+        #im3 {
+
+            transform: rotate(7deg);
+            position: absolute;
+            left: 50px;
+            transition: 0.7s;
+        }
+
+        .main:hover #im1 {
+            transform-origin: 50% 300%;
+            transform: rotate(-30deg);
+
+        }
+
+        .main:hover #im3 {
+            transform-origin: 50% 300%;
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+<body>
+<p class="main">
+<ul>
+    <li id="im3">
+        <img src="http://mstcdn.oss-cn-shenzhen.aliyuncs.com/images/articles/8c40c450-ba8c-4412-b157-60622049a6d9.jpeg">
+    </li>
+    <li id="im2">
+        <img src="http://mstcdn.oss-cn-shenzhen.aliyuncs.com/images/articles/4bb06473-566b-4dfc-936b-865175d7edd1.jpg">
+    </li>
+    <li id="im1">
+        <img src="http://mstcdn.oss-cn-shenzhen.aliyuncs.com/images/articles/8b75b732-d7ad-4061-bbcf-69afff41ee72.jpg">
+    </li>
+</ul>
+</p>
+
+</body>
+</html>

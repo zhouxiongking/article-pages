@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:required和:optional美化表单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 30px auto;
+        }
+
+        input, select, textarea {
+            width: 240px;
+            margin: 10px 0;
+            border: 1px solid #999;
+            padding: .5em 1em;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 0;
+        }
+
+        label {
+            color: #999;
+            margin-left: 30px;
+        }
+
+        /*必填项*/
+        input:required, textarea:required {
+            border-right: 3px solid #FF3030;
+        }
+
+        input:required:focus, textarea:required:focus {
+            box-shadow: 0 0 3px 1px #FF3030;
+        }
+
+        input:required + label::after {
+            content: "(必填)";
+        }
+
+        /*选填项*/
+        input:optional, select:optional {
+            border-right: 3px solid #66ccff;
+        }
+
+        input:optional:focus, select:optional:focus {
+            box-shadow: 0 0 3px 1px #66ccff;
+        }
+
+        input:optional + label::after {
+            content: "(选填)";
+        }
+
+        input[type="submit"] {
+            background-color: #FF3030;
+            border: 3px solid #FF3030;
+            color: #FFF;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF0000;
+        }
+
+        input:valid ~ span.tip::after {
+            content: attr(data-success-tip);
+        }
+        input:invalid ~ span.tip::after {
+            content: attr(data-error-tip);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="#">
+        <!--<input type="text" name="username" required/><label>用户名</label>-->
+        <!--<input type="email" name="email" required/><label>邮箱</label>-->
+        <!--<input type="tel" name="tel"><label>手机号</label>-->
+        <!--<input type="url" name="url"><label>网址</label>-->
+        <!--<select name="aihao">-->
+            <!--<option value="0">非必填选项1</option>-->
+            <!--<option value="1">非必填选项2</option>-->
+            <!--<option value="2">非必填选项3</option>-->
+            <!--<option value="3">非必填选项4</option>-->
+            <!--<option value="4">非必填选项5</option>-->
+        <!--</select>-->
+        <!--<textarea name="content" cols="30" rows="10" placeholder="留言(必填)" required></textarea>-->
+        <!--<input type="submit"/>-->
+
+        <label for="email">邮箱</label>
+        <input type="email" id="email" name="email" required placeholder="请输入邮箱"
+                onchange="changeEmail()"
+                oninput="changeInput()"
+                oninvalid="changeValid()"/>
+        <input type="submit"/>
+    </form>
+</div>
+<script>
+    function changeEmail() {
+        console.log('change event trigger!');
+    }
+    function changeInput() {
+        console.log('input event trigger!');
+    }
+    function changeValid() {
+        console.log('invalid event trigger!');
+    }
+</script>
+</body>
+</html>

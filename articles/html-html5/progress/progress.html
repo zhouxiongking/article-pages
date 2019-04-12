@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 20px;
+            text-align: center;
+        }
+        progress {
+            width: 300px;
+            height: 30px;
+            border:1px solid red;
+            background: #ffc0cb;
+        }
+        /* 进度条样式 */
+        ::-webkit-progress-bar {
+            background: #ffc0cb;
+        }
+        /* 进度条已完成部分样式 */
+        ::-webkit-progress-value {
+            background: #0ac2d2;
+        }
+        /* 进度条已完成部分样式 */
+        ::-ms-fill {
+            background: #0ac2d2;
+        }
+        /* 进度条已完成部分样式 */
+        ::-moz-progress-bar {
+            background: #0ac2d2;
+        }
+    </style>
+</head>
+<body>
+
+<progress value="80" max="100"></progress>
+
+<!--<progress></progress>-->
+
+<!--&lt;!&ndash;<progress ></progress>&ndash;&gt;-->
+
+<!--<progress id="progress" value="0" max="100">您的浏览器不支持progress元素</progress>-->
+<!--<button type="button" onclick="doProgress()">开始</button>-->
+<script>
+    function doProgress() {
+        var pro = document.getElementById('progress');
+        var interval = setInterval(function () {
+            if (pro.value < pro.max) {
+                pro.value += 1;
+            } else {
+                console.log('任务完成');
+                clearInterval(interval);
+            }
+        }, 20);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>锚点</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        ul {
+            position: fixed;
+        }
+
+        ul li {
+            line-height: 35px;
+        }
+
+        .right-content {
+            position: relative;
+            left: 200px;
+            width: 80%;
+        }
+
+        .common-div {
+            height: 500px;
+            border: 1px solid #eeeeee;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 80%;
+            line-height: 50px;
+            background: #0ac2d2;
+            z-index: 2;
+        }
+        .common-div h2:before {
+            content: '';
+            display: block;
+            height: 50px;
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header" style="margin-left: 200px;">
+    这是一段固定在顶端的内容
+</div>
+
+<ul>
+    <li>
+        <a href="#first">跳至第一段内容</a>
+    </li>
+    <li>
+        <a href="#second">跳至第二段内容</a>
+    </li>
+    <li>
+        <a href="#third">跳至第三段内容</a>
+    </li>
+    <li>
+        <a href="#fourth">跳至第四段内容</a>
+    </li>
+</ul>
+<div class="right-content">
+    <div class="common-div">
+        <h2 id="first">第一段内容标题</h2>
+        <div>第一段内容</div>
+    </div>
+    <div class="common-div">
+        <h2 id="second">第二段内容标题</h2>
+        <div>第二段内容</div>
+    </div>
+    <div class="common-div">
+        <h2 id="third">第三段内容标题</h2>
+        <div>第三段内容</div>
+    </div>
+    <div class="common-div">
+        <h2 id="fourth">第四段内容标题</h2>
+        <div>第四段内容</div>
+    </div>
+</div>
+
+
+</body>
+</html>

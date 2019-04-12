@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 history</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+这是history页面,跳转到<a href="history2.html" onclick="history.pushState(null, '', 'history2.html')">history2.html</a>
+
+<div>
+    <button onclick="change()">change</button>
+</div>
+
+<script>
+    function change() {
+//        history.replaceState(null, null, 'history2.html');
+
+        history.go(-1);
+    }
+
+    window.addEventListener('popstate', function () {
+        console.log('invoke!');
+        console.log(history.length);
+    });
+
+</script>
+
+</body>
+</html>

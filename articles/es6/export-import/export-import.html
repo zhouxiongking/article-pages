@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>import和export测试</title>
+    <script type="module">
+//        import {foo} from './export1.js';
+//        import {foo as foo1} from './export1.js';
+        import {foo1} from './export1.js';
+//        import {name} from './export1.js';
+        import {name as animalName} from './export3.js';
+
+//        console.log('foo', foo());
+        console.log('foo1', foo1());
+        console.log(name);
+
+        setTimeout(() => {
+            console.log(name);
+        }, 1000);
+
+//        import {name} from './export2.js';
+
+//        name = 'kingxsdddd';
+
+
+//        import {obj} from './export4.js';
+//        console.log(obj);
+//
+//        obj.name = 'kingx5';
+//
+//        obj.age = 12;
+//        console.log(obj);
+
+        import {name} from './export2.js';
+//        import {age} from './export2.js';
+
+        console.log(name);
+//        console.log(age);
+
+        console.log(a);
+
+        import * as a from './export4.js';
+        console.log(a);
+//        a.obj = {};
+
+
+        import {obj, age} from './export5.js';
+
+        obj.name = 'kingx6';
+//        obj = {};
+//        age = 15;
+
+        import param from './export6.js';
+        console.log(param);
+
+        import {param1} from './export6.js';
+        console.log(param1);
+
+        import {counter, incCounter} from './export7.js';
+        console.log(counter); // 1
+        incCounter();
+//        counter++;
+        console.log(counter); // 2
+
+        import {c} from './export8.js';
+        c.add();
+
+    </script>
+</head>
+<body>
+
+
+
+
+</body>
+</html>

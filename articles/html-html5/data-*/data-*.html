@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<li class="site-nav-menu" data-name="region"></li>
+<li class="site-nav-menu" id="J_SiteNavLogin" data-name="login" data-spm="754894437"></li>
+<li class="site-nav-menu" id="J_SiteNavMobile" data-name="mobile" data-spm="1997563273"></li>
+
+<a data-id="1" href="javascript:void(0)" class="selected">北京</a>
+<a data-id="2" href="javascript:void(0)">上海</a>
+<a data-id="3" href="javascript:void(0)">天津</a>
+
+<li data-id="01"
+    data-name="kingx"
+    data-email="zhouxiongking@163.com"
+    data-github="https://github.com/zhouxiongking">kingx
+</li>
+
+<button id="delete-btn" type="button" data-cmd="delete" data-id="01">删除</button>
+
+<script>
+    var btn = document.getElementById('delete-btn');
+    var id = btn.getAttribute('data-id');
+    console.log(id);
+    btn.setAttribute('data-id', '02');
+
+    //    // 获得删除按钮
+    //    var delBtn = $('#delte-btn');
+    //    // 获得操作的信息
+    //    var id = oBtn.attr('data-id');
+    //    // 改变删除按钮的数据信息
+    //    delBtn.attr('data-id', id);
+
+    var btn = document.getElementById('delete-btn');
+
+    console.log(btn.dataset);
+
+    var id = btn.dataset.id;
+
+    console.log(id);
+
+    btn.dataset.id = '03';
+
+
+</script>
+
+<input type="text" id="filter">
+<ul class="person">
+    <li data-models="'张三', 25, '网络工程', '篮球'">张三</li>
+    <li data-models="'李四', 23, '软件工程', '足球'">李四</li>
+    <li data-models="'王五', 24, '计算机科学技术', '羽毛球'">王五</li>
+    <li data-models="'赵六', 25, '网络工程', '足球'">赵六</li>
+    <li data-models="'钱七', 25, '机电自动化', '篮球'">钱七</li>
+</ul>
+
+<script>
+    var input = document.getElementById('filter');
+    // 输入框监听keyup事件
+    input.addEventListener('keyup', function () {
+        // 输入的关键字
+        var keywords = this.value;
+        // 定位到所有用户元素
+        var models = document.querySelectorAll('ul li');
+        for (var i = 0; i < models.length; i++) {
+            // 获取到每个元素的自定义属性models
+            var modelVal = models[i].dataset.models;
+            // 判断关键字是否在自定义属性值中
+            if (modelVal.indexOf(keywords) >= 0) {
+                // 通过display属性控制显示还是隐藏
+                models[i].style.display = 'block';
+            } else {
+                models[i].style.display = 'none';
+            }
+        }
+    });
+
+</script>
+
+<style>
+    [data-waring] {
+        color: #FFFB21;
+    }
+
+    [data-type=error] {
+        color: red;
+    }
+</style>
+
+<span data-waring>warning</span>
+
+<span data-type="error">error</span>
+
+<span id="userInfo" data-userId="01" data-user-name="kingx"></span>
+
+<span id="userInfo2" data-user-name="kingx"></span>
+
+
+<script>
+    var userInfo = document.getElementById('userInfo');
+    console.log(userInfo.dataset);
+
+    console.log(userInfo.dataset.userId); // undefined
+    console.log(userInfo.dataset.userid); // 01
+
+    userInfo.dataset.userId = '02'; // 相当于新增了一个user-id
+    userInfo.dataset.userid = '02'; // 修改userId成功
+
+    var userInfo = document.getElementById('userInfo2');
+    console.log(userInfo.dataset);
+
+//    console.log(userInfo.dataset.userId); // undefined
+//    console.log(userInfo.dataset.userid); // 01
+//
+//    userInfo.dataset.userId = '02'; // 相当于新增了一个user-id
+//    userInfo.dataset.userid = '02'; // 修改userId成功
+
+    console.log(userInfo.dataset.userName); // kingx
+
+    userInfo.dataset.userEmail = 'zhouxiongking@163.com';
+
+</script>
+
+</body>
+</html>

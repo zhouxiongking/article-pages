@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas实现钟表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 60%;
+            text-align: center;
+            padding: 50px;
+        }
+
+        canvas {
+            border: 1px solid #e3e3e3;
+            /*width: 300px;*/
+            /*height: 300px;*/
+        }
+
+
+    </style>
+</head>
+<body>
+
+<canvas id="clock" width="300" height="300"></canvas>
+
+<script>
+    var canvas = document.getElementById('clock');
+    var ctx = canvas.getContext('2d');
+    var pi = Math.PI;
+
+    requestAnimationFrame(function step() {
+        // 绘制表盘
+        drawClockPanel();
+        // 绘制数字
+        drawNumber();
+        // 绘制时针,分针,秒针
+        drawAllHands();
+        requestAnimationFrame(step);
+    });
+
+    /**
+     * 绘制表盘
+     */
+    function drawClockPanel() {
+        // 在绘制之前,清除画板
+        ctx.clearRect(0, 0, 300, 300);
+        ctx.save();
+        // 移动原点到画板中心
+        ctx.translate(150, 150);
+
+        // 绘制刻度
+        for (var i = 0; i < 60; i++) {
+            ctx.save();
+            ctx.rotate(-pi / 2 + i / 30 * pi);
+            ctx.beginPath();
+            ctx.moveTo(110, 0);
+            ctx.lineTo(140, 0);
+            ctx.lineWidth = i % 5 ? 2 : 4;
+            ctx.strokeStyle = i % 5 ? 'blue' : 'red';
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore();
+        }
+        ctx.restore();
+    }
+
+    /**
+     * 绘制数字
+     */
+    function drawNumber() {
+        ctx.save();
+        ctx.translate(150, 150);
+        ctx.font = '20px sans-serif';
+        ctx.fillText('1', 40, -70);
+        ctx.fillText('2', 75, -40);
+        ctx.fillText('3', 90, 8);
+        ctx.fillText('4', 75, 55);
+        ctx.fillText('5', 40, 90);
+        ctx.fillText('6', -5, 100);
+        ctx.fillText('7', -50, 90);
+        ctx.fillText('8', -85, 55);
+        ctx.fillText('9', -100, 8);
+        ctx.fillText('10', -90, -40);
+        ctx.fillText('11', -55, -75);
+        ctx.fillText('12', -8, -85);
+        ctx.restore();
+    }
+
+    /**
+     * 绘制时针,分针,秒针
+     */
+    function drawAllHands() {
+        let time = new Date();
+
+        let s = time.getSeconds();
+        let m = time.getMinutes();
+        let h = time.getHours();
+
+        let secondAngle = 1 / 30 * s * pi;
+        let minuteAngle = 1 / 30 * m * pi + s / 1800 * pi;
+        let hourAngle = 1 / 6 * pi * h + m / 360 * pi + s / (3600 * 6) * pi;
+
+        drawHand(secondAngle, 129, 2, 'blue', ctx);
+        drawHand(minuteAngle, 106, 4, 'green', ctx);
+        drawHand(hourAngle, 60, 6, 'red', ctx);
+    }
+
+    /**
+     * 绘制时针,分针,秒针
+     * @param angle 指针旋转角度
+     * @param length 指针长度
+     * @param width 指针宽度
+     * @param color 指针颜色
+     * @param ctx 画布
+     */
+    function drawHand(angle, length, width, color, ctx) {
+        ctx.save();
+        ctx.translate(150, 150);
+        ctx.rotate(-1 / 2 * pi + angle);
+        ctx.beginPath();
+        ctx.moveTo(-4, 0);
+        ctx.lineTo(length, 0);
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        ctx.closePath();
+        ctx.restore();
+    }
+
+</script>
+
+</body>
+</html>

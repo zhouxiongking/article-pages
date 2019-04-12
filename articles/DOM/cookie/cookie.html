@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript操作Cookie</title>
+</head>
+<body>
+
+<script>
+    console.log(document.cookie); // "firstname=John; lastname=Smith"
+
+    document.cookie = 'name=kingx';
+    document.cookie = 'age=12';
+    document.cookie = 'address=Beijing;interest=basketball';
+
+    document.cookie = 'name=kingx2';
+
+    document.cookie = 'name=kingx3;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+
+    /**
+     * 设置cookie的函数
+     * @param key
+     * @param value
+     * @param exdays 过期天数,默认值为1
+     */
+    function setCookie(key, value, exdays = 1) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = key + "=" + value + "; " + expires;
+    }
+
+    setCookie('name2', 'kingx4', 1);
+
+    /**
+     * 读取Cookie的函数
+     * @param key
+     * @returns {*}
+     */
+    function getCookie(key) {
+        var name = key + "=";
+        var cookieArr = document.cookie.split(';');
+        for (var i = 0; i < cookieArr.length; i++) {
+            var item = cookieArr[i].trim();
+            if (item.indexOf(name) >= 0) {
+                return item.substring(name.length, item.length);
+            }
+        }
+        return '';
+    }
+
+    console.log(getCookie('name2'));
+
+    function checkCookie(key) {
+        var username = getCookie();
+        if (username != "") {
+            alert("Welcome again " + username);
+        }
+        else {
+            username = prompt("Please enter your name:", "");
+            if (username != "" && username != null) {
+                setCookie("username", username, 365);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

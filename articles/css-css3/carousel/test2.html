@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Script Defer Example</title>
+</head>
+<body>
+
+
+<!--<script src="script-2.js" defer></script>-->
+<script type="text/javascript" defer>
+    alert("defer");
+</script>
+<script type="text/javascript">
+    alert("script");
+</script>
+<script type="text/javascript">
+    window.onload = function(){
+        alert("load");
+    };
+
+//    var xhr = new XMLHttpRequest();
+//    xhr.open("get", "script1.js", true);
+//    xhr.onreadystatechange = function(){
+//        if (xhr.readyState == 4){
+//            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+//                var script = document.createElement ("script");
+//                script.type = "text/javascript";
+//                script.text = xhr.responseText;
+//                document.body.appendChild(script);
+//            }
+//        }
+//    };
+//    xhr.send(null);
+</script>
+</body>
+</html>

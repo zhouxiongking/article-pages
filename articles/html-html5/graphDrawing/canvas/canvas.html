@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 20px;
+        }
+
+        canvas {
+            border: 1px solid #e3e3e3;
+        }
+    </style>
+
+</head>
+<body>
+<canvas id="tutorial" width="500" height="500"></canvas>
+<!--<script>-->
+<!--var canvas = document.getElementById('tutorial');-->
+<!--var ctx = canvas.getContext('2d');-->
+<!--// 判断是否支持canvas标签-->
+<!--if (canvas.getContext) {-->
+<!--// 获取2d渲染上下文-->
+<!--var ctx = canvas.getContext('2d');-->
+<!--} else {-->
+<!--// 不支持canvas标签-->
+<!--}-->
+
+<!--//    ctx.fillRect(10, 10, 100, 50);-->
+<!--//-->
+<!--//    ctx.strokeRect(10, 70, 100, 50);-->
+<!--//-->
+<!--//    ctx.fillRect(10, 130, 100, 50);-->
+<!--//    ctx.clearRect(20, 140, 30, 30);-->
+<!--//-->
+<!--//    // 新建一条path-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.moveTo(100, 190);-->
+<!--//    ctx.lineTo(140, 250);-->
+<!--//    ctx.lineTo(60, 250);-->
+<!--//    ctx.closePath();-->
+<!--//    ctx.stroke();-->
+<!--//-->
+<!--//        ctx.beginPath();-->
+<!--//        ctx.moveTo(200, 190);-->
+<!--//        ctx.lineTo(240, 250);-->
+<!--//        ctx.lineTo(160, 250);-->
+<!--//        ctx.closePath();-->
+<!--//        ctx.fill();-->
+<!--//        ctx.fillStyle = 'rgb(200, 0, 0)';-->
+<!--//        ctx.fill();-->
+<!--//-->
+<!--//    ctx.clearRect(110, 110, 10, 10);-->
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.arc(260, 160, 80, 0, -Math.PI, true);-->
+<!--//    ctx.closePath();-->
+<!--//    ctx.fill();-->
+
+<!--//    ctx.beginPath();-->
+<!--//    ctx.arc(330, 160, 80, 0, -Math.PI, false);-->
+<!--////    ctx.closePath();-->
+<!--//    ctx.stroke();-->
+
+
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.arc(180, 180, 40, 0, Math.PI, true);-->
+<!--//    ctx.fill();-->
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.arc(200, 200, 40, -Math.PI / 2, Math.PI / 2, true);-->
+<!--//    ctx.fill();-->
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.moveTo(150, 200); //起始点-->
+<!--//    var cp1x = 160, cp1y = 50;  // 控制点1-->
+<!--//    var cp2x = 230, cp2y = 80;  // 控制点2-->
+<!--//    var x = 340, y = 200; // 结束点-->
+<!--//-->
+<!--//    //绘制二次贝塞尔曲线-->
+<!--//    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);-->
+<!--//    ctx.stroke();-->
+<!--//-->
+<!--//    // 绘制出各个点的位置-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.fillRect(150, 200, 10, 10);-->
+<!--//    ctx.fillRect(160, 50, 10, 10);-->
+<!--//    ctx.fillRect(230, 80, 10, 10);-->
+<!--//    ctx.fillRect(340, 200, 10, 10);-->
+<!--//    ctx.closePath();-->
+
+<!--//    for (var i = 0; i < 9; i++) {-->
+<!--//        for (var j = 0; j < 9; j++) {-->
+<!--//            ctx.strokeStyle = 'rgb(' + Math.floor(255 - 25 * i)-->
+<!--//                    + ',' + Math.floor(255 - 25 * j) + ',0)';-->
+<!--//            ctx.strokeRect(j * 30, i * 30, 30, 30);-->
+<!--//        }-->
+<!--//    }-->
+
+<!--//    ctx.beginPath();-->
+<!--//    ctx.moveTo(10, 10);-->
+<!--//    ctx.lineTo(100, 10);-->
+<!--//    ctx.lineWidth = 10;-->
+<!--//    ctx.stroke();-->
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.moveTo(110, 10);-->
+<!--//    ctx.lineTo(200, 10);-->
+<!--//    ctx.lineWidth = 20;-->
+<!--//    ctx.stroke();-->
+
+<!--//    ctx.font = "50px sans-serif";-->
+<!--//    ctx.fillText("HTML5 Canvas", 10, 100);-->
+<!--//    ctx.strokeText("HTML5 Canvas", 10, 200);-->
+
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.rect(10, 200, 10, 10);-->
+<!--//    ctx.rect(cp1x, cp1y, 10, 10);-->
+<!--//    ctx.rect(x, y, 10, 10);-->
+<!--//    ctx.fill();-->
+<!--//-->
+<!--//    ctx.beginPath();-->
+<!--//    ctx.moveTo(20, 320);-->
+<!--//    ctx.lineTo(60, 320);-->
+<!--//    ctx.lineWidth = 40;-->
+<!--//    ctx.stroke();-->
+<!--//    ctx.closePath();-->
+
+<!--//    ctx.beginPath();-->
+<!--//    ctx.setLineDash([20, 5]);-->
+<!--//    ctx.lineDashOffset = -0;-->
+<!--//    ctx.strokeRect(50, 50, 210, 210);-->
+
+<!--</script>-->
+
+<!--<script>-->
+<!--function draw(){-->
+<!--var canvas = document.getElementById('tutorial');-->
+<!--if (!canvas.getContext) return;-->
+<!--var ctx = canvas.getContext("2d");-->
+
+<!--ctx.setLineDash([20, 5]);  // [实线长度, 间隙长度]-->
+<!--ctx.lineDashOffset = -0;-->
+<!--ctx.strokeRect(50, 50, 210, 210);-->
+<!--}-->
+<!--draw();-->
+<!--</script>-->
+
+<!--<script>-->
+<!--function draw() {-->
+<!--var canvas = document.getElementById('tutorial');-->
+<!--if (!canvas.getContext) return;-->
+<!--var ctx = canvas.getContext("2d");-->
+
+<!--var img = new Image();-->
+<!--img.src = '../101.jpg';-->
+
+<!--img.onload = function () {-->
+<!--ctx.drawImage(img, 0, 0, 400, 240);-->
+<!--};-->
+
+<!--}-->
+<!--draw();-->
+<!--</script>-->
+
+<button id="btn" onclick="change()">变形</button>
+<script>
+    var canvas = document.getElementById('tutorial');
+    var ctx = canvas.getContext("2d");
+    init();
+    // 初始化
+    function init() {
+        ctx.fillRect(1, 1, 100, 100);
+    }
+    // 变形
+    function change() {
+        ctx.save();
+        ctx.translate(120, 120);
+        ctx.rotate(Math.PI / 180 * 45);
+        ctx.scale(1.5, 1.5);
+        ctx.transform(1, 0.5, 0, 1, 0, 0);
+        ctx.fillStyle = 'red';
+        ctx.fillRect(1, 1, 100, 100);
+
+        ctx.restore();
+    }
+
+</script>
+
+
+</body>
+</html>

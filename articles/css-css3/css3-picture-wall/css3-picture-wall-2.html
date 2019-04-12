@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>CSS3实现鼠标悬停放大照片墙特效</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+
+        /* CSS3实现鼠标悬停放大照片墙特效 */
+        /*设置主体body样式，共有*/
+        body {
+            font-family: Tahoma, Helvetica, "\5b8b\4f53", "Arial", sans-serif;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /*清除默认样式*/
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+            margin: 0;
+            padding: 0
+        }
+
+        input, button, textarea {
+            border: none 0
+        }
+
+        fieldset, img {
+            border: 0
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        ul, ol {
+            list-style: none
+        }
+
+        a:link {
+            text-decoration: none
+        }
+
+        a:visited {
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        /* polaroids---ul容器样式 */
+        .polaroids {
+            width: 1300px;
+            margin: 50px 0 18px 50px;
+        }
+
+        /*设置宽度，外边距*/
+        .polaroids li {
+            display: inline;
+        }
+
+        /*默认。此元素会被显示为内联元素，元素前后没有换行符。*/
+        .polaroids a {
+            background: #fff;
+            display: inline;
+            float: left;
+            margin: 0 0 27px 30px;
+            width: auto;
+            padding: 10px 10px 15px;
+            text-align: center;
+            font-family: "Marker Felt", sans-serif;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .25); /*边框阴影*/
+            -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+            -o-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+        }
+
+        .polaroids img {
+            display: block;
+            width: 190px;
+            height: 140px;
+            margin-bottom: 12px;
+        }
+
+        .polaroids a:after {
+            content: attr(title); /* Ie8+,FF,Chorme,Safari */
+        }
+
+        .polaroids li:nth-child(even) a { /*li所有子节点even偶数个  旋转两个角度----odd为奇数个*/
+            -webkit-transform: rotate(2deg);
+            -moz-transform: rotate(2deg);
+            -ms-transform: rotate(2deg);
+            transform: rotate(2deg);
+        }
+
+        .polaroids li:nth-child(3n) a {
+            -webkit-transform: none; /*是示表针对 safari 浏览器支持,*/
+            -moz-transform: none; /*是示表针对 火狐浏览器支持*/
+            -ms-transform: rotate(2deg); /*表示针对 IE 浏览器支持*/
+            transform: none;
+            position: relative; /*3n---设置为相对的relative，向上走-5px*/
+            top: -5px;
+        }
+
+        .polaroids li:nth-child(5n) a {
+            -webkit-transform: rotate(5deg);
+            -moz-transform: rotate(5deg);
+            -ms-transform: rotate(5deg);
+            transform: rotate(5deg);
+            position: relative;
+            right: 5px;
+        }
+
+        .polaroids li:nth-child(8n) a {
+            position: relative;
+            top: 8px;
+            right: 5px;
+        }
+
+        .polaroids li:nth-child(11n) a {
+            position: relative;
+            top: 3px;
+            right: -5px;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<ul class="polaroids">
+    <li><a href="#" title="Kelly"><img src="images/image-01.jpg" alt="image-01.jpg!"></a></li>
+    <li><a href="#" title="Kelly"><img src="images/image-02.jpg" alt="image-02.jpg"></a></li>
+    <li><a href="#" title="Kelly"><img src="images/image-03.jpg" alt="image-03.jpg"></a></li>
+    <li><a href="#" title="Kelly"><img src="images/image-04.jpg" alt="image-04.jpg"></a></li>
+    <li><a href="#" title="Kelly"><img src="images/image-05.jpg" alt="image-05.jpg"></a></li>
+    <li><a href="#" title="Kelly"><img src="images/image-06.jpg" alt="image-06.jpg"></a></li>
+</ul>
+<script>
+    $(function () {
+        var count = 0;
+        var timer = setInterval(function () {
+            count++;
+            if (count == 10) {
+                clearInterval(timer);
+            }
+            randomNumber = Math.ceil(Math.random() * 6);
+            $(".polaroids li:last-child").append($('<li><a href="#" title="Kelly">' + '<img src="images/image-0' + randomNumber + '.jpg" alt="image-0' + randomNumber + '.jpg">' + '</a></li>'));
+        }, 10);
+    });
+</script>
+</body>
+</html>

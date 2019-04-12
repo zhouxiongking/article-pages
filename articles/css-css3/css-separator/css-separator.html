@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS实现分割线的几种方法</title>
+    <style>
+        .container {
+            width: 750px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .separation-1 {
+            line-height: 1px;
+            border-left: 250px solid #ddd;
+            border-right: 250px solid #ddd;
+        }
+
+        .separation-2 {
+            border-top: 1px solid #ddd;
+        }
+
+        .separation-2 span {
+            position: relative;
+            top: -12px;
+            background-color: #fff;
+            padding: 0 20px;
+        }
+
+        .separation-3 b {
+            display: inline-block;
+            width: 250px;
+            height: 1px;
+            background: #ddd;
+            vertical-align: middle;
+        }
+
+        .separation-4 b {
+            float: left;
+            margin-top: 12px;
+            width: 30%;
+            height: 1px;
+            background: #ddd;
+        }
+        .separation-4 span {
+            float: left;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+
+<h2>CSS实现分割线的几种方法</h2>
+
+<h3>方法1:使用单独的标签</h3>
+
+<div class="container">
+    <div class="separation-1">小小分隔线,单个元素实现</div>
+
+    <br><br>
+
+    <div class="separation-2">
+        <span>小小分隔线,背景色覆盖实现</span>
+    </div>
+
+    <br><br>
+
+    <div class="separation-3">
+        <b></b>
+        <span>小小分隔线,inline-block实现</span>
+        <b></b>
+    </div>
+
+    <div class="separation-4">
+        <b></b>
+        <span>小小分隔线,浮动实现</span>
+        <b></b>
+    </div>
+
+</div>
+
+
+</body>
+</html>

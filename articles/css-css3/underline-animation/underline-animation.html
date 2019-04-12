@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏下划线跟随动画效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        ul li {
+            box-sizing: border-box;
+            position: relative;
+            list-style: none;
+            float: left;
+            padding: 10px;
+            color: #0000ff;
+        }
+
+        ul li:hover {
+            cursor: pointer;
+        }
+
+        li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            border-bottom: 2px solid #0000ff;
+        }
+
+        li:hover::before {
+            width: 100%;
+            transition: width .4s;
+        }
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>Javascript</li>
+    <li>导航栏</li>
+    <li>光标下划线跟随</li>
+    <li>纯CSS实现</li>
+    <li>鼠标悬浮</li>
+</ul>
+
+</body>
+</html>

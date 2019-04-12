@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webWorker练习</title>
+</head>
+<body>
+
+<input type="text" id="first">
+
+<script>
+
+//    if (window.Worker) {
+//        var myWorker = new Worker('./worker1.js');
+//
+//        var first = document.getElementById('first');
+//        first.onchange = function () {
+//            myWorker.postMessage({value: 'Hello World'});
+//            console.log('传递数据给worker');
+//        };
+//
+//        myWorker.addEventListener('message', function (evt) {
+//            console.log('接收到来自worker的数据:', evt.data);
+//            myWorker.terminate();
+//        });
+//
+//        myWorker.addEventListener('error', function (evt) {
+//            console.log('监听到异常');
+//        });
+//
+//    } else {
+//        console.log('当前浏览器不支持Web Worker');
+//    }
+
+    if (window.Worker) {
+        var myWorker = new Worker('./worker.js');
+
+        var first = document.getElementById('first');
+        var obj = {
+            name: 'kingx'
+        };
+        first.onchange = function () {
+            myWorker.postMessage(obj);
+            console.log('传递数据给worker');
+        };
+
+        myWorker.addEventListener('message', function (evt) {
+            console.log('接收到来自worker的数据:', evt.data);
+            console.log(obj);
+            myWorker.terminate();
+        });
+
+        myWorker.addEventListener('error', function (evt) {
+            console.log('监听到异常');
+        });
+    } else {
+        console.log('当前浏览器不支持Web Worker');
+    }
+
+</script>
+
+<script>
+    function createWorker(f) {
+        var blob = new Blob(['(' + f.toString() +')()']);
+        var url = window.URL.createObjectURL(blob);
+        var worker = new Worker(url);
+        return worker;
+    }
+
+    var pollingWorker = new Worker('./worker.js');
+
+    var pollingWorker = createWorker(function (e) {
+        var cache;
+
+        function compare(newVal, oldVal) { }
+
+        setInterval(function () {
+            fetch('/my-api-endpoint').then(function (res) {
+                var data = res.json();
+
+                if (!compare(data, cache)) {
+                    cache = data;
+                    self.postMessage(data);
+                }
+            })
+        }, 1000)
+    });
+
+    pollingWorker.onmessage = function () {
+        document.getElementById('.header').innerText = '服务端有版本更新,请刷新页面';
+    };
+
+    pollingWorker.postMessage('init');
+
+
+    self.addEventListener('message', function () {
+        var cache;
+
+        // 判断新旧状态是否一致
+        function compare(newVal, oldVal) {
+            return newVal === oldVal;
+        }
+
+        setInterval(function () {
+            fetch('/my-api-endpoint').then(function (res) {
+                var data = res.json();
+
+                if (!compare(data, cache)) {
+                    cache = data;
+                    self.postMessage(data);
+                }
+            })
+        }, 1000)
+    });
+</script>
+
+</body>
+</html>

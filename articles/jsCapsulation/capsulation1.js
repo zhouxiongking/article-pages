@@ -7,7 +7,7 @@
  */
 function arrayEqual(arr1, arr2) {
     // 首先要判断是否是数组,传进来的非数组,返回false
-    if(!(arr1 instanceof Array) || !(arr2 instanceof Array)) {
+    if (!(arr1 instanceof Array) || !(arr2 instanceof Array)) {
         return false;
     }
     if (arr1 === arr2) return true;
@@ -51,14 +51,14 @@ function getExplore() {
  */
 function getOS() {
     var userAgent = 'navigator' in window
-            && 'userAgent' in navigator
-            && navigator.userAgent.toLowerCase() || '';
+        && 'userAgent' in navigator
+        && navigator.userAgent.toLowerCase() || '';
     var vendor = 'navigator' in window
-            && 'vendor' in navigator
-            && navigator.vendor.toLowerCase() || '';
+        && 'vendor' in navigator
+        && navigator.vendor.toLowerCase() || '';
     var appVersion = 'navigator' in window
-            && 'appVersion' in navigator
-            && navigator.appVersion.toLowerCase() || '';
+        && 'appVersion' in navigator
+        && navigator.appVersion.toLowerCase() || '';
 
     if (/mac/i.test(appVersion))
         return 'MacOSX';
@@ -79,7 +79,7 @@ function getOS() {
  * @param {Any} values
  */
 function deepClone(values) {
-    var copy;
+    var copy = {};
 
     // Handle the 3 simple types, and null or undefined
     if (null == values || "object" != typeof values) return values;
@@ -104,7 +104,9 @@ function deepClone(values) {
     if (values instanceof Object) {
         copy = {};
         for (var attr in values) {
-            if (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr]);
+            if (values.hasOwnProperty(attr)) {
+                copy[attr] = deepClone(values[attr]);
+            }
         }
         return copy;
     }

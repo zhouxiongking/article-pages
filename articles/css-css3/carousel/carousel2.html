@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #container {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            overflow: hidden; /*隐藏溢出的图片*/
+        }
+
+        .pic {
+            width: 1600px; /*4张图的宽度*/
+            position: absolute; /*基于父容器进行定位*/
+            left: 0;
+            animation-name: focusmap;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes focusmap {
+            0%, 25% {
+                left: 0;
+            }
+            25%, 50% {
+                left: -400px;
+            }
+            50%, 75% {
+                left: -800px;
+            }
+            75%, 99.9% {
+                left: -1200px;
+            }
+            100% {
+                left: -1600px;
+            }
+        }
+
+        .pic li {
+            float: left;
+            background: #5dd94e;
+        }
+
+        .pic li img {
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <ul class="pic">
+        <li><a href="javascript:;"><img src="http://eduppp.cn/images/0/1.jpg"></a></li>
+        <li><a href="javascript:;"><img src="http://eduppp.cn/images/0/3.jpg"></a></li>
+        <li><a href="javascript:;"><img src="http://eduppp.cn/images/0/4.jpg"></a></li>
+        <li><a href="javascript:;"><img src="http://eduppp.cn/images/0/5.jpg"></a></li><!-- 克隆第一张 -->
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>负数的:nth-child选择器</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        ul li {
+            display: none;
+        }
+        ul li:nth-child(-n + 3) {
+            display: block;
+        }
+        table {
+            table-layout: fixed;
+        }
+
+        .no-events {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>这是第一条记录</li>
+    <li>这是第二条记录</li>
+    <li>这是第三条记录</li>
+    <li>这是第四条记录</li>
+    <li>这是第五条记录</li>
+    <li>这是第六条记录</li>
+    <li>这是第七条记录</li>
+</ul>
+
+<table border="1" cellspacing="0" width="500">
+    <tr>
+        <td>这是一条很长很长的内容这是一条很长很长的内容这是一条很长很长的内容</td>
+        <td>这是一条很短的内容</td>
+        <td>更短</td>
+    </tr>
+    <tr>
+        <td>这是一条很短的内容</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

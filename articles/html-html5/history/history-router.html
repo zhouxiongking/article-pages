@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="html">
+
+<head>
+    <meta charset='utf-8'>
+    <title>HTML5-History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 60%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        button {
+            outline: 0;
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 4px;
+            color: #58666e;
+            background-color: #fcfdfd;
+            box-shadow: 0 1px 1px rgba(90,90,90,0.1);
+            width: 100px;
+        }
+        .test {
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+<button onclick="btnClick(event)">red</button>
+<button onclick="btnClick(event)">blue</button>
+<button onclick="btnClick(event)">green</button>
+<p class="test">这里的字体颜色会随着点击按钮的变化而变化</p>
+<!--<button onclick="consoleLog()">打印</button>-->
+</body>
+
+<script>
+    // 初始化
+    (function () {
+        var paramArr = location.search.split('?');
+        if (paramArr.length > 1) {
+            var state = {
+                color: paramArr[1].split('=')[1]
+            };
+            handleTextColor(state);
+        }
+    })();
+
+    // 通用的按钮点击方法
+    function btnClick(evt) {
+        let color = evt.target.innerText;
+        let state = {
+            color: color
+        };
+        let url = location.href.split('?')[0] + '?color=' + color;
+        history.pushState(state, 'red', url);
+        handleTextColor({
+            color: color
+        });
+    }
+
+    // 处理文字颜色
+    function handleTextColor(state) {
+        if (state) {
+            document.querySelector('.test').style.color = state.color || 'red';
+        }
+    }
+
+    // 监听popstate事件
+    window.addEventListener("popstate", function (event) {
+        handleTextColor(event.state);
+    });
+
+    function consoleLog() {
+        console.log(history);
+    }
+</script>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 webSocket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        .content {
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            height: 450px;
+            width: 800px;
+            overflow: auto;
+            padding: 5px;
+        }
+
+        .m-t {
+            margin-top: 10px;
+        }
+
+        input {
+            width: 787px;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 16px;
+            line-height: 1.42857143;
+            color: #555;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        input:focus {
+            outline: 0;
+        }
+
+        button {
+            outline: 0;
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 4px;
+            color: #58666e;
+            background-color: #fcfdfd;
+            box-shadow: 0 1px 1px rgba(90, 90, 90, 0.1);
+            width: 100px;
+        }
+
+        .nickname {
+            width: 200px;
+            height: 20px;
+        }
+
+        .f-r {
+            float: right;
+        }
+
+        p {
+            margin: 10px 0 0 0;
+        }
+
+        .time {
+            font-size: 14px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="m-t">
+    <input type="text" placeholder="请输入昵称" class="nickname" id="nickname">
+    <button id="connect">建立连接</button>
+    <button id="close">断开连接</button>
+</div>
+
+<div class="content m-t" id="content"></div>
+
+<div class="m-t">
+    <input type="text" placeholder="请输入发送的消息" id="sendInfo">
+    <div class="m-t">
+        <button id="send">发送</button>
+    </div>
+</div>
+
+<script>
+    var send = document.getElementById('send');
+    var sendInfo = document.getElementById('sendInfo');
+    var nickname = document.getElementById('nickname');
+    var connect = document.getElementById('connect');
+    var content = document.getElementById('content');
+    var close = document.getElementById('close');
+    var wsClient = null;
+    connect.addEventListener('click', function () {
+        if (nickname.value) {
+            wsClient = new WebSocket('ws://localhost:9000');
+            // 建立连接
+            wsClient.addEventListener('open', function () {
+                console.log('连接建立成功');
+                if (nickname.value) {
+                    var obj = {
+                        username: nickname.value + '已登录'
+                    };
+                    if (wsClient.readyState === 1) {
+                        wsClient.send(JSON.stringify(obj));
+                    } else {
+                        console.log('连接已关闭,无法发送');
+                    }
+                }
+            });
+
+            // 接收来自服务端的推送
+            wsClient.addEventListener('message', function (evt) {
+                handleData(evt.data);
+                connect.setAttribute('disabled', 'true');
+            });
+
+            wsClient.addEventListener('close', function () {
+                console.log('连接关闭');
+            });
+
+            wsClient.addEventListener('error', function () {
+                console.log('出现异常');
+            });
+        } else {
+            alert('请输入昵称');
+        }
+    });
+
+    close.addEventListener('click', function () {
+        wsClient.close();
+    });
+
+    // 发送消息
+    send.addEventListener('click', function () {
+        if (sendInfo.value) {
+            var obj = {
+                username: nickname.value,
+                value: sendInfo.value
+            };
+            if (wsClient.readyState === 1) {
+                if (wsClient.bufferedAmount < 10) {
+                    wsClient.send(JSON.stringify(obj));
+                }
+            } else {
+                console.log('连接已关闭,无法发送');
+            }
+            sendInfo.value = '';
+        }
+    });
+
+    // 处理发送的数据
+    function handleData(data) {
+        var info = JSON.parse(data);
+        var first = document.createElement('p');
+        var second = document.createElement('p');
+        var spanOne = document.createElement('span');
+        var spanTwo = document.createElement('span');
+        spanOne.innerText = info.username;
+        spanTwo.innerText = info.datetime;
+        spanTwo.classList = ['time'];
+        first.appendChild(spanOne);
+        first.appendChild(spanTwo);
+        content.appendChild(first);
+        if (info.value) {
+            second.innerText = info.value;
+            content.appendChild(second);
+        }
+    }
+
+</script>
+
+</body>
+</html>

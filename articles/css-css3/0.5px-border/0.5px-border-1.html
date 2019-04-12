@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>边框0.5px实现方法</title>
+    <style type="text/css">
+        .container {
+            width: 600px;
+            margin: 0px auto;
+        }
+
+        .box {
+            padding: 10px;
+            border: 1px solid #f00;
+        }
+
+        .border-gradient {
+            position: relative;
+            padding: 10px;
+        }
+
+        .border-gradient:after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-image: linear-gradient(0deg, #f00 50%, transparent 50%);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>方案一：渐变</h3>
+    <div class="border-gradient">
+        边框为0.5px
+    </div>
+
+    <div class="box" style="margin-top: 10px;">
+        边框为1px
+    </div>
+</div>
+</body>
+</html>

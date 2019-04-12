@@ -405,6 +405,63 @@ function instance_of(L, R) {
     }
 }
 
+// 将左右侧值进行赋值
+ObjectL = Object, ObjectR = Object;
+// 根据原理获取对应值
+L = ObjectL.__proto__ = Function.prototype;
+R = ObjectR.prototype;
+// 执行第一次判断失败,返回false
+L != R;
+// 继续寻找L.__pro__
+L = L.__proto__ = Function.prototype.__proto__ = Object.prototype;
+// 执行第二次判断成功,返回true
+L === R;
+
+// 将左右侧值进行赋值
+FunctionL = Function, FunctionR = Function;
+// 根据原理获取对应值
+L = FunctionL.__proto__ = Function.prototype;
+R = FunctionR.prototype = Function.prototype;
+// 执行第一次判断成功,返回true
+L === R;
+
+Foo instanceof Foo
+
+// 将左右侧值进行赋值
+FooL = Foo, FooR = Foo;
+// 根据原理获取对应值
+L = FooL.__proto__ = Function.prototype;
+R = FooR.prototype = Foo.prototype;
+// 第一次判断失败,返回false
+L !== R;
+// 继续寻找L.__proto__
+L = L.__proto__ = Function.prototype.__proto__ = Object.prototype;
+// 第二次判断失败,返回false
+L !== R;
+// 继续寻找L.__proto__
+L = L.__proto__ = Object.prototype.__proto__ = null;
+// L为null,返回false
+L === null;
+
+// 将左右侧值进行赋值
+StringL = String, StringR = String;
+// 根据原理获取对应值
+L = StringL.__proto__ = Function.prototype;
+R = StringR.prototype = String.prototype;
+// 第一次判断失败,返回false
+L !== R;
+// 继续寻找L.__proto__
+L = L.__proto__ = Function.prototype.__proto__ = Object.prototype;
+// 第二次判断失败,返回false
+L !== R;
+// 继续寻找L.__proto__
+L = L.__proto__ = Object.prototype.__proto__ = null;
+// L为null,返回false
+L === null;
+
+
+
+
 for (var i = 0, j = 10; i < 10, j < 20; i++, j++) {
     console.log(i, j);
 }

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loading动画</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 830px;
+            overflow-y: scroll;
+            font-family: 'Open Sans',sans-serif;
+            font-weight: 400;
+            color: #777;
+            background-color: #f7f7f7;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        .wrap {
+            float: left;
+            width: 100px;
+            height: 120px;
+            margin: 0 10px 10px 0;
+            padding: 20px 20px 20px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #d2d2d2;
+        }
+
+        .color-A div{
+            background-color: #0ac2d2;
+        }
+
+        .color-B div{
+            background-color: #FF298C;
+        }
+
+        .color-C div{
+            background-color: #761c19;
+        }
+
+        .color-D div{
+            background-color: #2b542c;
+        }
+
+        .color-E div {
+            background-color: #ff720a;
+        }
+
+        .w-300 {
+            width: 300px;
+        }
+        
+        .w-700 {
+            width: 700px;
+        }
+
+        .content {
+            padding: 15px;
+            overflow: hidden;
+            background-color: #e7e7e7;
+            background-color: rgba(0,0,0,.06);
+        }
+
+        .k-line {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .k-lineA-1 {
+            animation: k-loadingA 1.5s 0s infinite;
+        }
+
+        .k-lineA-2 {
+            animation: k-loadingA 1.5s 0.3s infinite;
+        }
+
+        .k-lineA-3 {
+            animation: k-loadingA 1.5s 0.6s infinite;
+        }
+
+        .k-lineA-4 {
+            animation: k-loadingA 1.5s 0.9s infinite;
+        }
+
+        .k-lineA-5 {
+            animation: k-loadingA 1.5s 1.2s infinite;
+        }
+        
+        @keyframes k-loadingA {
+            50% {
+                height: 40px;
+            }
+            100% {
+                height: 15px;
+            }
+        }
+
+        .k-lineB-1 {
+            animation: k-loadingB 1.5s 0s infinite;
+        }
+
+        .k-lineB-2 {
+            animation: k-loadingB 1.5s 0.1s infinite;
+        }
+
+        .k-lineB-3 {
+            animation: k-loadingB 1.5s 0.2s infinite;
+        }
+
+        .k-lineB-4 {
+            animation: k-loadingB 1.5s 0.3s infinite;
+        }
+
+        .k-lineB-5 {
+            animation: k-loadingB 1.5s 0.4s infinite;
+        }
+
+        @keyframes k-loadingB {
+            50% {
+                width: 40px;
+            }
+            100% {
+                width: 15px;
+            }
+        }
+
+        .k-lineC-1 {
+            animation: k-loadingC 1s 0s infinite;
+        }
+
+        .k-lineC-2 {
+            animation: k-loadingC 1s 0.1s infinite;
+        }
+
+        .k-lineC-3 {
+            animation: k-loadingC 1s 0.2s infinite;
+        }
+
+        .k-lineC-4 {
+            animation: k-loadingC 1s 0.3s infinite;
+        }
+
+        .k-lineC-5 {
+            animation: k-loadingC 1s 0.4s infinite;
+        }
+
+        @keyframes k-loadingC {
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .k-lineD-1 {
+            animation: k-loadingD 1.5s 0s infinite;
+        }
+
+        .k-lineD-2 {
+            animation: k-loadingD 1.5s 0.1s infinite;
+        }
+
+        .k-lineD-3 {
+            animation: k-loadingD 1.5s 0.2s infinite;
+        }
+
+        .k-lineD-4 {
+            animation: k-loadingD 1.5s 0.3s infinite;
+        }
+
+        .k-lineD-5 {
+            animation: k-loadingD 1.5s 0.4s infinite;
+        }
+        
+        @keyframes k-loadingD {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            30% {
+                transform: translateY(0);
+                opacity: .3;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: .8;
+            }
+            70% {
+                transform: translateY(3px);
+                opacity: .8;
+            }
+            85% {
+                transform: translateY(-3px);
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .k-line2 {
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            opacity: 0;
+            border-radius: 50%;
+            transform: translateX(-300px);
+            background-color: #4b9cdb;
+        }
+
+        .k-lineE-1 {
+            animation: k-loadingE 4s .8s infinite;
+        }
+
+        .k-lineE-2 {
+            animation: k-loadingE 4s .7s infinite;
+        }
+
+        .k-lineE-3 {
+            animation: k-loadingE 4s .6s infinite;
+        }
+
+        .k-lineE-4 {
+            animation: k-loadingE 4s .5s infinite;
+        }
+
+        .k-lineE-5 {
+            animation: k-loadingE 4s .4s infinite;
+        }
+        
+        @keyframes k-loadingE {
+            50% {
+                transform: translateX(0);
+                opacity: .8;
+            }
+            100% {
+                transform: translateX(300px);
+                opacity: 0;
+            }
+        }
+
+        .k-ring-1 {
+            width: 10px;
+            height: 10px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 7px dashed #000000;
+            border-radius: 50%;
+        }
+
+        .k-loadingF-1 {
+            animation: k-loadingF 1.5s linear infinite;
+        }
+
+        @keyframes k-loadingF {
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .k-ring-2 {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            margin: 0 auto;
+            border: 4px solid #9C27B0;
+            border-radius: 100%;
+        }
+
+        .k-ball-holder {
+            position: absolute;
+            width: 12px;
+            height: 45px;
+            left: 17px;
+            top: 0;
+        }
+
+        .k-ball1a {
+            position: absolute;
+            top: -10px;
+            left: -1px;
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+            background: #F44336;
+        }
+
+        .k-ball2-common {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+        }
+
+        .k-ball2a {
+            top: -10px;
+            left: -1px;
+            background: #F44336;
+        }
+
+        .k-ball2b {
+            top: 14px;
+            right: -25px;
+            background: #2b542c;
+        }
+
+        .k-ball2c {
+            bottom: -10px;
+            left: -1px;
+            background: #761c19;
+        }
+
+        .k-ball2d {
+            top: 14px;
+            left: -27px;
+            background: #ffd500;
+        }
+
+        .k-loadingG-1 {
+            animation: k-loadingG 1.5s linear infinite;
+        }
+
+        @keyframes k-loadingG {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes k-loadingH {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .k-spinner {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            margin: 0 auto;
+            animation: k-loadingH 2s linear infinite;
+        }
+
+        .k-bubble-1, .k-bubble-2 {
+            position: absolute;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            background-color: #4b9cdb;
+        }
+
+        .k-bubble-2 {
+            top: auto;
+            bottom: 0;
+        }
+
+        .k-loadingI-1 {
+            animation: k-loadingI 2s -1s ease-in-out infinite;
+        }
+
+        .k-loadingI-2 {
+            animation: k-loadingI 2s ease-in-out infinite;
+        }
+
+        @keyframes k-loadingI {
+            0%, 100% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="wrap color-A">
+        <p>loading-A</p>
+        <div class="k-line k-lineA-1"></div>
+        <div class="k-line k-lineA-2"></div>
+        <div class="k-line k-lineA-3"></div>
+        <div class="k-line k-lineA-4"></div>
+        <div class="k-line k-lineA-5"></div>
+    </div>
+
+    <div class="wrap w-300 color-B">
+        <p>loading-B</p>
+        <div class="k-line k-lineB-1"></div>
+        <div class="k-line k-lineB-2"></div>
+        <div class="k-line k-lineB-3"></div>
+        <div class="k-line k-lineB-4"></div>
+        <div class="k-line k-lineB-5"></div>
+    </div>
+
+    <div class="wrap color-C">
+        <p>loading-C</p>
+        <div class="k-line k-lineC-1"></div>
+        <div class="k-line k-lineC-2"></div>
+        <div class="k-line k-lineC-3"></div>
+        <div class="k-line k-lineC-4"></div>
+        <div class="k-line k-lineC-5"></div>
+    </div>
+
+    <div class="wrap color-D">
+        <p>loading-D</p>
+        <div class="k-line k-lineD-1"></div>
+        <div class="k-line k-lineD-2"></div>
+        <div class="k-line k-lineD-3"></div>
+        <div class="k-line k-lineD-4"></div>
+        <div class="k-line k-lineD-5"></div>
+    </div>
+
+    <div class="wrap w-700 color-E">
+        <p>loading-E</p>
+        <div class="k-line2 k-lineE-1"></div>
+        <div class="k-line2 k-lineE-2"></div>
+        <div class="k-line2 k-lineE-3"></div>
+        <div class="k-line2 k-lineE-4"></div>
+        <div class="k-line2 k-lineE-5"></div>
+    </div>
+
+    <div class="wrap">
+        <p>loading-F</p>
+        <div class="k-ring-1 k-loadingF-1"></div>
+    </div>
+
+    <div class="wrap">
+        <p>loading-G</p>
+        <div class="k-ring-2">
+            <div class="k-ball-holder k-loadingG-1">
+                <div class="k-ball1a"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <p>loading-H</p>
+        <div class="k-ring-2">
+            <div class="k-ball-holder k-loadingG-1">
+                <div class="k-ball2-common k-ball2a"></div>
+                <div class="k-ball2-common k-ball2b"></div>
+                <div class="k-ball2-common k-ball2c"></div>
+                <div class="k-ball2-common k-ball2d"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <p>loading-I</p>
+        <div class="k-spinner">
+            <div class="k-bubble-1 k-loadingI-1"></div>
+            <div class="k-bubble-2 k-loadingI-2"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

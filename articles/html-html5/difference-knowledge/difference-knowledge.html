@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML差异性知识点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        /*块元素div*/
+        div {
+            width: 200px; /*宽高、外边距、内边距都有效*/
+            height: 30px;
+            border: 1px solid blue;
+            margin: 20px;
+            padding:10px;  /* 此处内边距会引起div宽高的变化，为了比较更直观就注释了 */
+            line-height: 30px;
+        }
+
+        /*行内元素span*/
+        span {
+            width: 200px; /* 设置宽度无效 */
+            height: 100px; /* 设置高度无效 */
+            margin: 20px;  /* 外边距水平方向有效,垂直方向无效 */
+            padding: 10px; /* 内边距水平方向有效,垂直方向无效 */
+            border: 1px solid red;
+        }
+
+        input {
+            width: 200px; /* 设置宽度无效 */
+            height: 100px; /* 设置高度无效 */
+            margin: 20px;  /* 外边距水平方向有效,垂直方向无效 */
+            padding: 10px; /* 内边距水平方向有效,垂直方向无效 */
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<div>块级元素1</div>
+<div>块级元素2</div>
+<div>块级元素3</div>
+
+<span>行内元素1</span>
+<span>行内元素2</span>
+<span>行内元素3</span>
+
+<input type="text" value="行内块级元素1">
+<input type="text" value="行内块级元素2">
+
+
+</body>
+</html>

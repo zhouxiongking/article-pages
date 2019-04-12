@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 email标签</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0 auto;
+            width: 60%;
+            padding: 10px;
+        }
+        p {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<form action="" method="get">
+    <p>请输入邮箱: <input type="email" name="userEmail"></p>
+</form>
+
+<form action="" method="get">
+    <p>请输入url: <input type="url" name="userUrl"></p>
+</form>
+
+<form action="" method="get">
+    <!--<p>请选择日期: <input type="date" name="date" id="date"-->
+                        <!--oninput="changeDate()"></p>-->
+    <!--<p>请选择月份: <input type="month" name="month" id="month" oninput="changeMonth()"></p>-->
+    <!--<p>请选择星期: <input type="week" name="week" id="week" oninput="changeWeek()"></p>-->
+    <!--<p>请选择时分: <input type="time" name="time" id="time" oninput="changeTime()"></p>-->
+    <p>请选择时间: <input type="datetime-local" name="datetime-local"
+                        id="datetime-local"
+                        oninput="changeLocal()"></p>
+</form>
+
+<script>
+    var datetimeLocal = document.getElementById('datetime-local');
+//    console.log(datetimeLocal.value);
+
+    datetimeLocal.value = '2019-03-12T12:33';
+
+    function changeDate() {
+        var datetimeLocal = document.getElementById('date');
+        console.log(datetimeLocal.value);
+    }
+
+    function changeMonth() {
+        var month = document.getElementById('month');
+        console.log(month.value);
+    }
+
+    function changeWeek() {
+        var week = document.getElementById('week');
+        console.log(week.value);
+    }
+
+    function changeTime() {
+        var time = document.getElementById('time');
+        console.log(time.value);
+    }
+
+    function changeLocal() {
+        var datetimeLocal = document.getElementById('datetime-local');
+        console.log(datetimeLocal.value);
+    }
+</script>
+
+<form action="" method="get">
+    <input type="text" list="list" placeholder="请输入手机类型" onchange="listSelect()">
+    <datalist id="list">
+        <option>huawei</option>
+        <option>iphone</option>
+        <option>xiaomi</option>
+        <option>samsung</option>
+    </datalist>
+</form>
+
+<script>
+    function listSelect() {
+        console.log('ddd');
+    }
+</script>
+
+<form action="" method="get">
+    <input type="submit" value="提交" formnonvalidate />
+
+    <label for="username">用户名:</label>
+    <input type="text" id="username">
+</form>
+
+<!--<label for="username">用户名:</label>-->
+<!--<input type="text" id="username">-->
+
+</body>
+</html>

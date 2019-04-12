@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+这是history2页面,<a href="#" onclick="history.go(-1)">返回</a>
+
+<script>
+    window.addEventListener('popstate', function () {
+        console.log('indeee');
+    });
+</script>
+
+</body>
+</html>

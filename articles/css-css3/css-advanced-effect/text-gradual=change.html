@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本渐变</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .method-one {
+            background-image: -webkit-linear-gradient(bottom, rgb(201, 21, 134), rgb(20, 123, 255));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .method-two {
+            color: #C91586;
+        }
+
+        .method-two::before {
+            content: attr(data-text);
+            position: absolute;
+            z-index: 10;
+            color: #147BFF;
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+                                from(transparent), color-stop(50%, rgba(0, 0, 0, 1)),
+                                to(transparent));
+        }
+        .method-three {
+            background-image: -webkit-linear-gradient(bottom, rgb(201, 21, 134), rgb(20, 11, 255));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .simple-box {
+            height: 100px;
+            width: calc(100% - 100px);
+            background: #0ac2d2;
+        }
+
+        .complex-box {
+            height: 100px;
+            width: calc(100% - 50% / 3);
+            padding: 5px calc(3% - 2px);
+            margin-left: calc(10% + 10px);
+            background-color: #0ac2d2;
+        }
+
+    </style>
+</head>
+<body>
+
+<p class="method-one">你好，我是渐变的字体</p>
+
+<p class="method-two" data-text="你好，我是渐变的字体">你好，我是渐变的字体</p>
+
+<p class="method-three">你好，我是渐变的字体</p>
+
+</body>
+</html>
