@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var arr1 = [11, 22, 33];
+        for (var i = 0; i < arr1.length; i++) {
+            console.log(arr1[i]);
+        }
+
+        var arr2 = [11, 22, 33];
+        arr2.forEach(function (element, index, array) {
+            if (index === 1) {
+                return false;
+            }
+            console.log(element);
+        });
+
+        var numbers = [4, 9, 16, 25];
+        var result = [].map(Math.sqrt);
+        console.log(result); // [2, 3, 4, 5]
+
+        var arr3 = [1, 2, 3];
+        var result = arr3.map(function (item, index, arr) {
+            item * item;
+        });
+        console.log(result); // [undefined, undefined, undefined]
+
+        // 定义判断的方法
+        function isBigEnough(element, index, array) {
+            return element > 11;
+        }
+
+        // 测试some()方法
+        var passed1 = [8, 9, 10, 11].some(isBigEnough);
+        var passed2 = [8, 9, 10, 11, 12].some(isBigEnough);
+        console.log(passed1); // false
+        console.log(passed2); // true
+
+        // 测试every()方法
+        var passed3 = [11, 12, 13].every(isBigEnough);
+        var passed4 = [12, 13].every(isBigEnough);
+        console.log(passed3); // false
+        console.log(passed4); // true
+
+        var ages = [32, 33, 16, 40];
+        // 定义回调函数
+        function checkAdult(age) {
+            return age >= 18;
+        }
+        var result = ages.filter(checkAdult);
+        console.log(result); // [32, 33, 40]
+
+
+        var numbers = [15, 32, 81, 4];
+        // 定义reduce方法的回调函数
+        function getSum(total, num) {
+            return total + num;
+        }
+        var result = numbers.reduce(getSum, 0);
+        console.log(result); // 132
+
+        var ages = [32, 33, 16, 40];
+        // 定义回调函数
+        function checkAdult(age) {
+            return age >= 18;
+        }
+        var result = ages.find(checkAdult);
+        console.log(result); // 32
+
+        var a = [1, 2, 3];
+        var b = {};
+        var c = function () { }
+        var d = Date;
+        console.log(typeof a); // object
+        console.log(typeof b); // object
+        console.log(typeof c);
+
+        function Person() { }
+        var p = new Person();
+        console.log(p instanceof Person); // true
+
+        var a = [1, 2, 3];
+        console.log(a instanceof Array);  // true
+        console.log(a instanceof Object); // true
+
+        var b = { name: 'kingx' };
+        console.log(b instanceof Array);  // false
+        console.log(b instanceof Object); // true
+
+        // 判断变量是数组还是对象
+        function getDataType(o) {
+            if (o instanceof Array) {
+                return 'Array'
+            } else if (o instanceof Object) {
+                return 'Object';
+            } else {
+                return 'param is no object type';
+            }
+        }
+
+        console.log(getDataType(a)); // Array
+        console.log(getDataType(b)); // Object
+
+        var a = [];
+        console.log(a.constructor === Array);  // true
+        console.log(a.constructor === Object); // false
+
+        var b = {};
+        console.log(b.constructor === Array);  // false
+        console.log(b.constructor === Object); // true
+
+        [].__proto__ === [].constructor.prototype;  // true
+        [].__proto__ === Array.prototype;  // true
+
+        [].constructor === [].__proto__.constructor
+
+
+        var a = [];
+        console.log(a.__proto__.constructor === Array);  // true
+        console.log(a.__proto__.constructor === Object); // false
+
+
+        // 判断变量是数组还是对象
+        function getDataType(o) {
+            // 获取构造方法
+            var constructor = o.__proto__.constructor || o.constructor;
+            if (constructor === Array) {
+                return 'Array';
+            } else if (constructor === Object) {
+                return 'Object';
+            } else {
+                return 'param is no object type';
+            }
+        }
+
+        console.log(getDataType([])); // Array
+        console.log(getDataType({})); // Object
+
+        var a = [];
+        var b = {};
+
+        Object.prototype.toString.call(a); // [object Array]
+        Object.prototype.toString.call(b); // [object Object]
+
+        // 判断变量是数组还是对象
+        function getDataType(o) {
+            var result = Object.prototype.toString.call(o);
+            if (result === '[object Array]') {
+                return 'Array';
+            } else if (result === '[object Object]') {
+                return 'Object';
+            } else {
+                return 'param is no object type';
+            }
+        }
+
+        console.log(getDataType([])); // Array
+        console.log(getDataType({})); // Object
+
+        // 下面的函数调用都返回 true
+        Array.isArray([]);
+        Array.isArray([1]);
+        Array.isArray(new Array());
+        // 鲜为人知的事实：其实 Array.prototype 也是一个数组。
+        Array.isArray(Array.prototype);
+
+        // 下面的函数调用都返回 false
+        Array.isArray();
+        Array.isArray({});
+        Array.isArray(null);
+        Array.isArray(undefined);
+        Array.isArray(8);
+        Array.isArray('Array');
+        Array.isArray(true);
+
+        // Object instanceof Object;  
+        // Function instanceof Function;  
+        // Number instanceof Number;
+        // Foo instanceof Foo; 
+
+        function A() { }
+        function B() { }
+
+        var a = new A();
+
+        console.log(a instanceof A); // true
+        console.log(a instanceof B); // false
+        console.log(a instanceof Object); // true
+
+        // A继承B
+        A.prototype = new B();
+
+        var a2 = new A();
+
+        console.log(a2 instanceof A); // true
+        console.log(a2 instanceof B); // true
+
+        /**
+        * instanceof 实现原理
+        * @param L 表示左表达式
+        * @param R 表示右表达式
+        * @returns {boolean}
+        */
+        function instance_of(L, R) {
+            var O = R.prototype; // 取 R 的显示原型
+            L = L.__proto__; // 取 L 的隐式原型
+            while (true) {
+                if (L === null)
+                    return false;
+                if (O === L) // 这里重点：当 O 严格等于 L 时，返回 true
+                    return true;
+                L = L.__proto__;  // 如果不相等则重新取L的隐式原型
+            }
+        }
+
+        
+
+
+
+    </script>
+
+
+</body>
+
+</html>

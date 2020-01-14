@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            width: 600px;
+            padding: 10px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff720a;
+            display: inline-block;
+            opacity: 0;
+        }
+
+        .circle1 {
+            animation: loading 4s 1s infinite;
+        }
+
+        .circle2 {
+            animation: loading 4s .9s infinite;
+        }
+
+        .circle3 {
+            animation: loading 4s .8s infinite;
+        }
+
+        .circle4 {
+            animation: loading 4s .7s infinite;
+        }
+
+        .circle5 {
+            animation: loading 4s .6s infinite;
+        }
+
+        @keyframes loading {
+            50% {
+                transform: translateX(300px);
+                opacity: .8;
+            }
+            100% {
+                transform: translateX(600px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="title">这是一个自定义的loading效果</div>
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+        <div class="circle circle5"></div>
+    </div>
+
+    <a href="http://www.baidu.com">这是一个链接</a>
+    <script>
+        const a = sessionStorage.getItem('name');
+        const obj = {'name': 'kingx', 'age': '12', 'sttr': null, 'param1': null};
+        if (!a) {
+            sessionStorage.setItem('name', JSON.stringify(obj));
+        } else {
+            a = JSON.parse(a);
+            alert(a);
+        }
+    </script>
+</body>
+</html>
