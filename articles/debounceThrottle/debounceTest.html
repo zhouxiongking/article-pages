@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="input" />
+
+    <script>
+        // 防抖是一定时间段内连续触发的行为，只执行最后一次
+        function debounce(fn, time) {
+            let timeout = null;
+            return function (...args) {
+                // 如果定时器存在，则清空上一次的定时器
+                if (timeout) {
+                    clearTimeout(timeout);
+                    timeout = null;
+                } else {
+                    // 首次触发，立即执行
+                    if (!timeout) {
+                        fn.apply(this, args);
+                    }
+                }
+                timeout = setTimeout(() => {
+                    fn.apply(this, args);
+                }, time);
+            }
+        }
+
+        function inputCheck(event) {
+            const value = event.target.value;
+            sendRequest(value);
+        }
+
+        inputCheck = debounce(inputCheck, 500);
+
+        // 向服务端发送请求
+        function sendRequest(value) {
+            console.log(value);
+        }
+
+        document.getElementById('input').oninput = inputCheck;
+    </script>
+
+</body>
+
+</html>

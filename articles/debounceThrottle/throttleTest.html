@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input" />
+
+    <script>
+        // 优化版，增加对当前时间的记录
+        function throttle(fn, time) {
+            let pre = 0;
+            let timeout = null;
+            return function (...args) {
+                let now = new Date().getTime();
+                // 前后两次触发如果超过了设定的时间，则理解执行
+                if (now - pre > time) {
+                    pre = now;
+                    fn.apply(this, args);
+                } else {
+                    // 后续时间间隔内的行为将不再触发
+                    if (timeout) {
+                        clearTimeout(timeout);
+                        timeout = null;
+                    }
+                    // 最后一次仍然会触发
+                    timeout = setTimeout(() => {
+                        pre = now;
+                        fn.apply(this, args);
+                    }, time);
+                }
+            }
+        }
+
+        function inputCheck(event) {
+            const value = event.target.value;
+            sendRequest(value);
+        }
+
+        inputCheck = throttle(inputCheck, 500);
+
+        // 向服务端发送请求
+        function sendRequest(value) {
+            console.log(value);
+        }
+
+        document.getElementById('input').oninput = inputCheck;
+
+
+    </script>
+</body>
+
+</html>
