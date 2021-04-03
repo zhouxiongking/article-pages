@@ -19,3 +19,6 @@ function getMaxCount(str) {
   }
   return '出现次数最多的字符为：' + maxCountChar + ', 出现的次数为：' + maxCount;
 }
+
+var str = 'hellojavascripthellohtmlhellocss';
+console.log(getMaxCount(str));
