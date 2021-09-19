@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+#bg {
+  height: 100vh;
+  width: auto;
+  background: radial-gradient(
+    150% 95% at bottom center,
+    rgb(67, 19, 122) 20%,
+    rgb(6, 6, 70) 55%,
+    rgb(7, 7, 70) 70%,
+    rgb(18, 2, 56) 85%,
+    rgb(5, 1, 22) 100%
+  );
+  overflow: hidden;
+  z-index: 1;
+}
+
+#water {
+  position: relative;
+  top: 70vh;
+  height: 30vh;
+  width: auto;
+  /* background: -webkit-linear-gradient(bottom,rgb(10,10,78),rgb(4,11,99)); */
+  /* background-color: rgb(3,13,65); */
+  /* background: radial-gradient(13.3% 54% at 50.5% 0%,rgb(247, 247, 235) 78%,rgb(18, 2, 56) 85%,rgb(7, 2, 37) 100%); */
+  z-index: 2;
+
+  box-shadow: 0 0 20px rgba(221, 225, 222, 0.9);
+}
+
+#moon {
+  height: 400px;
+  width: 400px;
+  background-color: rgb(250, 246, 227);
+  border-radius: 50%;
+  z-index: 1;
+  position: absolute;
+  left: 40%;
+  font-family: cursive;
+  box-shadow: 0 0 50px rgba(251, 255, 254, 2);
+}
+@keyframes rotate {
+  0% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg)
+      rotateY(-360deg);
+  }
+}
+.stars,
+.starUnder {
+  transform: perspective(500px);
+  transform-style: preserve-3d;
+  position: absolute;
+  bottom: 0;
+  perspective-origin: 50% 100%;
+  left: 50%;
+  animation: rotate 270s infinite linear;
+}
+
+.star,
+.star1 {
+  width: 2px;
+  height: 2px;
+  background: rgb(247, 204, 232);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0 -300px;
+  transform: translate3d(0, 0, -300px);
+  backface-visibility: hidden;
+}
+
+.star1 {
+  background-color: aliceblue;
+  box-shadow: 0 0 10px rgb(221, 225, 222);
+}
+
+#girl {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 64%;
+  top: 28%;
+  z-index: 3;
+}
+
+.thisTime {
+  position: absolute;
+  font-family: cursive;
+  top: 8%;
+  left: 50%;
+}
+
+.Ocean {
+  position: absolute;
+  left: 30%;
+  top: 0%;
+}
+
+.thisTime,
+.Ocean p {
+  font-size: 34px;
+  font-weight: bold;
+  position: relative;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

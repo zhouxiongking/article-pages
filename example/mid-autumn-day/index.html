@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>test</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="bg">
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <!-- <img src="images/邀明月2.png" id="boat">
+    <img src="images/邀明月（影）2.png" id="shadow"> -->
+    <div id="water">
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+      <div class="starUnder"></div>
+    </div>
+    <!-- <div id="moon">
+    </div> -->
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      var poem1 = ["海", "上", "升", "明", "月"];
+      var poem2 = ["天", "涯", "共", "此", "时"];
+      var arrWid = [0, 80, 320];
+      var arrHgt = [0, 10, 200];
+      var posTop = [0, 2, 13, 46];
+      var spdWid = 16;
+      var spdHgt = 10;
+      // var moon = document.getElementById("moon");
+      var water = document.getElementById("water");
+      var Ocean = document.getElementsByClassName("Ocean");
+      // moon.style.top = 670 + "px";
+      // var timer = setInterval(function () {
+      //   moon.style.top = moon.offsetTop - 10 + "px";
+      //   if (moon.offsetTop >= 660) {
+      //     bg(arrWid[0], arrHgt[0], 0);
+      //   } else if (moon.offsetTop >= 440) {
+      //     if (arrWid[1] >= 200 || arrHgt[1] >= 110) {
+      //       spdHgt = 7.5;
+      //       spdWid = 8;
+      //     }
+      //     arrWid[1] += spdWid;
+      //     arrHgt[1] += spdHgt;
+
+      //     bg(arrWid[1], arrHgt[1], 0);
+      //   } else if (moon.offsetTop >= 430) {
+      //     bg(arrWid[2], arrHgt[2], 0);
+      //   } else if (moon.offsetTop >= 420) {
+      //     posTop[0] += 2;
+      //     bg(arrWid[2], arrHgt[2], posTop[0]);
+      //   } else if (moon.offsetTop >= 410) {
+      //     posTop[1] += 11;
+      //     bg(arrWid[2], arrHgt[2], posTop[1]);
+      //   } else if (moon.offsetTop >= 240) {
+      //     posTop[2] += 2;
+      //     bg(arrWid[2], arrHgt[2], posTop[2]);
+      //   } else if (moon.offsetTop >= 140) {
+      //     posTop[3] += 0.4;
+      //     //月亮即将完全升起时开始改变它的大小（影）
+      //     if (moon.offsetTop <= 260 && moon.offsetTop >= 140) {
+      //       arrWid[2] -= 4;
+      //       arrHgt[2] -= 1;
+      //       bg(arrWid[2], arrHgt[2], posTop[3]);
+      //     }
+      //   } else {
+      //     bg(284, 190, 50);
+      //     clearInterval(timer);
+      //     var a = document.createElement("div");
+      //     a.className = "Ocean";
+      //     moon.appendChild(a);
+      //     moon.innerHTML += "<img id='girl' src='./images/1.png'>";
+      //     var girl = document.getElementById("girl");
+      //     girl.style.animation = "appear 6s linear";
+      //     word(Ocean[0], 500, poem1);
+      //     var timeOut = setTimeout(function () {
+      //       var div = document.createElement("div");
+      //       div.className = "thisTime";
+      //       moon.appendChild(div);
+      //       var thisTime = document.getElementsByClassName("thisTime");
+      //       word(thisTime[0], 500, poem2);
+      //       clearTimeout(timeOut);
+      //     }, 2500);
+      //   }
+      // }, 100);
+
+      createStar(40, ".stars", "star", 1, 300, 360, -100);
+      createStar(40, ".starUnder", "star1", 1.5, 360, 300, 200);
+      //修改倒影
+      function bg(widSpd, hgtSpd, posTop) {
+        return water.style.background = "radial-gradient(" + widSpd + "px " + hgtSpd + "px at 50.5% " + posTop + "%,rgb(250, 250, 249) 50%,rgb(247, 247, 245) 63%,rgb(7,7,70) 70%,rgb(18, 2, 56) 85%,rgb(13, 1, 59) 100%)";
+      };
+      //制造星星
+      function createStar(starNum, element, element2, scal, deg, rotY, rotX) {
+        var stars = starNum;
+        var $stars = $(element);
+        var r = 2000;
+        for (var i = 0; i < stars; i++) {
+          var $star = $("<div/>").addClass(element2);
+          $stars.append($star);
+        }
+        $("." + element2).each(function () {
+          var cur = $(this);
+          var s = 0.2 + (Math.random() * scal);
+          var curR = r + (Math.random() * deg);
+          cur.css({
+            transformOrigin: "0 0 " + curR + "px",
+            transform: " translate3d(0,0,-" + curR + "px) rotateY(" + (Math.random() * rotY) + "deg) rotateX(" + (Math.random() * rotX) + "deg) rotateY(" + -10 + "deg) scale(" + s + "," + s + ")"
+          })
+        })
+      }
+      //字
+      function word(className, dur, array) {
+        var i = 0;
+        var timeName = setInterval(function () {
+          className.style.animation = "appear 4s linear";
+          var p = document.createElement("p");
+          p.innerHTML = array[i];
+          className.appendChild(p);
+          i++;
+          if (i >= array.length) {
+            clearInterval(timeName);
+          }
+        }, dur);
+      }
+
+    })
+  </script>
+</body>
+
+</html>

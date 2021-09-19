@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(
+      circle at center center,
+      transparent 0px,
+      transparent 8px,
+      rgba(255, 255, 255, 0.05) 8px,
+      rgba(255, 255, 255, 0.05) 11px,
+      transparent 11px,
+      transparent 17px,
+      rgba(255, 255, 255, 0.05) 17px,
+      rgba(255, 255, 255, 0.05) 25px,
+      transparent 25px,
+      transparent 38px,
+      rgba(255, 255, 255, 0.05) 38px,
+      rgba(255, 255, 255, 0.05) 42px
+    ),
+    repeating-radial-gradient(
+      circle at center center,
+      rgb(170, 0, 0) 0px,
+      rgb(170, 0, 0) 11px,
+      rgb(170, 0, 0) 11px,
+      rgb(170, 0, 0) 19px,
+      rgb(170, 0, 0) 19px,
+      rgb(170, 0, 0) 24px,
+      rgb(170, 0, 0) 24px,
+      rgb(170, 0, 0) 33px,
+      rgb(170, 0, 0) 33px,
+      rgb(170, 0, 0) 44px,
+      rgb(170, 0, 0) 44px,
+      rgb(170, 0, 0) 46px
+    );
+  background-size: 60px 60px;
+}
