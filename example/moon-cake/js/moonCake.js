@@ -20,7 +20,6 @@ MoonCake.prototype.render = function (ctx) {
   if (!ctx) throw new Error('context is undefined.');
   this.ctx = ctx;
   this.stepFn.length = 0;
-  Z
   this.stepFn.push(() => this.drawEdge(180, 20));
   this.stepFn.push(() => this.drawEdge(140, 12));
   this.stepFn.push(() => this.drawRoundRectPath(140, 220, 40));
