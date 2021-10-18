@@ -68,26 +68,30 @@ function foo() {
   console.log(a); // undefined
 }
 
-// 3.变量提升和函数提升优先级
-function fn () {
-  console.log(typeof foo);
-      
-  var foo = 'string';
-
-  function foo() {
-    return 'hello';
-  }
-  console.log(typeof foo);
+// 3. 变量提升和函数提升的优先级
+console.log(a);
+console.log(a());
+var a = 1;
+function a() {
+  console.log(2);
 }
-fn();
+a = 3;
+console.log(a);
+console.log(a());
 
-function fn () {
-  var foo;
-  function foo() {
-    return 'hello';
-  }
-  console.log(typeof foo);
-
-  foo = 'string';
-  console.log(typeof foo);
+// 
+function a() {
+  console.log(2);
 }
+var a;
+console.log(a);   // function a
+console.log(a()); // 2
+a = 1;
+a = 3;
+console.log(a);  // 3
+console.log(a()); // Error
+
+// 函数提升的优先级高于变量提升
+// 对于相同名称的变量声明是不会覆盖掉函数声明的
+// 但是变量的赋值是会覆盖函数是声明
+
