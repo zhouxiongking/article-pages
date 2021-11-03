@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+  </ul>
+  <script>
+    var lis = document.querySelectorAll('li');
+    for (var i = 0; i < lis.length; i++) {
+      lis[i].onclick = function() {
+        console.log(lis[i].innerText);
+      }
+    }
+
+
+
+
+
+    // i = 0; lis[0] -> onlick lis[i]; // i = 5
+    // i = 1; lis[1] -> onlick lis[i]; // i = 5
+    // i = 2; lis[2] -> onlick lis[i]; // i = 5
+    // i = 3; lis[3] -> onlick lis[i]; // i = 5
+    // i = 4; lis[4] -> onlick lis[i]; // i = 5
+    // i = 5;
+    // 闭包1
+    // for (var i = 0; i < lis.length; i++) {
+    //   (function(index) {
+    //     lis[index].onclick = function() {
+    //       console.log('index:', index);
+    //       console.log(lis[index].innerText);
+    //     }
+    //   })(i);
+    // }
+    // 闭包2
+    for (var i = 0; i < 2; i++) {
+      lis[i].onclick = (function(index) {
+        return function() {
+          console.log('index:', index);
+          console.log(lis[index].innerText);
+        }
+      })(i);
+    }
+  </script>
+</body>
+</html>
