@@ -467,7 +467,7 @@ function draw() {
 
 ### 2.15 让烟花粒子更有连续感
 
-在sketch.js的draw()方法中，设置colorMod()。
+在sketch.js的draw()方法中，设置colorMode()。
 
 ```
 function draw() {
