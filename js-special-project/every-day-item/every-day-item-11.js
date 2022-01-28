@@ -22,3 +22,7 @@ while (new Date() - date < 1000) {} // 等待一秒
 console.log(4, new Date() - date);
 // 16-17 同步代码，输出4
 // 1 3 等待一秒输出4，输出2
+
+setTimeout(() => {
+  console.log(2, new Date() - date);
+}, 500);

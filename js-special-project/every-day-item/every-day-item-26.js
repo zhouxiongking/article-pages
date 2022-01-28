@@ -1,44 +1,22 @@
 // https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/96
-// 某公司 1 到 12 月份的销售额存在一个对象里面 
-
-
-// https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/63
-
-fn = () => {
-  console.log('一秒后执行');
-};
-
-function sleep(time) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, time);
-  });
-}
-
-console.log('开始');
-sleep(1000).then(fn);
-
-async function output() {
-  console.log('开始');
-  await sleep(1000);
-  fn();
-}
-
-output();
-
-function* sleepGenerator(time) {
-  yield new Promise(resolve => {
-    setTimeout(resolve, time);
-  });
-}
-sleepGenerator(1000).next().value.then(fn);
-
-function sleep(time) {
-  const start = Date.now();
-  let end;
-  while (true) {
-    end = Date.now();
-    if (end - start > time) break;
+// Done~~~
+/**
+ * 将某公司销售额由对象存储转换为数组存储
+ * 输入：{1: 222, 2: 123, 5: 888}
+ * 输出：[222, 213, null, null, 888, null, null, null, null, null, null, null]
+ */
+// 方法1
+const obj = {1: 222, 2: 123, 5: 888};
+let result = Array.from({ length: 12 });
+result = result.map((item, index) => {
+  if (obj[index + 1]) {
+    return obj[index + 1];
   }
-}
-sleep(1000);
-fn()
+  return null;
+});
+
+// 方法2
+let result = Array.from({ length: 12 }).fill(null);
+Object.keys(obj).forEach(item => {
+  result[item - 1] = obj[item];
+});
