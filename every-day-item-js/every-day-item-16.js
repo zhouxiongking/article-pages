@@ -50,3 +50,5 @@ var normalize = (str) => {
   return result;
 };
 normalize('[abc[bcd[def]]]');
+
+

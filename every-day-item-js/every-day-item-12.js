@@ -45,5 +45,3 @@ const result1 = rgb2Hex(rgb1);
 const result2 = rgb2Hex(rgb2);
 const result3 = rgb2Hex(rgb3);
 
-
-
