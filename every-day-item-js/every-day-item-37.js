@@ -1,8 +1,2 @@
-var name = 'in window'
-var obj = {
-    name: "in obj",
-    getName: function() { return this.name }
-}
-console.log(obj.getName());
-console.log((obj.getName)());
-console.log((obj.getName = obj.getName)());
+// https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/237
+// 统计 1 ~ n 整数中出现 1 的次数

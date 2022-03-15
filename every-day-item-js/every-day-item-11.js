@@ -26,3 +26,12 @@ console.log(4, new Date() - date);
 setTimeout(() => {
   console.log(2, new Date() - date);
 }, 500);
+
+
+console.log('start');
+Promise.resolve().then(console.log(1));
+console.log('end');
+
+console.log('start');
+new Promise((resolve) => resolve()).then(() => {}).then(console.log(1));
+console.log('end');

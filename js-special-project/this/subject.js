@@ -39,6 +39,6 @@ newFunc()(); // global
 // 语句5
 obj.func.bind({ _name: 'bindObj' }).apply({ _name: 'applyObj' })();
 // this一旦被bind后，就不会再被call和apply修改
-// obj.func.bind({ _name: 'bindObj' }) 
+// obj.func.bind({ _name: 'bindObj' })
 // this -> { _name: 'bindObj' }
 // apply -> { _name: 'bindObj' } -> bindObj

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/immutable/4.0.0/immutable.min.js"></script>
+  <title>合并多个对象</title>
+  <script>
+    // Done~~~~~
+    // 合并多个对象
+    const obj1 = { a: 1, b: 2 };
+    const obj2 = { b: 3, c: 4 };
+
+    // 方法1. Object.assign()
+    const result1 = Object.assign(obj1, obj2);
+    console.log(result1);
+    // Object.assign
+    // 1. 同名属性会覆盖
+    // 2. 第一个参数如果不为对象，则需要转换为对象，
+    //    然后进行属性合并，如果转换失败则抛出异常
+    // 3. 除了第一个参数，如果不为对象，则会转换为对象，
+    //    如果转换失败，则直接忽略
+
+    // 方法2：扩展运算符
+    const result2 = { ...obj1, ...obj2 };
+    console.log(result2);
+
+    // 扩展运算符
+    // 1. 同名属性会覆盖
+    // 2. 对于第一个参数没有限制，
+    //    如果不能转换为对象，则直接忽略
+
+    // 方法3：jQuery.extend
+    const result3 = jQuery.extend(obj1, obj2);
+    console.log(result3);
+
+    // 方法4：lodash.assign() 
+    const result4 = _.assign(obj1, obj2);
+    console.log('result4:', result4);
+
+    // 方法5：lodash.merge()
+    const result5 = _.merge(obj1, obj2);
+    console.log(result5);
+
+    // lodash.merge和lodash.assign的区别
+    // lodash.assign是基于Object.assign实现的,
+    //  遇到同名属性会覆盖
+    // lodash.merge 遇到同名属性值是对象字面量形式或者集合形式,
+    //  按照对象属性进行合并或者数组索引位进行值合并
+    //              
+    const obj3 = {
+      c: 1,
+      d: {
+        e: 1,
+        f: 2
+      },
+      h: [
+        { i: 1 },
+        { i: 2 }
+      ]
+    };
+    const obj4 = {
+      c: 2,
+      d: {
+        e: 3,
+        g: 4
+      },
+      h: [
+        { j: 3 },
+        { j: 4 }
+      ]
+    };
+    const result6 = _.merge(obj3, obj4);
+    // const result7 = _.assign(obj3, obj4);
+    console.log('result6:', result6);
+    // console.log('result7:', result7);
+
+    // 方法6：Immutable.merge
+    const result8 = Immutable.merge(obj1, obj2);
+    console.log(result8);
+
+  </script>
+</head>
+<body>
+</body>
+</html>

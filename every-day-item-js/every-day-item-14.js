@@ -80,6 +80,18 @@ function test(){
     while (i-- >= 0) {
       var res = await square(x);
     }
-    console.log(res) }) 
+    console.log(res) });
 }
 test();
+
+// 方法5：使用reduce的方法 
+[1, 2, 3].reduce((pre,cur)=>{
+  return pre.then(() => {
+      return new Promise((resolve,reject)=>{
+          setTimeout(() => {
+              console.log(cur * cur);
+              resolve(cur * cur);
+          }, 1000);
+      })
+  })
+},Promise.resolve());
