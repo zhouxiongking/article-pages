@@ -1,0 +1,1 @@
+// Promise.all和Promise.race的区别的使用场景
