@@ -1,3 +1,5 @@
+// https://www.cnblogs.com/echolun/p/13971943.html
+// Done~~~
 // 数组中找到与目标值最接近的数字
 // arr = [1, 3, 5, 6, 10];
 // target = 7; -> 6

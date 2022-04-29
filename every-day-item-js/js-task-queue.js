@@ -52,7 +52,7 @@ class TaskQueue {
 }
 
 const taskQueue = new TaskQueue();
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 32; i++) {
   const task = createTask(i);
   taskQueue.addTask(task);
 }
