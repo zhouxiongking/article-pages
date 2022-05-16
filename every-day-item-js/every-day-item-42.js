@@ -40,7 +40,6 @@ function swap(arr, i, j) {
 function perm(arr) {
   function fn(n) {
     for (let i = n; i < arr.length; i++) {
-      console.log(i, n);
       swap(arr, i, n);
       if (n + 1 < arr.length - 1) {
         fn(n + 1);
@@ -48,8 +47,8 @@ function perm(arr) {
         console.log(arr);
       }
       swap(arr, i, n);
-      console.log(arr);
     }
   }
   fn(0);
 }
+perm(['a', 'b', 'c', 'd']);

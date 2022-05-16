@@ -47,11 +47,14 @@ const obj3 = {
   a: 'a',
   1: '1',
   c: 'c',
+  '-1': '-1',
   3: '3',
   b: 'b',
+  [Symbol('s1')]: 's1',
 };
-obj3[sa] = 'sa';
-Object.keys(obj3);
+Object.keys(obj3).forEach(i => {
+  console.log(i, obj3[i]);
+});
 
 // 4.属性中有Symbol，返回的顺序是什么样的？
 Object.keys({
