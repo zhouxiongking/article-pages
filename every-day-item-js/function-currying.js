@@ -19,12 +19,12 @@ var currying = function (func) {
       args.push(...rest);
       return result;
     }
-  }
+  };
 };
 
-currying(sumFn)(1)(2)(3)();  // 6
+currying(sumFn)(1)(2)(3)(); // 6
 currying(sumFn)(1, 2)(3, 4)(5)(); // 15
-currying(sumFn)(1)(2, 3, 4, 5)(6)();  // 21
+currying(sumFn)(1)(2, 3, 4, 5)(6)(); // 21
 currying(sortFn)(1)(3)(2)(6, 4)(5)();
 
 // 函数柯里化
@@ -42,3 +42,33 @@ function add(x) {
   };
 }
 add(1)(2);
+
+// 方法2：通过fn.length和已经获取到的传入参数进行比较
+function curry(f, ...savedArgs) {
+  return function () {
+    const args = [...savedArgs, ...arguments];
+    // 当实际接收的参数已经和函数的形参长度相等了，表示已经传递完了
+    // f.length是函数的形参个数
+    // 如果在ES6里，length指向的是第一个具有默认值的形参之前的形参个数
+    if (args.length >= f.length) {
+      return f(...args);
+    }
+    return curry(f, ...args);
+  };
+}
+
+function add(a, b, c) {
+  return a + b + c;
+}
+
+curry(add)(1)(2)(3);
+curry(add)(1, 2)(3);
+curry(add)(1)(2, 3);
+curry(add)(1, 2, 3);
+
+// 在ES6里，关于函数的length属性
+function fn1 (a,b) {} // 因为 a, b 都没有默认值，length 的值为 2
+function fn2 (a=1,b) {} // 因为 a 为“第一个具有默认值的形参”，而a的前面没有其它形参了，所以 length 为 0
+function fn3 (a,b=1,c) {} // b为 “第一个具有默认值的形参”，前面还有a, length 值为 1
+function fn4 (a,b,c=1) {} // length 值为 2
+function fn5 (a,b=1,c,d=2) {} // length 值为 1 (第一个具有默认值的形参为b,前面只有a)

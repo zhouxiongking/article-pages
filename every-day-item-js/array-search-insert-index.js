@@ -34,12 +34,12 @@ function searchInsert1(array, target) {
 }
 
 const arr = [1, 3, 5, 6];
-const r1 = searchInsert1(arr, 5);
-const r2 = searchInsert1(arr, 2);
-const r3 = searchInsert1(arr, 7);
-console.log('r1: ', r1);
-console.log('r2: ', r2);
-console.log('r3: ', r3);
+// const r1 = searchInsert1(arr, 5);
+// const r2 = searchInsert1(arr, 2);
+// const r3 = searchInsert1(arr, 7);
+// console.log('r1: ', r1);
+// console.log('r2: ', r2);
+// console.log('r3: ', r3);
 
 /**
  * 2. 二分查找
