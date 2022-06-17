@@ -10,8 +10,8 @@
 <style>
   details {
     position: relative;
-    padding-left: 20px;
     width: 300px;
+    padding-left: 20px;
   }
   summary {
     list-style: none;
@@ -21,36 +21,37 @@
     background: aliceblue;
     cursor: pointer;
   }
-  summary:not(:only-child)::before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-left: 6px solid #CCCCCC;
+  summary:not(:only-child):before {
+    content: '';
     position: absolute;
+    height: 0;
+    width: 0;
     top: 15px;
     left: 20px;
+    border: 6px solid #ccc;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
   }
-  details[open] > summary:not(:only-child):first-child::before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    border-top: 6px solid #CCC;
-    border-right: 6px solid transparent;
-    border-left: 6px solid transparent;
+  details[open] > summary:not(:only-child):before {
+    content: '';
     position: absolute;
+    width: 0;
+    height: 0;
     top: 18px;
     left: 18px;
+    border: 6px solid #ccc;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
   }
-  .tree {
-    overflow: auto;
-  }
+
+  
 </style>
 
 <body>
   <!-- ul li -->
-  <details>
+  <!-- <details>
     <summary>
       <span>目录1</span>
     </summary>
@@ -84,27 +85,7 @@
         </summary>
       </details>
     </details>
-    <details>
-      <summary>
-        <span>目录1-2</span>
-      </summary>
-      <details>
-        <summary>
-          <span>目录1-2-1</span>
-        </summary>
-      </details>
-    </details>
-    <details>
-      <summary>
-        <span>目录1-3</span>
-      </summary>
-    </details>
-    <details>
-      <summary>
-        <span>目录1-4</span>
-      </summary>
-    </details>
-  </details>
+  </details> -->
   <div id="menuBox"></div>
 
   <script>
@@ -212,7 +193,7 @@
       }
     }
     const root = document.getElementById('menuBox');
-    // createMenu(result, root);
+    createMenu(result, root);
   </script>
 </body>
 

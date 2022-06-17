@@ -21,7 +21,7 @@
     background: aliceblue;
     cursor: pointer;
   }
-  summary:not(:only-child)::before {
+  summary:not(:only-child):before {
     content: "";
     width: 0px;
     height: 0px;
@@ -32,7 +32,7 @@
     top: 15px;
     left: 20px;
   }
-  details[open] > summary:not(:only-child):first-child::before {
+  details[open] > summary:not(:only-child):before {
     content: "";
     width: 0px;
     height: 0px;
