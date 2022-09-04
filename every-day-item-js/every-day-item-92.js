@@ -1,24 +1,39 @@
-// https://blog.csdn.net/chenxi_li/article/details/100126524
-// 实现十进制数字转化成 N 进制数字的字符串，2 <= N <= 16
+// https://blog.csdn.net/yimawujiang/article/details/88638899
+// 函数的链式调用
 /**
- * 
-  采用除基取余法
-  1234/7,商176,余2
-  176/7,商25,余1
-  25/7,商3,余4
-  3/7,商0,余3
-  从上到下依次是个位、十位、百位、千位
-  所以,最终结果为(3412)7.
+ * 主要思想：
+ * 1. 利用数组存储所有访问过的函数
+ * 2. 需要通过Proxy来控制，在访问到函数名时，push到数组中
+ * 3. 当访问到do属性时，调用链结束，依次执行数组中的所有函数
  */
-
-Number.prototype.trans = function (base) {
-  const map = ['A', 'B', 'C', 'D', 'E', 'F'];
-  const result = []; // 将每次的余数放进来
-  let num = this; // 商
-  while (num > 0) {
-    let q = num % base;
-    num = Math.floor(num / base);
-    result.push(q > 9 ? map[q - 10] : q);
-  }
-  return result.reverse().join('');
+var pipe = function (value) {
+  let fnStack = [];
+  return new Proxy(
+    {},
+    {
+      get: function (target, property, receiver) {
+        if (property === "do") {
+          const result = fnStack.reduce((pre, curFn) => {
+            return curFn(pre);
+          }, value);
+          return result;
+        } else {
+          fnStack.push(window[property]);
+          return receiver;
+        }
+      },
+    }
+  );
 };
+
+var add = (n) => n + 2;
+var sub = (n) => n - 2;
+var double = (n) => n * 2;
+var pow = (n) => Math.pow(n, n);
+
+var res1 = pipe(2).double.pow.do; // 256 = 2 * 2 = 4 4 ^ 4 = 256
+var res2 = pipe(4).add.double.do; // 12 = (4 + 2) * 2
+var res3 = pipe(6).sub.add.double.do; // 12 = (6 - 2 + 2) * 2
+console.log(res1);
+console.log(res2);
+console.log(res3);

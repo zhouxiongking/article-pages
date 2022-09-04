@@ -23,6 +23,6 @@ const foo = (...args1) => {
   };
   return fn;
 };
-foo(1, 2, 3) == 6; // true
-foo(1)(2, 3) == 6; // true
-foo(1)(2)(3)(4) == 10; // true
+console.log(foo(1, 2, 3) == 6); // true
+console.log(foo(1)(2, 3) == 6); // true
+console.log(foo(1)(2)(3)(4) == 10); // true

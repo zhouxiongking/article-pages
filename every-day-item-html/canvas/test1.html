@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="600"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'purple';
+    const step = 1;
+    let xPosition = 0;
+    move();
+
+    let nowTime = 0;
+    let lastTime = Date.now();
+    let diffTime = 200;
+
+    function move() {
+      ctx.clearRect(0, 0, 600, 600);
+      ctx.fillRect(xPosition, 0, 300, 150);
+      xPosition += step;
+    }
+
+    (function loop() {
+      if (xPosition < 300) {
+        nowTime = Date.now();
+        if (nowTime - lastTime > diffTime) {
+          lastTime = nowTime;
+          move();
+        }
+        requestAnimationFrame(loop);
+      }
+    })()
+  </script>
+</body>
+</html>
