@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <script>
+    window.onbeforeunload = function() {
+      console.log('onbeforeunload 执行');
+      alert('onbeforeunload 执行');
+      // return 'onbeforeunload 执行';
+      return true;
+    }
+
+    window.onunload = function() {
+      console.log('onunload 执行');
+      alert('onunload 执行');
+      return 'onunload 执行';
+    }
+  </script>
+  
+</body>
+</html>

@@ -56,17 +56,14 @@ const data = [
   },
 ];
 
-// function find(data, id) {
-//   let arr = JSON.parse(JSON.stringify(data));
-//   while (arr.length) {
-//     let temp = arr.shift();
-//     if (temp.id === id) return temp.name;
-//     temp.children = temp.children || [];
-//     arr = [...arr, ...temp.children];
-//   }
-//   return '未找到';
-// }
-
+/**
+ * 方法1：递归思想：每次从最外层对象开始寻找，
+ *  如果当前对象id已经匹配，则直接返回对应的name值
+ *  如果当前对象id不匹配，并且存在children的情况下，去查找children中的值
+ *  如果在children中找到则直接返回
+ *  如果遍历完所有的值都没有找到，则输出"未找到"
+ * 类似于：深度遍历
+ */
 function find(data, id) {
   for (let i = 0; i < data.length; i++) {
     const target = data[i];
@@ -74,9 +71,9 @@ function find(data, id) {
       return target.name;
     } else {
       if (target.children?.length) {
-        let result = find(target.children, id);
-        if (result) {
-          return result;
+        const res = find(target.children, id);
+        if (res !== "未找到") {
+          return res;
         }
       }
     }
@@ -84,10 +81,32 @@ function find(data, id) {
   return "未找到";
 }
 
+/**
+ * 方法2：while循环思想
+ *  结束条件是：数组长度为空
+ *  每次取数组的第一个值，与目标id进行判断
+ *    如果相等，则直接返回
+ *    如果不相等，则将children添加到数组中
+ *  注意：因为会改变原数组的值，所以每次调用find方法之前，
+ *       需要对data进行深拷贝
+ */
+// function find(data, id) {
+//   let arr = [...data]; // JSON.parse(JSON.stringify(data));
+//   while (arr.length) {
+//     const target = arr.shift();
+//     if (target.id === id) {
+//       return target.name;
+//     }
+//     target.children = target.children || [];
+//     arr = [...arr, ...target.children];
+//   }
+//   return "未找到";
+// }
+
 const r1 = find(data, "1000"); // => '深圳'
 const r2 = find(data, "2001"); // => '越秀区'
 const r3 = find(data, "1012"); // => '粤海街道'
-const r4 = find(data, "1112"); // => '登良'
+const r4 = find(data, "2011"); // => '人民公园'
 const r5 = find(data, "1222"); // => '未找到'
 console.log(r1);
 console.log(r2);

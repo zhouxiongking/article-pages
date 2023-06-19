@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>efonmark</title>
+    <script type="text/javascript">
+    function openfile() {
+        document.getElementById('open').click();
+    }
+
+    function showRealPath(filePath){
+      console.log('filePath:', filePath);
+      document.getElementsByName("textfield")[0].value = filePath;
+    }
+    </script>
+  </head>
+  <body>
+  <div>
+    <input type="button" value="open a file" onclick="openfile()">
+    <input type="file" multiple="multiple" name="filename" id="open" style="display:none"/>
+  </div>
+
+  <div>
+    <input type="file" multiple="multiple" name="uploadfile" onfocus="showRealPath(this.value);"/>
+    <input type="hidden" name="uploadfileRealPath">
+    <input type="text" name="textfield" />
+  </div>
+</body>
+
+</html>

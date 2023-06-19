@@ -4,13 +4,112 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>DOM元素与位置有关的属性计算方式</title>
   <script>
-    // offsetWidth 和clientWidth 的区别
-    // offsetHeight 和 clientHeight 的区别
+    // clientWidth
+    // offsetWidth
+    // clientLeft
+    // offsetLeft
+    // clientX
+    // offsetX
+    // pageX
+    // screenX
+    // getBoundingClientRect()
   </script>
+  <style>
+    /* body {
+      margin: 0;
+      padding: 0;
+    } */
+    .box, .box2 {
+      height: 100px;
+      width: 100px;
+      border: 5px solid red;
+      padding: 10px;
+      overflow: scroll;
+    }
+    .box2 {
+      margin: 7px;
+    }
+    .parent {
+      /* position: relative; */
+      left: 100px;
+      width: 2500px;
+      height: 500px;
+      border: 10px solid blue;
+    }
+    .outer {
+      border: 5px solid green;
+      position: relative;
+      left: 20px;
+    }
+
+  </style>
 </head>
 <body>
+  <!-- 第一部分  -->
+  <div class="box" id="box">
+    <!-- <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p> -->
+  </div>
+  <!-- 第二部分 -->
+  <div class="outer">
+    <div class="parent">
+      <div class="box2" id="box2">
+      </div>
+    </div>
+  </div>
+  <script>
+    const target = document.getElementById('box');
+    // 1. clientWidth: 元素内部宽度 = width + padding
+    const clientWidth = target.clientWidth; // 120px
+    console.log('clientWidth: ', clientWidth);
+
+    // 2. offsetWidth: 元素内部宽度 = width + padding + border + scroll
+    const offsetWidth = target.offsetWidth; // 130px
+    console.log('offsetWidth: ', offsetWidth);
+
+    // 3. clientLeft: 元素左边框的宽度
+    const clientLeft = target.clientLeft; // 5px
+    console.log('clientLeft:', clientLeft);
+    
+    // 4. offsetLeft: 元素左边框与定位的父级元素的距离
+    // 注意：父元素需要有定位，就是position需要有值
+    // 如果父级元素没有定位，则会继续往上层元素找到具有定位的元素，否则直到找到body元素
+    const target2 = document.getElementById('box2');
+    const offsetLeft = target2.offsetLeft;
+    console.log('offsetLeft: ', offsetLeft);
+
+    target2.onclick = function (event) {
+      // 5. clientX：鼠标相对于浏览器窗口可视区的x坐标（横向）
+      const clientX = event.clientX;
+      console.log('clientX: ', clientX);
+
+      // 6. offsetX：鼠标相对于事件源元素的x坐标
+      const offsetX = event.offsetX;
+      console.log('offsetX: ', offsetX);
+
+      // 7. pageX：鼠标相对于文档的x坐标，而非窗口坐标
+      // 注意：会计算滚动距离，如果没有滚动距离，则跟clientX是一样的
+      const pageX = event.pageX;
+      console.log('pageX: ', pageX);
+
+      // 8. screenX：鼠标相对于显示器屏幕左侧位置的x坐标（把浏览器往左边移动能看出效果）
+      const screenX = event.screenX;
+      console.log('screenX: ', screenX);
+    }
+
+    // // 9. 元素左边框相对于可视区的距离，有可能为负值
+    const left = target2.getBoundingClientRect().left;
+    console.log('left: ', left);
+
+  </script>
   
 </body>
 </html>

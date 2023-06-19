@@ -5,13 +5,13 @@
 function getSearchParams() {}
 
 const url =
-  'https://test.com/demo?name=kingx&from=home&job=frontend&extraInfo=%7B%22a%22%3A%22b%22%2C%22c%22%3A%22d%22%7D';
+  "https://test.com/demo?name=kingx&from=home&job=frontend&extraInfo=%7B%22a%22%3A%22b%22%2C%22c%22%3A%22d%22%7D";
 const params = getSearchParams(url);
 
 // params结果为:
 result = {
-  name: 'kingx',
-  from: 'home',
-  job: 'frontend',
-  extraInfo: { a: 'b', c: 'd' },
+  name: "kingx",
+  from: "home",
+  job: "frontend",
+  extraInfo: { a: "b", c: "d" },
 };

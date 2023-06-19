@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript处理省市区</title>
+  <link rel="stylesheet" href="./style/index.css" />
+</head>
+<body>
+  <div>
+    <label for="addr-show">您选择的是：
+      <input type="text" value="" id="addr-show">
+    </label>
+    <br />
+    
+    <!--省份选择-->
+    <select id="province" onchange="showCity(this)">
+      <option value="">=请选择省份=</option>
+    </select>
+
+    <!--城市选择-->
+    <select id="city" onchange="showCounty(this)">
+      <option value="">=请选择城市=</option>
+    </select>
+
+    <!--县区选择-->
+    <select id="county" onchange="selectCounty(this)">
+      <option value="">=请选择县区=</option>
+    </select>
+    <button
+      id="confirm"
+      type="button"
+      class="btn"
+      onclick="showAddr()"
+    >确定</button>
+  </div>
+  <script src="./data/city.js"></script>
+  <script src="./script/index.js"></script>
+</body>
+</html>
