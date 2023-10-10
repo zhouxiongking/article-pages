@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="index.js" defer></script>
+  <title>计算器</title>
+</head>
+
+<body>
+  <main class="main">
+    <div class="calculator">
+      <div class="screen">
+        <div class="screen-last" id="lastOperationScreen"></div>
+        <div class="screen-current" id="currentOperationScreen">0</div>
+      </div>
+      <div class="buttons-grid">
+        <button class="btn btn-red span-2" id="clearBtn">
+          CLEAR
+        </button>
+        <button class="btn btn-blue span-2" id="deleteBtn">
+          DELETE
+        </button>
+        <button class="btn" data-number>7</button>
+        <button class="btn" data-number>8</button>
+        <button class="btn" data-number>9</button>
+        <button class="btn" data-operator>÷</button>
+
+        <button class="btn" data-number>4</button>
+        <button class="btn" data-number>5</button>
+        <button class="btn" data-number>6</button>
+        <button class="btn" data-operator>x</button>
+
+        <button class="btn" data-number>1</button>
+        <button class="btn" data-number>2</button>
+        <button class="btn" data-number>3</button>
+        <button class="btn" data-operator>-</button>
+
+        <button class="btn" id="pointBtn">.</button>
+        <button class="btn" data-number>0</button>
+        <button class="btn" id="equalsBtn">=</button>
+        <button class="btn" data-operator>+</button>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>

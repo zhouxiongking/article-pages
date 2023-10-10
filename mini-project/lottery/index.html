@@ -1,0 +1,62 @@
+<!--
+ * @Author: zhouxiongking zhouxiongking@163.com
+ * @Date: 2023-09-19 19:45:52
+ * @LastEditors: zhouxiongking zhouxiongking@163.com
+ * @LastEditTime: 2023-09-19 19:48:59
+ * @FilePath: /article-pages/mini-project/lottery/index.html
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="lottery">
+    <ul>
+      <li class="lottery-ui">1</li>
+      <li class="lottery-ui">2</li>
+      <li class="lottery-ui">3</li>
+      <li class="lottery-ui">4</li>
+      <li class="lottery-ui">5</li>
+      <li class="lottery-ui">6</li>
+      <li class="lottery-ui">7</li>
+      <li class="lottery-ui">8</li>
+    </ul>
+    <span id="start">开始抽奖</span>
+  </div>
+  <script src="./lottery.js"></script>
+  <script>
+    // 抽奖中不可再次点击
+    var started = false;
+
+    function random(from, to) {
+      return Math.floor(Math.random() * (to - from + 1) + from);
+    }
+    document.getElementById('start').onclick = function () {
+      if (started) return;
+      started = true;
+      new Lottery({
+        el: '.lottery',
+        index: 1, //开始位置
+        total: 5, //转动次数
+        end: random(1, 7), //结束位置 可换成请求返回的索引
+        speed: 30, //转动速度
+        handle(obj) {
+          started = false;
+          alert(document.querySelectorAll('.lottery-ui')[obj.end].innerHTML);
+        }
+      });
+
+    }
+  </script>
+</body>
+
+</html>
