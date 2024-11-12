@@ -1,7 +1,7 @@
-/**
- * 将'10000000000'形式的字符串，以每3位进行分隔展示'10,000,000,000'
- * 多种实现方式
- */
+// https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/296
+// 将'10000000000'形式的字符串，以每3位进行分隔展示'10,000,000,000',多种实现方式
+// https://wenku.baidu.com/view/75359a39a46e58fafab069dc5022aaea998f41a5.html
+// https://blog.csdn.net/weixin_43106777/article/details/117565012
 
 /**
  * 方法1：原字符串分割，得到新数组
@@ -11,6 +11,19 @@
  * 4. 将得到的新数组转换成字符串
  */
 function splitString1(str, splitNumber = 3, separator = ',') {
+  const result = [];
+  const strArr = str.split('');
+  let count = 0;
+  let length = str.length;
+  while (length--) {
+    result.unshift(strArr.pop());
+    count++;
+    if (count === splitNumber && length > 0) {
+      result.unshift(separator);
+      count = 0;
+    }
+  }
+  return result.join('');
 }
 
 const result11 = splitString1('100000');
@@ -28,7 +41,19 @@ console.log('result13:', result13);
  * 4. 数组再翻转，转换成字符串，得到结果
  */
 function splitString2(str, splitNumber = 3, separator = ',') {
-
+  const strArr = str.split('').reverse();
+  let index = 0;
+  let count = 0;
+  while (index < strArr.length) {
+    index++;
+    count++;
+    if (count === splitNumber && index < strArr.length - 1) {
+      strArr.splice(index, 0, separator);
+      index++;
+      count = 0;
+    }
+  }
+  return strArr.reverse().join('');
 }
 
 const result21 = splitString2('100000');
@@ -46,7 +71,14 @@ console.log('result23:', result23);
  * 3. 如果索引是3的倍数，则再拼接一个分隔符
  */
 function splitString3(str, splitNumber = 3, separator = ',') {
-
+  const strArr = str.split('').reverse();
+  return strArr.reduce((pre, cur, index) => {
+    if ((index + 1) % splitNumber === 0 && index < strArr.length - 1) {
+      return separator + cur + pre;
+    } else {
+      return cur + pre;
+    }
+  });
 }
 
 const result31 = splitString3('100000');
@@ -58,11 +90,12 @@ console.log('result33:', result33);
 
 /**
  * 方法4：正则表达式
- * https://juejin.cn/post/6844904155274821639
  * https://juejin.cn/post/6844903609029623815?from=search-suggest
  */
 function splitString4(str, splitNumber = 3, separator = ',') {
-
+  // const reg = /\B(?=(\d{3})+(?!\d))/g;
+  const reg = new RegExp(`\\B(?=(\\d{3})+(?!\\d))`, 'g')
+  return str.replace(reg, separator);
 }
 const result41 = splitString4('100000');
 const result42 = splitString4('10000000');
@@ -76,7 +109,7 @@ console.log('result43:', result43);
  * 缺陷，不能自定义分隔的位数和分隔符
  */
 function splitString5(str, splitNumber = 3, separator = ',') {
-
+  return Number(str).toLocaleString();
 }
 
 const result51 = splitString5('100000');

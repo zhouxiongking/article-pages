@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .events::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 1px;
+      background: goldenrod;
+    }
+
+    .events {
+      position: relative;
+      display: flex;
+      margin-block: 0.5em;
+      flex-direction: column;
+      row-gap: 1em;
+    }
+
+    .event {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .event .marker {
+      position: relative;
+      left: -6px;
+    }
+
+    .event.life .marker {
+      fill: yellowgreen;
+    }
+
+    .event.programming .marker {
+      fill: mediumaquamarine;
+    }
+
+    .event.family .marker {
+      fill: royalblue;
+    }
+
+    .content time {
+      font-family: concourse_4, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    @media (min-width: 700px) {
+      .events::before {
+        left: 50%;
+      }
+
+      .event .marker {
+        order: 1;
+      }
+
+      .event .content {
+        width: 50%;
+        text-align: right;
+        padding-inline: 1em;
+      }
+
+      .event:is(.programming, .work, .projects) {
+        flex-direction: row-reverse;
+
+        .content {
+          text-align: left;
+        }
+
+        .marker {
+          left: 6px;
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="timeline">
+    <div class="events">
+      <div class="event life">
+        <svg class="marker" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+          <circle cx="6" cy="6" r="6"></circle>
+        </svg>
+        <div class="content">
+          <time>1989</time>
+          <div class="text">
+            <p>I was born in the north of Sweden</p>
+          </div>
+        </div>
+      </div>
+      <div class="event programming">
+        <svg class="marker" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+          <circle cx="6" cy="6" r="6"></circle>
+        </svg>
+        <div class="content">
+          <time>2006</time>
+          <div class="text">
+            <p>I got introduced to Visual Basic</p>
+          </div>
+        </div>
+      </div>
+      <div class="event family">
+        <svg class="marker" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+          <circle cx="6" cy="6" r="6"></circle>
+        </svg>
+        <div class="content">
+          <time>August 2008</time>
+          <div class="text">
+            <p>Got together with Veronica</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

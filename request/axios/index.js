@@ -348,15 +348,9 @@ function generateRequest(data) {
  * 等三个请求均得到正确响应后，loading效果消失。
  * 如果中间某个接口异常，loading效果立即消失。
  */
-
-
-
-
-
-
 /**
- * 实现思路：
  * 
+ * 实现思路：
  * 1. loading的触发通过请求拦截器实现，维护一个全局变量，
  *    仅当变量值为0时，触发loading，且变量值+1
  * 2. loading的消失通过响应拦截器实现，每次执行到一个响应拦截器，
@@ -364,7 +358,6 @@ function generateRequest(data) {
  * 3. 在响应拦截器捕获的异常中，如果进入后，直接将变量置为0，loading立即消失
  * 4. 通过axios.all()并行发送请求，通过axios.spread()合并结果
  */
-
 let reqNum = 0;
 function fn16() {
   const url = 'https://echo.apifox.com/get';
@@ -408,9 +401,4 @@ function fn16() {
     });
 }
 
-fn16();
-
-
-
-
-
+// fn16();
