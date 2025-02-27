@@ -1,0 +1,143 @@
+<!-- A webpage that shows that fetch slowly streams in the body of the request. -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>为什么需要await json()</title>
+
+  <!-- emoji favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤽</text></svg>" />
+  <!-- basic styling -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fbf1c7;
+      color: #282828;
+      font-family: monospace;
+      max-width: 65ch;
+      margin: 1rem auto;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #6200ea;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3700b3;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      background-color: #3700b3;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transform: translateY(0);
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, #6200ea, #3700b3);
+      margin: 20px 0;
+    }
+
+    .function-box {
+      border: solid 2px #6200ea;
+      margin: 1rem auto;
+      padding: 1rem;
+    }
+
+    .output-box {
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #fff;
+      background: linear-gradient(to right, #6200ea, #3700b3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>为什么需要await json()</h1>
+  <div>
+    <div id="fetch-json-function-box" class="function-box">
+      点击按钮会发送一个fetch请求，通过控制台看看输出的结果
+      <br /><br />
+    </div>
+    <button id="fetch-json">发送fetch json的请求</button>
+  </div>
+  <hr />
+  <div>
+    <div id="fetch-stream-function-box" class="function-box"></div>
+    <button id="fetch-stream">获取一个JSON的文件流</button>
+    <div class="output-box">...文件流的内容将会输出在这里...</div>
+  </div>
+</body>
+<script>
+  async function wait(ms) {
+    return new Promise((res) => setTimeout(res, ms))
+  }
+
+  const fetchJson = async function () {
+    console.log("开始发送一个fetch请求")
+    let response = await fetch("/json")
+    console.log("获取到响应头，等待获取响应体")
+    let myObject = await response.json()
+    console.log("获取到响应体的JSON对象")
+    console.log(myObject)
+  }
+
+  const fetchStream = async function () {
+    outputBox.textContent = ""
+    let response = await fetch("/json")
+    const decoder = new TextDecoder("utf-8")
+    console.log('response.body:', response.body)
+    for await (const value of response.body) {
+      const chunk = decoder.decode(value)
+      outputBox.textContent += chunk
+    }
+  }
+
+  let fetchJsonButton = document.getElementById("fetch-json")
+  let fetchStreamButton = document.getElementById("fetch-stream")
+  let fetchJsonFunctionBox = document.getElementById(
+    "fetch-json-function-box"
+  )
+  let fetchStreamFunctionBox = document.getElementById(
+    "fetch-stream-function-box"
+  )
+  let outputBox = document.querySelector(".output-box")
+
+  fetchJsonFunctionBox.innerText += fetchJson.toString()
+  fetchStreamFunctionBox.innerText += fetchStream.toString()
+
+  fetchJsonButton.addEventListener("click", fetchJson)
+  fetchStreamButton.addEventListener("click", fetchStream)
+</script>
+
+</html>

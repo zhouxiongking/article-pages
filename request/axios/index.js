@@ -6,7 +6,7 @@ function f1() {
     url,
   })
 }
-// f1();
+f1();
 
 // axios.get
 function f2() {

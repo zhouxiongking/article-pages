@@ -1,0 +1,13 @@
+{
+  "name": "kingx",
+  "age": 30,
+  "gender": "nan",
+  "email": "test@example.com",
+  "phone": "13800138000",
+  "address": {
+    "province": "广东省",
+    "city": "深圳市",
+    "street": "南山区科技路",
+    "postcode": "518000"
+  }
+}
