@@ -1,0 +1,632 @@
+[
+  {
+    "seq": 1,
+    "name": "赏强",
+    "major": "食品",
+    "grade": "86级",
+    "remark": "重庆校友会副会长；江南大学硕士"
+  },
+  {
+    "seq": 2,
+    "name": "田学",
+    "major": "造纸",
+    "grade": "89级",
+    "remark": "重庆校友会副会长"
+  },
+  {
+    "seq": 3,
+    "name": "王广轩",
+    "major": "陶瓷",
+    "grade": "89级",
+    "remark": "重庆秘书长"
+  },
+  {
+    "seq": 4,
+    "name": "刘彦宾",
+    "major": "造纸",
+    "grade": "02",
+    "remark": "重庆副秘书长"
+  },
+  {
+    "seq": 5,
+    "name": "隋明炜",
+    "major": "化工",
+    "grade": "05",
+    "remark": "重庆石油化工公司，技术总监；博士"
+  },
+  {
+    "seq": 6,
+    "name": "江治勇",
+    "major": "食品",
+    "grade": "86级",
+    "remark": "河北校友会副秘书长"
+  },
+  {
+    "seq": 7,
+    "name": "沈明山",
+    "major": "钟表/机械",
+    "grade": "84",
+    "remark": "天津校友会会长"
+  },
+  {
+    "seq": 8,
+    "name": "吴雄虎",
+    "major": "皮革",
+    "grade": "皮革98",
+    "remark": "北京校友会代表，天门"
+  },
+  {
+    "seq": 9,
+    "name": "陈仁明",
+    "major": "钟表/机械",
+    "grade": "84",
+    "remark": "贵州校友会会长"
+  },
+  {
+    "seq": 10,
+    "name": "张 翼",
+    "major": "食品",
+    "grade": "87",
+    "remark": "贵州陈仁明酿酒公司总经理"
+  },
+  {
+    "seq": 11,
+    "name": "徐洪英",
+    "major": "会计",
+    "grade": "97",
+    "remark": "四川校友会理事"
+  },
+  {
+    "seq": 12,
+    "name": "陈森林",
+    "major": "电控97",
+    "grade": "97",
+    "remark": "云南校友会副会长"
+  },
+  {
+    "seq": 13,
+    "name": "文沙莎",
+    "major": "皮革",
+    "grade": "皮78",
+    "remark": "湖南校友会"
+  },
+  {
+    "seq": 14,
+    "name": "徐 峰",
+    "major": "艺设",
+    "grade": null,
+    "remark": "湖南校友会秘书长"
+  },
+  {
+    "seq": 15,
+    "name": "陆赵情",
+    "major": "造纸",
+    "grade": "97级",
+    "remark": "陕西科技大学副校长"
+  },
+  {
+    "seq": 16,
+    "name": "殷立雄",
+    "major": "材料",
+    "grade": "材料92",
+    "remark": "陕科大校友总会秘书长"
+  },
+  {
+    "seq": 17,
+    "name": "成锐",
+    "major": null,
+    "grade": null,
+    "remark": "陕科大轻工学院院长"
+  },
+  {
+    "seq": 18,
+    "name": "吴颖鸿",
+    "major": "食品",
+    "grade": "食品85",
+    "remark": "《中华传播》通信社长；香港传媒副主席"
+  },
+  {
+    "seq": 19,
+    "name": "程丙军",
+    "major": "造纸",
+    "grade": null,
+    "remark": "陕西校友会"
+  },
+  {
+    "seq": 20,
+    "name": "廖东江",
+    "major": "材料",
+    "grade": "玻82",
+    "remark": "湖北校友会会长"
+  },
+  {
+    "seq": 21,
+    "name": "方祖成",
+    "major": "机械",
+    "grade": "机82",
+    "remark": "湖北校友会执行会长"
+  },
+  {
+    "seq": 22,
+    "name": "张友超",
+    "major": "造纸",
+    "grade": "纸98",
+    "remark": "湖北校友会秘书长"
+  },
+  {
+    "seq": 23,
+    "name": "董苾茜",
+    "major": "编导",
+    "grade": "08级",
+    "remark": "湖北校友会副秘书长；武汉大学博士"
+  },
+  {
+    "seq": 24,
+    "name": "汪彩虹",
+    "major": "材料",
+    "grade": "搪89",
+    "remark": "湖北校友会副会长（财务主管）"
+  },
+  {
+    "seq": 25,
+    "name": "刘能星",
+    "major": "材料",
+    "grade": "搪85",
+    "remark": "湖北校友会副会长"
+  },
+  {
+    "seq": 26,
+    "name": "张五星",
+    "major": "材料",
+    "grade": "材料92",
+    "remark": "湖北副会长；华中科技大学博士"
+  },
+  {
+    "seq": 27,
+    "name": "刘群杰",
+    "major": "造纸",
+    "grade": "轻化00",
+    "remark": "湖北校友会副会长"
+  },
+  {
+    "seq": 28,
+    "name": "黄海",
+    "major": "造纸",
+    "grade": "轻化00",
+    "remark": "湖北校友会副会长"
+  },
+  {
+    "seq": 29,
+    "name": "郭靖",
+    "major": "造纸",
+    "grade": "轻化00",
+    "remark": "湖北校友会副会长；武汉凯必思电力设备公司"
+  },
+  {
+    "seq": 30,
+    "name": "周康",
+    "major": "材料",
+    "grade": "04",
+    "remark": "湖北校友会副会长"
+  },
+  {
+    "seq": 31,
+    "name": "张文刚",
+    "major": "电信",
+    "grade": "电信02",
+    "remark": "湖北校友会副会长"
+  },
+  {
+    "seq": 32,
+    "name": "张雪贝",
+    "major": "艺播",
+    "grade": "艺播08",
+    "remark": "湖北校友会宣传部长；武汉大学MBA"
+  },
+  {
+    "seq": 33,
+    "name": "刘润泽",
+    "major": "造纸",
+    "grade": "纸88",
+    "remark": "中轻武设"
+  },
+  {
+    "seq": 34,
+    "name": "张丽",
+    "major": "造纸",
+    "grade": "轻化00",
+    "remark": null
+  },
+  {
+    "seq": 35,
+    "name": "董守信",
+    "major": "机械及自动化",
+    "grade": "08级",
+    "remark": null
+  },
+  {
+    "seq": 36,
+    "name": "余金哲",
+    "major": "材料物理",
+    "grade": "2020级",
+    "remark": null
+  },
+  {
+    "seq": 37,
+    "name": "何立勇",
+    "major": "信息与计算科学",
+    "grade": "09",
+    "remark": null
+  },
+  {
+    "seq": 38,
+    "name": "吴芍君",
+    "major": "轻化工程（皮革）",
+    "grade": "本硕",
+    "remark": "中国轻工业武汉设计院"
+  },
+  {
+    "seq": 39,
+    "name": "付润喜",
+    "major": "食品工程",
+    "grade": "91级",
+    "remark": null
+  },
+  {
+    "seq": 40,
+    "name": "李欣怡",
+    "major": "材料与化工",
+    "grade": "轻工22级研究生",
+    "remark": null
+  },
+  {
+    "seq": 41,
+    "name": "周姣娇",
+    "major": "播音与主持艺术",
+    "grade": "19",
+    "remark": null
+  },
+  {
+    "seq": 42,
+    "name": "唐锦宏",
+    "major": "材料科学与工程",
+    "grade": "2017",
+    "remark": null
+  },
+  {
+    "seq": 43,
+    "name": "刘宇航",
+    "major": "材料物理",
+    "grade": "2021级",
+    "remark": null
+  },
+  {
+    "seq": 44,
+    "name": "杨笑寒",
+    "major": "人力资源管理",
+    "grade": "2015",
+    "remark": null
+  },
+  {
+    "seq": 45,
+    "name": "路思远",
+    "major": "轻工造纸",
+    "grade": "2017",
+    "remark": null
+  },
+  {
+    "seq": 46,
+    "name": "王琴剑",
+    "major": "材料物理",
+    "grade": "21级",
+    "remark": null
+  },
+  {
+    "seq": 47,
+    "name": "姚懿峰",
+    "major": "材料",
+    "grade": "2021级",
+    "remark": null
+  },
+  {
+    "seq": 48,
+    "name": "刘京科",
+    "major": "材料科学与工程",
+    "grade": "2021",
+    "remark": "武汉理工大学研一"
+  },
+  {
+    "seq": 49,
+    "name": "裴涛涛",
+    "major": "材料",
+    "grade": "2021级",
+    "remark": null
+  },
+  {
+    "seq": 50,
+    "name": "李玉倩",
+    "major": "播音",
+    "grade": "2015级",
+    "remark": null
+  },
+  {
+    "seq": 51,
+    "name": "谢兆鸿",
+    "major": "轻工自动化",
+    "grade": "1977",
+    "remark": null
+  },
+  {
+    "seq": 52,
+    "name": "谢先涛",
+    "major": "人力资源管理",
+    "grade": "人力171",
+    "remark": null
+  },
+  {
+    "seq": 53,
+    "name": "杨海涛",
+    "major": "制浆造纸工程",
+    "grade": "1997",
+    "remark": null
+  },
+  {
+    "seq": 54,
+    "name": "王寅斐",
+    "major": "法学",
+    "grade": "04",
+    "remark": null
+  },
+  {
+    "seq": 55,
+    "name": "吕英武",
+    "major": "硅酸盐",
+    "grade": "97级",
+    "remark": null
+  },
+  {
+    "seq": 56,
+    "name": "张洁燕",
+    "major": "机械设计",
+    "grade": "1977",
+    "remark": null
+  },
+  {
+    "seq": 57,
+    "name": "孙勋科",
+    "major": "机械设计",
+    "grade": "1977",
+    "remark": null
+  },
+  {
+    "seq": 58,
+    "name": "胡忠",
+    "major": "陶瓷",
+    "grade": "陶80",
+    "remark": "宜 昌"
+  },
+  {
+    "seq": 59,
+    "name": "汪玉树",
+    "major": "陶瓷",
+    "grade": "陶80",
+    "remark": "黄 石"
+  },
+  {
+    "seq": 60,
+    "name": "李浩",
+    "major": "过程装备与控制工程",
+    "grade": "2019级",
+    "remark": null
+  },
+  {
+    "seq": 61,
+    "name": "夏三红",
+    "major": "制药工程",
+    "grade": "03届",
+    "remark": null
+  },
+  {
+    "seq": 62,
+    "name": "龚宗宝",
+    "major": "人力资源管理",
+    "grade": "17级",
+    "remark": null
+  },
+  {
+    "seq": 63,
+    "name": "张晓东",
+    "major": "化学工程与工艺",
+    "grade": "2011级",
+    "remark": null
+  },
+  {
+    "seq": 64,
+    "name": "陈俊生",
+    "major": "材料化学",
+    "grade": "2015级",
+    "remark": null
+  },
+  {
+    "seq": 65,
+    "name": "费锦华",
+    "major": "皮革",
+    "grade": "皮78",
+    "remark": null
+  },
+  {
+    "seq": 66,
+    "name": "代宁宁",
+    "major": "轻化工程",
+    "grade": "2014级",
+    "remark": null
+  },
+  {
+    "seq": 67,
+    "name": "何华梅",
+    "major": "轻化工程",
+    "grade": "06",
+    "remark": null
+  },
+  {
+    "seq": 68,
+    "name": "彭飞宇",
+    "major": "生物化工",
+    "grade": "09研",
+    "remark": null
+  },
+  {
+    "seq": 69,
+    "name": "严骏",
+    "major": "工业管理工程",
+    "grade": "90级",
+    "remark": null
+  },
+  {
+    "seq": 70,
+    "name": "方治",
+    "major": "工业造型设计",
+    "grade": "88",
+    "remark": null
+  },
+  {
+    "seq": 71,
+    "name": "王俊磊",
+    "major": "化学工程与技术",
+    "grade": "博19",
+    "remark": null
+  },
+  {
+    "seq": 72,
+    "name": "李玲",
+    "major": "材料化学",
+    "grade": null,
+    "remark": null
+  },
+  {
+    "seq": 73,
+    "name": "吴丹",
+    "major": "工设",
+    "grade": null,
+    "remark": null
+  },
+  {
+    "seq": 74,
+    "name": "杜孟孟",
+    "major": "轻化工程",
+    "grade": "08级",
+    "remark": null
+  },
+  {
+    "seq": 75,
+    "name": "许中明",
+    "major": "机制",
+    "grade": "1989",
+    "remark": null
+  },
+  {
+    "seq": 76,
+    "name": "周水根",
+    "major": "会计学",
+    "grade": "2001级经管会计",
+    "remark": null
+  },
+  {
+    "seq": 77,
+    "name": "杨伟泽",
+    "major": null,
+    "grade": null,
+    "remark": null
+  },
+  {
+    "seq": 78,
+    "name": "郑保华",
+    "major": null,
+    "grade": null,
+    "remark": null
+  },
+  {
+    "seq": 79,
+    "name": "陈君",
+    "major": "电气工程研究生",
+    "grade": "09",
+    "remark": null
+  },
+  {
+    "seq": 80,
+    "name": "周静",
+    "major": "法学",
+    "grade": "2023",
+    "remark": null
+  },
+  {
+    "seq": 81,
+    "name": "罗爽",
+    "major": "艺播",
+    "grade": "04",
+    "remark": null
+  },
+  {
+    "seq": 82,
+    "name": "江明远",
+    "major": "播音主持",
+    "grade": "04",
+    "remark": null
+  },
+  {
+    "seq": 83,
+    "name": "覃峰",
+    "major": null,
+    "grade": null,
+    "remark": null
+  },
+  {
+    "seq": 84,
+    "name": "赵自强",
+    "major": "机械",
+    "grade": "2019级研究生",
+    "remark": null
+  },
+  {
+    "seq": 85,
+    "name": "李锋",
+    "major": "材料",
+    "grade": "2018",
+    "remark": null
+  },
+  {
+    "seq": 86,
+    "name": "王周琴",
+    "major": "机电",
+    "grade": "机781",
+    "remark": null
+  },
+  {
+    "seq": 87,
+    "name": "刘忠阳",
+    "major": "材料",
+    "grade": "20",
+    "remark": null
+  },
+  {
+    "seq": 88,
+    "name": "唐永科",
+    "major": "机设",
+    "grade": "96",
+    "remark": null
+  },
+  {
+    "seq": 89,
+    "name": "关研博",
+    "major": "光信",
+    "grade": "09",
+    "remark": null
+  },
+  {
+    "seq": 90,
+    "name": "周雄",
+    "major": "信息与计算科学",
+    "grade": "09",
+    "remark": null
+  }
+]
