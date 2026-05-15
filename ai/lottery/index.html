@@ -1,38 +1,98 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>年会抽奖</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1,maximum-scale=1">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; color: #fff; overflow: hidden; }
-    .canvas-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
-    #canvas { width: 100%; height: 100%; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .canvas-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #canvas {
+      width: 100%;
+      height: 100%;
+    }
 
     /* Music button - centered icon, auto-rotate */
-    .music { position: fixed; top: 20px; right: 20px; z-index: 100; }
+    .music {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
     .music-box {
       cursor: pointer;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.15);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 50%;
       font-size: 22px;
       animation: musicRotate 4s linear infinite;
       animation-play-state: paused;
       user-select: none;
     }
-    .music-box.playing { animation-play-state: running; }
-    @keyframes musicRotate {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+
+    .music-box.playing {
+      animation-play-state: running;
     }
 
-    #prizeBar { position: fixed; top: 0; left: 0; right: 0; z-index: 300; }
-    #prizeBar .prize-item { cursor: pointer; pointer-events: auto; }
-    #prizeBar .prize-item * { pointer-events: none; }
-    #container { position: fixed !important; top: 0 !important; left: 19vh !important; width: calc(100% - 19vh) !important; height: 100% !important; margin: 0 !important; }
+    @keyframes musicRotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #prizeBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 300;
+    }
+
+    #prizeBar .prize-item {
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    #prizeBar .prize-item * {
+      pointer-events: none;
+    }
+
+    #container {
+      position: fixed !important;
+      top: 0 !important;
+      left: 19vh !important;
+      width: calc(100% - 19vh) !important;
+      height: 100% !important;
+      margin: 0 !important;
+    }
 
     /* Lottery controls below the left prize list */
     #menu {
@@ -51,6 +111,7 @@
       margin: 0 !important;
       text-align: center;
     }
+
     #menu button {
       width: 100%;
       margin: 0;
@@ -59,37 +120,64 @@
       font-size: 15px;
       border: none;
       border-radius: 4px;
-      background: rgba(0,127,127,0.37);
-      color: rgba(127,255,255,0.9);
-      box-shadow: 0 0 4px rgba(0,255,255,0.5);
-      outline: 1px solid rgba(127,255,255,0.25);
+      background: rgba(0, 127, 127, 0.37);
+      color: rgba(127, 255, 255, 0.9);
+      box-shadow: 0 0 4px rgba(0, 255, 255, 0.5);
+      outline: 1px solid rgba(127, 255, 255, 0.25);
       white-space: nowrap;
     }
-    #menu button:hover { background: rgba(0,127,127,0.55); }
-    .none { display: none; }
-    #lotteryBar { display: flex; flex-direction: column; gap: 8px; }
-    #lotteryBar.none { display: none; }
-    #actionBar { display: none !important; }
 
-    .qipao-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 200; }
+    #menu button:hover {
+      background: rgba(0, 127, 127, 0.55);
+    }
+
+    .none {
+      display: none;
+    }
+
+    #lotteryBar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #lotteryBar.none {
+      display: none;
+    }
+
+    #actionBar {
+      display: none !important;
+    }
+
+    .qipao-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 200;
+    }
 
     /* Winner popup overlay */
     #winnerPopup {
       display: none;
       position: fixed;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       z-index: 500;
-      background: rgba(0,0,0,0.92);
-      border: 1px solid rgba(255,215,0,0.5);
+      background: rgba(0, 0, 0, 0.92);
+      border: 1px solid rgba(255, 215, 0, 0.5);
       border-radius: 20px;
       padding: 48px 58px;
       min-width: 620px;
       max-width: 92vw;
       max-height: 88vh;
       overflow-y: auto;
-      box-shadow: 0 0 80px rgba(255,215,0,0.3);
+      box-shadow: 0 0 80px rgba(255, 215, 0, 0.3);
     }
+
     #winnerPopup .wp-title {
       font-size: 1.9em;
       font-weight: bold;
@@ -97,6 +185,7 @@
       text-align: center;
       margin-bottom: 34px;
     }
+
     #winnerPopup .wp-cards {
       display: flex;
       flex-wrap: wrap;
@@ -106,48 +195,57 @@
       margin: 0;
       list-style: none;
     }
+
     #winnerPopup .wp-card {
       background: rgba(0, 127, 127, 0.55);
-      border: 1px solid rgba(127,255,255,0.3);
+      border: 1px solid rgba(127, 255, 255, 0.3);
       border-radius: 14px;
       padding: 26px 34px;
       min-width: 190px;
       text-align: center;
       color: #fff;
     }
+
     #winnerPopup .wp-card .wc-name {
       font-size: 1.7em;
       font-weight: bold;
       margin-bottom: 10px;
       color: #FFD700;
     }
+
     #winnerPopup .wp-card .wc-dept {
       font-size: 0.95em;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255, 255, 255, 0.75);
     }
+
     #winnerPopup .wp-card .wc-uid {
       font-size: 1em;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.45);
       margin-top: 5px;
     }
+
     #winnerPopup .wp-close {
       display: block;
       margin: 16px auto 0;
       padding: 6px 24px;
-      background: rgba(255,215,0,0.2);
-      border: 1px solid rgba(255,215,0,0.4);
+      background: rgba(255, 215, 0, 0.2);
+      border: 1px solid rgba(255, 215, 0, 0.4);
       border-radius: 4px;
       color: #FFD700;
       cursor: pointer;
       font-size: 13px;
     }
-    #winnerPopup .wp-close:hover { background: rgba(255,215,0,0.35); }
+
+    #winnerPopup .wp-close:hover {
+      background: rgba(255, 215, 0, 0.35);
+    }
+
     #winnerPopupOverlay {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 499;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.4);
     }
 
     /* Reset confirm dialog */
@@ -156,35 +254,45 @@
       position: fixed;
       inset: 0;
       z-index: 599;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
     }
+
     #resetConfirmDialog {
       display: none;
       position: fixed;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       z-index: 600;
-      background: rgba(20,20,30,0.97);
-      border: 1px solid rgba(255,100,100,0.4);
+      background: rgba(20, 20, 30, 0.97);
+      border: 1px solid rgba(255, 100, 100, 0.4);
       border-radius: 12px;
       padding: 28px 36px;
       min-width: 280px;
       text-align: center;
-      box-shadow: 0 0 40px rgba(255,80,80,0.15);
+      box-shadow: 0 0 40px rgba(255, 80, 80, 0.15);
     }
+
     #resetConfirmDialog .rc-title {
       font-size: 1.05em;
       font-weight: bold;
       color: #fff;
       margin-bottom: 10px;
     }
+
     #resetConfirmDialog .rc-desc {
       font-size: 0.88em;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
       margin-bottom: 24px;
       line-height: 1.6;
     }
-    #resetConfirmDialog .rc-btns { display: flex; gap: 12px; justify-content: center; }
+
+    #resetConfirmDialog .rc-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
     #resetConfirmDialog .rc-btns button {
       padding: 8px 28px;
       border: none;
@@ -192,24 +300,40 @@
       cursor: pointer;
       font-size: 14px;
     }
-    #rcConfirm { background: rgba(220,60,60,0.85); color: #fff; }
-    #rcConfirm:hover { background: rgba(220,60,60,1); }
-    #rcCancel  { background: rgba(255,255,255,0.12); color: #fff; }
-    #rcCancel:hover { background: rgba(255,255,255,0.22); }
+
+    #rcConfirm {
+      background: rgba(220, 60, 60, 0.85);
+      color: #fff;
+    }
+
+    #rcConfirm:hover {
+      background: rgba(220, 60, 60, 1);
+    }
+
+    #rcCancel {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    #rcCancel:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
   </style>
 </head>
+
 <body>
-  <script src="./lib/three.min.js"></script>
-  <script src="./lib/tween.min.js"></script>
-  <script src="./lib/TrackballControls.js"></script>
-  <script src="./lib/CSS3DRenderer.js"></script>
-  <script src="./lib/ajax.js"></script>
+  <script src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/lottery/three.min.js"></script>
+  <script src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/lottery/tween.min.js"></script>
+  <script src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/lottery/TrackballControls.js"></script>
+  <script src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/lottery/CSS3DRenderer.js"></script>
+  <script src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/lottery/ajax.js"></script>
 
   <div class="canvas-box"><canvas id="canvas">你的浏览器不支持canvas</canvas></div>
 
   <!-- Music -->
   <div class="music">
-    <audio id="music" src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/audio/lottery/music.mp3" class="music-item" loop></audio>
+    <audio id="music" src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/audio/lottery/music.mp3" class="music-item"
+      loop></audio>
     <div id="musicBox" class="music-box" title="播放/暂停背景音乐">🎵</div>
   </div>
 
@@ -225,8 +349,10 @@
     </div>
     <button id="resetProxy" type="button">重置</button>
     <!-- Hidden buttons MUST be inside #menu so lottery.js event delegation catches them -->
-    <button id="save"  style="visibility:hidden;position:absolute;width:0;height:0;overflow:hidden;padding:0;border:none;">save</button>
-    <button id="reset" style="visibility:hidden;position:absolute;width:0;height:0;overflow:hidden;padding:0;border:none;">reset</button>
+    <button id="save"
+      style="visibility:hidden;position:absolute;width:0;height:0;overflow:hidden;padding:0;border:none;">save</button>
+    <button id="reset"
+      style="visibility:hidden;position:absolute;width:0;height:0;overflow:hidden;padding:0;border:none;">reset</button>
   </div>
 
   <div class="qipao-container"></div>
@@ -250,125 +376,126 @@
     <button class="wp-close" id="wpClose">关闭</button>
   </div>
 
-  <script type="text/javascript" src="lottery.js"></script>
+  <script type="text/javascript" src="https://dreamini.oss-cn-shenzhen.aliyuncs.com/lottery/lottery.js"></script>
   <script>
-  (function() {
+    (function () {
 
-    // --- Play music from any page click ---
-    var music = document.getElementById('music');
-    var musicBox = document.getElementById('musicBox');
+      // --- Play music from any page click ---
+      var music = document.getElementById('music');
+      var musicBox = document.getElementById('musicBox');
 
-    function playMusicFromPageClick(event) {
-      if (!music || !music.paused) return;
-      if (musicBox && event && musicBox.contains(event.target)) return;
-      music.play().catch(function(){});
-    }
-    document.addEventListener('click', playMusicFromPageClick, true);
-    document.addEventListener('touchstart', playMusicFromPageClick, true);
+      function playMusicFromPageClick(event) {
+        if (!music || !music.paused) return;
+        if (musicBox && event && musicBox.contains(event.target)) return;
+        music.play().catch(function () { });
+      }
+      document.addEventListener('click', playMusicFromPageClick, true);
+      document.addEventListener('touchstart', playMusicFromPageClick, true);
 
-    // --- Music rotate sync ---
-    if (music && musicBox) {
-      music.addEventListener('play',  function() { musicBox.classList.add('playing'); });
-      music.addEventListener('pause', function() { musicBox.classList.remove('playing'); });
-    }
+      // --- Music rotate sync ---
+      if (music && musicBox) {
+        music.addEventListener('play', function () { musicBox.classList.add('playing'); });
+        music.addEventListener('pause', function () { musicBox.classList.remove('playing'); });
+      }
 
-    // --- Show/hide action bar when lotteryBar appears ---
-    var resetProxy = document.getElementById('resetProxy');
-    var origReset  = document.getElementById('reset');
+      // --- Show/hide action bar when lotteryBar appears ---
+      var resetProxy = document.getElementById('resetProxy');
+      var origReset = document.getElementById('reset');
 
-    // --- Reset confirm dialog ---
-    var rcOverlay = document.getElementById('resetConfirmOverlay');
-    var rcDialog  = document.getElementById('resetConfirmDialog');
-    var rcConfirm = document.getElementById('rcConfirm');
-    var rcCancel  = document.getElementById('rcCancel');
+      // --- Reset confirm dialog ---
+      var rcOverlay = document.getElementById('resetConfirmOverlay');
+      var rcDialog = document.getElementById('resetConfirmDialog');
+      var rcConfirm = document.getElementById('rcConfirm');
+      var rcCancel = document.getElementById('rcCancel');
 
-    function showResetConfirm() {
-      rcOverlay.style.display = 'block';
-      rcDialog.style.display  = 'block';
-    }
-    function hideResetConfirm() {
-      rcOverlay.style.display = 'none';
-      rcDialog.style.display  = 'none';
-    }
+      function showResetConfirm() {
+        rcOverlay.style.display = 'block';
+        rcDialog.style.display = 'block';
+      }
+      function hideResetConfirm() {
+        rcOverlay.style.display = 'none';
+        rcDialog.style.display = 'none';
+      }
 
-    resetProxy.addEventListener('click', showResetConfirm);
-    rcCancel.addEventListener('click', hideResetConfirm);
-    rcOverlay.addEventListener('click', hideResetConfirm);
-    rcConfirm.addEventListener('click', function() {
-      hideResetConfirm();
-      if (origReset) origReset.click();
-    });
+      resetProxy.addEventListener('click', showResetConfirm);
+      rcCancel.addEventListener('click', hideResetConfirm);
+      rcOverlay.addEventListener('click', hideResetConfirm);
+      rcConfirm.addEventListener('click', function () {
+        hideResetConfirm();
+        if (origReset) origReset.click();
+      });
 
-    // --- Winner popup ---
-    var popup        = document.getElementById('winnerPopup');
-    var popupOverlay = document.getElementById('winnerPopupOverlay');
-    var wpTitle      = document.getElementById('wpTitle');
-    var wpList       = document.getElementById('wpList');
-    var wpClose      = document.getElementById('wpClose');
+      // --- Winner popup ---
+      var popup = document.getElementById('winnerPopup');
+      var popupOverlay = document.getElementById('winnerPopupOverlay');
+      var wpTitle = document.getElementById('wpTitle');
+      var wpList = document.getElementById('wpList');
+      var wpClose = document.getElementById('wpClose');
 
-    function showWinners(prizeText, prizeTitle, winners) {
-      wpTitle.textContent = prizeText + ' · ' + prizeTitle;
-      wpList.innerHTML = '';
-      if (winners && winners.length > 0) {
-        winners.forEach(function(w) {
+      function showWinners(prizeText, prizeTitle, winners) {
+        wpTitle.textContent = prizeText + ' · ' + prizeTitle;
+        wpList.innerHTML = '';
+        if (winners && winners.length > 0) {
+          winners.forEach(function (w) {
+            var li = document.createElement('li');
+            li.className = 'wp-card';
+            var seq = w.seq !== undefined ? w.seq : w[0];
+            var name = w.name || w[1];
+            li.innerHTML =
+              '<div class="wc-name">' + name + '</div>' +
+              '<div class="wc-uid">序号 ' + seq + '</div>';
+            wpList.appendChild(li);
+          });
+        } else {
           var li = document.createElement('li');
           li.className = 'wp-card';
-          var seq = w.seq !== undefined ? w.seq : w[0];
-          var name = w.name || w[1];
-          li.innerHTML =
-            '<div class="wc-name">' + name + '</div>' +
-            '<div class="wc-uid">序号 ' + seq + '</div>';
+          li.innerHTML = '<div class="wc-name" style="color:#999">暂无中奖人员</div>';
           wpList.appendChild(li);
-        });
-      } else {
-        var li = document.createElement('li');
-        li.className = 'wp-card';
-        li.innerHTML = '<div class="wc-name" style="color:#999">暂无中奖人员</div>';
-        wpList.appendChild(li);
-      }
-      popup.style.display        = 'block';
-      popupOverlay.style.display = 'block';
-    }
-
-    function hideWinners() {
-      popup.style.display        = 'none';
-      popupOverlay.style.display = 'none';
-    }
-
-    wpClose.addEventListener('click', hideWinners);
-    popupOverlay.addEventListener('click', hideWinners);
-
-    // --- Read winners: live data first, localStorage as fallback (display only) ---
-    function getWinnersForType(typeNum) {
-      var data = window._lotteryData;
-      if (data && data.luckyUsers && (data.luckyUsers[typeNum] || []).length > 0) {
-        return data.luckyUsers[typeNum];
-      }
-      try {
-        var saved = localStorage.getItem('_lotteryWinners');
-        if (saved) {
-          var parsed = JSON.parse(saved);
-          return parsed[typeNum] || parsed[String(typeNum)] || [];
         }
-      } catch(e) {}
-      return [];
-    }
-
-    // Inline onclick injected into prize-item <li> elements by lottery.js
-    window._onPrizeItemClick = function(typeNum) {
-      var data = window._lotteryData;
-      if (!data || !data.prizes) return;
-      var prize = null;
-      for (var i = 0; i < data.prizes.length; i++) {
-        if (data.prizes[i].type === typeNum) { prize = data.prizes[i]; break; }
+        popup.style.display = 'block';
+        popupOverlay.style.display = 'block';
       }
-      if (!prize) return;
-      var winners = getWinnersForType(typeNum);
-      if (!winners || winners.length === 0) return;
-      showWinners(prize.text, prize.title, winners);
-    };
 
-  })();
+      function hideWinners() {
+        popup.style.display = 'none';
+        popupOverlay.style.display = 'none';
+      }
+
+      wpClose.addEventListener('click', hideWinners);
+      popupOverlay.addEventListener('click', hideWinners);
+
+      // --- Read winners: live data first, localStorage as fallback (display only) ---
+      function getWinnersForType(typeNum) {
+        var data = window._lotteryData;
+        if (data && data.luckyUsers && (data.luckyUsers[typeNum] || []).length > 0) {
+          return data.luckyUsers[typeNum];
+        }
+        try {
+          var saved = localStorage.getItem('_lotteryWinners');
+          if (saved) {
+            var parsed = JSON.parse(saved);
+            return parsed[typeNum] || parsed[String(typeNum)] || [];
+          }
+        } catch (e) { }
+        return [];
+      }
+
+      // Inline onclick injected into prize-item <li> elements by lottery.js
+      window._onPrizeItemClick = function (typeNum) {
+        var data = window._lotteryData;
+        if (!data || !data.prizes) return;
+        var prize = null;
+        for (var i = 0; i < data.prizes.length; i++) {
+          if (data.prizes[i].type === typeNum) { prize = data.prizes[i]; break; }
+        }
+        if (!prize) return;
+        var winners = getWinnersForType(typeNum);
+        if (!winners || winners.length === 0) return;
+        showWinners(prize.text, prize.title, winners);
+      };
+
+    })();
   </script>
 </body>
+
 </html>
